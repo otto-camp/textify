@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/Sheet';
-import { LayoutDashboard, LogOut, Menu, User2 } from 'lucide-react';
+import { LayoutDashboard, LogOut, Menu, TextSelect, User2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -89,6 +89,12 @@ export default function Header({
                         aria-hidden='true'
                       />
                       Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href='/dashboard/summary'>
+                      <TextSelect className='mr-2 h-4 w-4' aria-hidden='true' />
+                      Summary Tool 
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
@@ -176,6 +182,12 @@ export default function Header({
                         Dashboard
                       </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                    <Link href='/dashboard/summary'>
+                      <TextSelect className='mr-2 h-4 w-4' aria-hidden='true' />
+                      Summary Tool 
+                    </Link>
+                  </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href='/dashboard/account'>
                         <User2 className='mr-2 h-4 w-4' aria-hidden='true' />

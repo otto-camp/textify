@@ -13,3 +13,17 @@ export function catchError(err: unknown) {
     toast('Something went wrong, please try again later.');
   }
 }
+
+export function catchErrorServer(err: unknown) {
+  if (err instanceof z.ZodError) {
+    const errors = err.issues.map((issue) => {
+      return issue.message;
+    });
+    return(errors.join('\n'));
+  } else if (err instanceof Error) {
+    return(err.message);
+  } else {
+    return('Something went wrong, please try again later.');
+  }
+}
+
