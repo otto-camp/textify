@@ -12,7 +12,8 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string(),
     UPLOADTHING_SECRET: z.string(),
     UPLOADTHING_APP_ID: z.string(),
-    API_KEY: z.string()
+    API_KEY: z.string(),
+    API_URL: z.string()
   },
 
   /**
@@ -38,6 +39,7 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
     UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
-    API_KEY: process.env.API_KEY
+    API_KEY: process.env.API_KEY,
+    API_URL: process.env.API_URL
   },
 });
