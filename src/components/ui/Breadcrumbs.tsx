@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const breadcrumbsVariants = cva(
-  'py-2 px-4 flex rounded-md items-center flex-wrap w-fit',
+  'py-2 px-4 flex rounded-base items-center flex-wrap w-fit',
   {
     variants: {
       variant: {
