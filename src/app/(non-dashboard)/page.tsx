@@ -12,8 +12,8 @@ export default function HomePage() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ex
           doloremque qui asperiores iure. Nesciunt!
         </p>
-        <Button size='lg'>
-          <Link href='/dashboard'>Get Started</Link>
+        <Button size='lg' asChild>
+          <Link href='/summary'>Get Started</Link>
         </Button>
       </section>
     </div>

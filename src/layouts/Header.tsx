@@ -16,7 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const data = [{ href: '/', text: 'Link' }];
+const data = [{ href: '/summary', text: 'Summary Tool' }];
 
 export default function Header({
   firstName,
@@ -89,12 +89,6 @@ export default function Header({
                         aria-hidden='true'
                       />
                       Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href='/dashboard/summary'>
-                      <TextSelect className='mr-2 h-4 w-4' aria-hidden='true' />
-                      Summary Tool 
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
@@ -182,12 +176,6 @@ export default function Header({
                         Dashboard
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                    <Link href='/dashboard/summary'>
-                      <TextSelect className='mr-2 h-4 w-4' aria-hidden='true' />
-                      Summary Tool 
-                    </Link>
-                  </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href='/dashboard/account'>
                         <User2 className='mr-2 h-4 w-4' aria-hidden='true' />

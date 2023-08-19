@@ -1,11 +1,18 @@
+import PageTitle from '@/components/PageTitle';
 import { Shell } from '@/components/Shell';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 export default async function DashboardPage() {
   return (
     <Shell>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse perspiciatis
-      architecto blanditiis minus ea labore dicta minima velit eius facilis,
-      illo ipsum officia dolore quas consectetur cum iste voluptatum modi!
+      <PageTitle>Dashboard</PageTitle>
+      <p>Nothing to see yet.</p>
+      <div className='h-full w-full rounded-base bg-primary/10'>
+        <Button asChild>
+          <Link href='/summary'>Summarize</Link>
+        </Button>
+      </div>
     </Shell>
   );
 }

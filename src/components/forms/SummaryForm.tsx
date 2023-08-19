@@ -23,11 +23,10 @@ type Inputs = z.infer<typeof summarySchema>;
 
 export default function SummaryForm({
   setResponse,
-  setIsLoading,
 }: {
   setResponse: React.Dispatch<React.SetStateAction<string>>;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const ref = React.useRef<HTMLTextAreaElement | null>(null);
   const [isPending, startTransition] = React.useTransition();
   const form = useForm<Inputs>({
     resolver: zodResolver(summarySchema),
@@ -39,8 +38,6 @@ export default function SummaryForm({
   function onSubmit(data: Inputs) {
     startTransition(async () => {
       try {
-        setResponse('');
-        setIsLoading(true);
         const res = (await fetch('/api/post-text', {
           method: 'POST',
           body: JSON.stringify(data.content),
@@ -55,13 +52,23 @@ export default function SummaryForm({
             );
           }
         }
-        setIsLoading(false);
       } catch (error) {
         catchError(error);
-        setIsLoading(false);
       }
     });
   }
+
+  React.useEffect(() => {
+    const textarea = ref.current;
+    if (textarea) {
+      textarea.style.height = 'inherit';
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 240)}px`;
+    }
+    console.log('Inside effect');
+  }, [ref.current?.value]);
+
+  console.log('Outside effect');
+
   return (
     <Form {...form}>
       <form
@@ -72,20 +79,24 @@ export default function SummaryForm({
           control={form.control}
           name='content'
           render={({ field }) => (
-            <FormItem className='h-full space-y-0'>
-              <FormLabel className='sr-only'>Summarizer</FormLabel>
+            <FormItem>
+              <FormLabel>Summarizer</FormLabel>
               <FormControl>
-                <Textarea {...field} className='min-h-[440px]' />
+                <Textarea
+                  {...field}
+                  rows={3}
+                  placeholder='Enter your text'
+                  className='resize-none'
+                  ref={ref}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className='flex items-center justify-between gap-4'>
-          <Button type='button' variant='ghost' onClick={() => form.reset()}>
-            Clear
-          </Button>
-          <Button disabled={isPending}>
+
+        <div className='mx-auto flex w-full max-w-[220px]'>
+          <Button disabled={isPending} className='w-full'>
             {isPending && (
               <Loader2
                 className='mr-2 h-4 w-4 animate-spin'
