@@ -17,13 +17,12 @@ export function catchError(err: unknown) {
 export function catchErrorServer(err: unknown) {
   if (err instanceof z.ZodError) {
     const errors = err.issues.map((issue) => {
-      return issue.message;
+      throw new Error(issue.message);
     });
-    return(errors.join('\n'));
+    throw new Error(errors.join('\n'));
   } else if (err instanceof Error) {
-    return(err.message);
+    throw new Error(err.message);
   } else {
-    return('Something went wrong, please try again later.');
+    throw new Error('Something went wrong, please try again later.');
   }
 }
-

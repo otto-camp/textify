@@ -2,11 +2,15 @@
 import CopyButton from '@/components/CopyButton';
 import SummaryForm from '@/components/forms/SummaryForm';
 import { Button } from '@/components/ui/Button';
+import { catchError } from '@/utils/catchError';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
 
-export default function SummaryWrapper() {
+export default function SummaryWrapper({userId}:{userId:string}) {
+  const [text, setText] = React.useState('');
   const [response, setResponse] = React.useState('');
   const responseRef = React.useRef<HTMLDivElement | null>(null);
+  const [isPending, startTransition] = React.useTransition();
 
   //FIX
   // React.useEffect(() => {
@@ -39,12 +43,25 @@ export default function SummaryWrapper() {
   //   };
   // }, [response]);
 
+  const saveDb = () => {
+    startTransition(async () => {
+      try {
+        await fetch('/api/save-text', {
+          method: 'POST',
+          body: JSON.stringify({ text: text, response: response,userId:userId }),
+        });
+      } catch (error) {
+        catchError(error);
+      }
+    });
+  };
+
   return (
     <div className='mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-32'>
-      <SummaryForm setResponse={setResponse} />
+      <SummaryForm setResponse={setResponse} setText={setText} />
 
       {response.length !== 0 ? (
-        <div className='min-h-[300px] rounded-base border shadow-xl shadow-primary/30'>
+        <div className='min-h-[300px] rounded-base border shadow-md shadow-primary/30'>
           <div className='flex flex-wrap justify-between rounded-t-base border-b bg-secondary/30 px-4 py-2'>
             <div className='hidden items-center gap-2 xs:flex'>
               <div className='h-3 w-3 rounded-full bg-blue-700'></div>
@@ -54,7 +71,15 @@ export default function SummaryWrapper() {
             <div className='flex gap-2'>
               {/* Download button */}
               {/* Share button */}
-              <Button variant='ghost'>Save</Button>
+              <Button disabled={isPending} onClick={saveDb} variant='ghost'>
+                {isPending && (
+                  <Loader2
+                    className='mr-2 h-4 w-4 animate-spin'
+                    aria-hidden='true'
+                  />
+                )}
+                Save
+              </Button>
               <CopyButton text={response}>Copy Text</CopyButton>
             </div>
           </div>

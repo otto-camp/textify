@@ -23,8 +23,10 @@ type Inputs = z.infer<typeof summarySchema>;
 
 export default function SummaryForm({
   setResponse,
+  setText,
 }: {
   setResponse: React.Dispatch<React.SetStateAction<string>>;
+  setText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const ref = React.useRef<HTMLTextAreaElement | null>(null);
   const [isPending, startTransition] = React.useTransition();
@@ -45,6 +47,7 @@ export default function SummaryForm({
 
         if (res.ok) {
           setResponse(await res.summary);
+          setText(data.content);
 
           if (res.summary.length === 0) {
             toast(
