@@ -6,7 +6,7 @@ export default function SummaryPage() {
   return (
     <Shell>
       <PageTitle
-        title='Summary'
+        title='Summary Tool'
         description='Generate a concise summary of your lengthy text and highlight key
         points.'
       />

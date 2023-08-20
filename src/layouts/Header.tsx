@@ -39,12 +39,12 @@ export default function Header({
         <Link href='/' className='flex items-center gap-2 text-2xl font-black'>
           <Image
             src='/logo.svg'
-            alt='Title'
+            alt='SummariX'
             width={32}
             height={32}
             aria-hidden
           />
-          <span>Title</span>
+          <span>SummariX</span>
         </Link>
         <nav className='hidden items-center gap-4 lg:flex'>
           {data.map((x) => (
