@@ -65,7 +65,7 @@ export default function SummaryForm({
     const textarea = ref.current;
     if (textarea) {
       textarea.style.height = 'inherit';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 240)}px`;
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 480)}px`;
     }
     console.log('Inside effect');
   }, [ref.current?.value]);
@@ -83,7 +83,7 @@ export default function SummaryForm({
           name='content'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Summarizer</FormLabel>
+              <FormLabel className='sr-only'>Summarizer</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
