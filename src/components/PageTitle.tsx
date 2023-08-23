@@ -6,7 +6,7 @@ export default function PageTitle({
   description: string;
 }) {
   return (
-    <div className='w-full py-4'>
+    <div className='py-4'>
       <h1 className='text-lg font-semibold sm:text-xl md:text-2xl'>{title}</h1>
       <p>{description}</p>
     </div>

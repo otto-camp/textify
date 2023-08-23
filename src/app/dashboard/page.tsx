@@ -31,8 +31,8 @@ export default async function DashboardPage() {
                   <time className='text-muted-foreground'>
                     {formatDate(textRes.createdAt?.toUTCString()!)}
                   </time>
-                  <h3 className='line-clamp-2 leading-4 tracking-tight'>
-                    {textRes.content}
+                  <h3 className='leading-4 tracking-tight'>
+                    {textRes.title}
                   </h3>
                 </div>
                 <div className='p-4'>

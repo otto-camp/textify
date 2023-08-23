@@ -65,7 +65,7 @@ export default function SummaryForm({
     const textarea = ref.current;
     if (textarea) {
       textarea.style.height = 'inherit';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 480)}px`;
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 640)}px`;
     }
     console.log('Inside effect');
   }, [ref.current?.value]);
@@ -89,7 +89,7 @@ export default function SummaryForm({
                   {...field}
                   rows={3}
                   placeholder='Enter your text'
-                  className='resize-none'
+                  className='min-h-[200px] resize-none sm:min-h-[400px]'
                   ref={ref}
                 />
               </FormControl>

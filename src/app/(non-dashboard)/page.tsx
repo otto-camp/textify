@@ -1,7 +1,88 @@
 import { Shell } from '@/components/Shell';
 import { Button } from '@/components/ui/Button';
+import { env } from '@/env.mjs';
 import { Clock, FileSearch, Sparkle } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'SummariX | Effortless Text Summarization Tool',
+  description:
+    'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+  keywords: [
+    'text summarization',
+    'generate summaries',
+    'efficient information retrieval',
+    'key insights',
+    'concise content',
+    'time-saving tool',
+    'effortless comprehension',
+    'understand quickly',
+    'highlight important points',
+    'quick overview',
+    'streamlined content',
+    'grasp essentials',
+    'essential information',
+    'simplify reading',
+    'clear insights',
+    'comprehend efficiently',
+    'extract key ideas',
+    'summarize texts',
+    'highlight key concepts',
+    'simplify complex content',
+    'distilled insights',
+    'summarize efficiently',
+    'condense information',
+    'effective summarization',
+    'digest information',
+    'key takeaways',
+    'main points',
+    'extract core details',
+    'summary tool',
+    'save time',
+  ],
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+  authors: [
+    {
+      name: 'otto-camp',
+      url: 'https://github.com/otto-camp',
+    },
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: env.NEXT_PUBLIC_APP_URL,
+    title: 'SummariX | Effortless Text Summarization Tool',
+    description:
+      'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+    siteName: 'SummariX',
+    images: [
+      {
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        alt: 'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SummariX | Effortless Text Summarization Tool',
+    description:
+      'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+    images: [
+      {
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        alt: 'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
 
 export default function HomePage() {
   return (

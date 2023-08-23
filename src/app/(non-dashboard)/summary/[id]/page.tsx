@@ -17,7 +17,7 @@ export default async function SummaryPage({
   return (
     <>
       {text ? (
-        <Shell className='prose dark:prose-invert'>
+        <Shell variant='markdown' className='prose dark:prose-invert'>
           <h1>{text.title}</h1>
           <h2>Content</h2>
           <p>{text.content}</p>
