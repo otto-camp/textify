@@ -58,6 +58,20 @@ module.exports = {
         radial: "radial-gradient(50% 50% at 50% 50%,#a55fa280 0,transparent 100%)"
       }
     },
+    keyframes: {
+      "accordion-down": {
+        from: { height: 0 },
+        to: { height: "var(--radix-accordion-content-height)" },
+      },
+      "accordion-up": {
+        from: { height: "var(--radix-accordion-content-height)" },
+        to: { height: 0 },
+      },
+    },
+    animation: {
+      "accordion-down": "accordion-down 0.2s ease-out",
+      "accordion-up": "accordion-up 0.2s ease-out",
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 }

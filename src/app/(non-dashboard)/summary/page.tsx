@@ -8,6 +8,7 @@ import { eq } from 'drizzle-orm';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { env } from '@/env.mjs';
+import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'Summary Tool | SummariX',
@@ -102,28 +103,26 @@ export default async function SummaryPage() {
           description='Generate a concise summary of your lengthy text and highlight key
         points.'
         />
-        <div className='flex flex-col justify-between'>
-          <h2 className='text-lg font-semibold md:text-xl'>
-            Latest saved Summeries
-          </h2>
-          <div className='mb-12 flex items-center gap-8'>
-            {latestSavedSummaries ? (
-              <>
-                {latestSavedSummaries.map((sum) => (
-                  <Link
-                    href={`/summary/${sum.id}`}
-                    key={sum.id}
-                    className='max-w-xs rounded-base border p-4 lg:max-w-sm'
-                  >
-                    <h3 className='line-clamp-2 leading-4 tracking-tight'>
-                      {sum.title}
-                    </h3>
-                  </Link>
-                ))}
-              </>
-            ) : null}
+        {latestSavedSummaries ? (
+          <div className='flex flex-col justify-between'>
+            <h2 className='text-lg font-semibold md:text-xl'>
+              Latest saved Summeries
+            </h2>
+            <div className='mb-12 flex items-center gap-8'>
+              {latestSavedSummaries.map((sum) => (
+                <Link
+                  href={`/summary/${sum.id}`}
+                  key={sum.id}
+                  className='max-w-xs rounded-base border p-4 lg:max-w-sm'
+                >
+                  <h3 className='line-clamp-2 leading-4 tracking-tight'>
+                    {sum.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
       <SummaryWrapper userId={user?.id!} />
