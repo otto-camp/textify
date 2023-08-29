@@ -89,7 +89,7 @@ export default function SummaryForm({
                   {...field}
                   rows={3}
                   placeholder='Enter your text'
-                  className='min-h-[200px] resize-none sm:min-h-[400px]'
+                  className='min-h-[200px] resize-none'
                   ref={ref}
                 />
               </FormControl>
@@ -102,7 +102,7 @@ export default function SummaryForm({
           <Button disabled={isPending} className='w-full'>
             {isPending && (
               <Loader2
-                className='mr-2 h-4 w-4 animate-spin'
+                className='animate-spin mr-2 h-4 w-4'
                 aria-hidden='true'
               />
             )}

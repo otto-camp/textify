@@ -15,6 +15,13 @@
       "when": 1692627925665,
       "tag": "0001_breezy_leader",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693317782833,
+      "tag": "0002_dizzy_phil_sheldon",
+      "breakpoints": true
     }
   ]
 }

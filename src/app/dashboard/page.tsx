@@ -25,7 +25,7 @@ export default async function DashboardPage() {
         </Button>
         <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {textsRes.map((textRes) => (
-            <Link href={`/dashboard/summary/${textRes.id}`} key={textRes.id}>
+            <Link href={`/summary/${textRes.id}`} key={textRes.id}>
               <article className='rounded-base border'>
                 <div className='space-y-2 border-b p-4'>
                   <time className='text-muted-foreground'>

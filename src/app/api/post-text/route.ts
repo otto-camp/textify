@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   try {
-    const res = await fetch(env.API_URL, {
+    const res = await fetch(env.SUM_API_URL, {
       method: 'POST',
       headers: {
         'X-RapidAPI-Key': env.API_KEY,

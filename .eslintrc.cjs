@@ -5,6 +5,10 @@ const config = {
     "prettier",
     "plugin:tailwindcss/recommended",
   ],
+  rules: {
+    "tailwindcss/classnames-order": 'off',
+    "tailwindcss/no-custom-classname": 'off',
+  }
 };
 
 module.exports = config;
