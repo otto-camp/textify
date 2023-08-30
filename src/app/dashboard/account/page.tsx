@@ -19,10 +19,6 @@ const appearance: Theme = {
   },
 };
 
-export const metadata = {
-  title: 'Account | SummariX',
-};
-
 export default function AccountPage() {
   const { theme } = useTheme();
   return (
