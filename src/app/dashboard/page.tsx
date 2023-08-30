@@ -1,49 +1,55 @@
 import PageTitle from '@/components/PageTitle';
 import { Shell } from '@/components/Shell';
-import { Button } from '@/components/ui/Button';
+import { Card, CardHeader } from '@/components/ui/Card';
 import { db } from '@/db';
 import { texts } from '@/db/schema';
 import { formatDate } from '@/utils/formatDate';
 import { currentUser } from '@clerk/nextjs';
-import { eq } from 'drizzle-orm';
+import { eq, gt } from 'drizzle-orm';
 import Link from 'next/link';
 
-export default async function DashboardPage() {
-  const user = await currentUser();
+export const dynamic = 'force-dynamic';
 
-  const textsRes = await db
+export const metadata = {
+  title: 'Dashboard | SummariX',
+};
+
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const user = await currentUser();
+  console.log(searchParams);
+
+  const textsResponse = await db
     .select()
     .from(texts)
     .where(eq(texts.userId, user?.id!));
 
   return (
     <Shell>
-      <PageTitle title='Dashboard' description='' />
-      <div className='h-full w-full space-y-12'>
-        <Button asChild>
-          <Link href='/summary'>Summarize Tool</Link>
-        </Button>
-        <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-          {textsRes.map((textRes) => (
-            <Link href={`/summary/${textRes.id}`} key={textRes.id}>
-              <article className='rounded-base border'>
-                <div className='space-y-2 border-b p-4'>
-                  <time className='text-muted-foreground'>
-                    {formatDate(textRes.createdAt?.toUTCString()!)}
-                  </time>
-                  <h3 className='leading-4 tracking-tight'>
-                    {textRes.title}
-                  </h3>
-                </div>
-                <div className='p-4'>
-                  <p className='line-clamp-3 leading-4 tracking-tight text-foreground/70'>
-                    {textRes.summaryContent}
-                  </p>
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
+      <div className='flex justify-between gap-4'>
+        <PageTitle
+          title='Dashboard'
+          description='Effortlessly manage, track, and customize your summarization experience with the SummariX Dashboard. Stay organized and save time as you access and tailor your summarized content with ease.'
+        />
+        {/* <UpdateDate /> */}
+      </div>
+
+      <div className='grid h-full w-full gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+        {textsResponse.map((textRes) => (
+          <Card key={textRes.id}>
+            <CardHeader>
+              <Link href={`/dashboard/${textRes.id}`}>
+                <time className='text-muted-foreground'>
+                  {formatDate(textRes.createdAt?.toUTCString()!)}
+                </time>
+                <h3 className='leading-4 tracking-tight'>{textRes.title}</h3>
+              </Link>
+            </CardHeader>
+          </Card>
+        ))}
       </div>
     </Shell>
   );

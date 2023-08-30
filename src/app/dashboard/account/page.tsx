@@ -1,6 +1,6 @@
-"use client"
+'use client';
 import { UserProfile } from '@clerk/nextjs';
-import { dark } from "@clerk/themes"
+import { dark } from '@clerk/themes';
 import { Shell } from '@/components/Shell';
 import { useTheme } from 'next-themes';
 import { type Theme } from '@clerk/types';
@@ -17,6 +17,10 @@ const appearance: Theme = {
     headerTitle: 'hidden',
     headerSubtitle: 'hidden',
   },
+};
+
+export const metadata = {
+  title: 'Account | SummariX',
 };
 
 export default function AccountPage() {

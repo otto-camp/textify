@@ -46,9 +46,9 @@ export default function SummaryWrapper({userId}:{userId:string}) {
   const saveDb = () => {
     startTransition(async () => {
       try {
-        await fetch('/api/save-text', {
+        await fetch('/api/save-summary', {
           method: 'POST',
-          body: JSON.stringify({ text: text, response: response,userId:userId }),
+          body: JSON.stringify({ content: text, response: response,userId:userId }),
         });
       } catch (error) {
         catchError(error);

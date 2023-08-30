@@ -46,7 +46,7 @@ export default function SummaryForm({
         }).then(async (res) => await res.json())) as SummaryResponse;
 
         if (res.ok) {
-          setResponse(await res.summary);
+          setResponse(res.summary);
           setText(data.content);
 
           if (res.summary.length === 0) {

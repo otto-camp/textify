@@ -22,6 +22,20 @@
       "when": 1693317782833,
       "tag": "0002_dizzy_phil_sheldon",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693410684827,
+      "tag": "0003_public_speed",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1693411872062,
+      "tag": "0004_shallow_eternity",
+      "breakpoints": true
     }
   ]
 }
