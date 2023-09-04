@@ -91,7 +91,7 @@ export function VerifyEmailForm() {
         />
         <Button disabled={isPending}>
           {isPending && (
-            <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
+            <Loader2 className='animate-spin mr-2 h-4 w-4' aria-hidden='true' />
           )}
           Create account
           <span className='sr-only'>Create account</span>

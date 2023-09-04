@@ -5,11 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/Accordion';
-import { Badge, badgeVariants } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { env } from '@/env.mjs';
-import { cn } from '@/utils/cn';
-import { Asterisk, Clock, FileSearch, Sparkle } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -116,7 +113,7 @@ export default function HomePage() {
             started now!
           </p>
           <Button size='lg' asChild>
-            <Link href='/summary'>Get Started</Link>
+            <Link href='/tools'>Get Started</Link>
           </Button>
         </div>
       </div>

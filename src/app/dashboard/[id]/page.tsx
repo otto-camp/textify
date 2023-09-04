@@ -3,7 +3,6 @@ import { db } from '@/db';
 import { Texts, texts } from '@/db/schema';
 import { env } from '@/env.mjs';
 import { eq } from 'drizzle-orm';
-import { Metadata } from 'next';
 
 type Props = {
   params: { id: string };
@@ -14,25 +13,25 @@ async function getText(id: string) {
     .select()
     .from(texts)
     .where(eq(texts.id, Number(id)));
-  return res.at(0);
+  return res.at(0) as Texts | undefined;
 }
 
 export async function generateMetadata({ params: { id } }: Props) {
   const text = await getText(id);
   return {
     title: `${text?.title} | SummariX`,
-    description: text?.summaryContent,
+    description: text?.title,
     openGraph: {
       type: 'website',
       locale: 'en_US',
       url: env.NEXT_PUBLIC_APP_URL,
       title: `${text?.title} | SummariX`,
-      description: text?.summaryContent,
+      description: text?.title,
       siteName: 'SummariX',
       images: [
         {
           url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-          alt: text?.summaryContent,
+          alt: text?.title,
           width: 1200,
           height: 630,
         },
@@ -41,11 +40,11 @@ export async function generateMetadata({ params: { id } }: Props) {
     twitter: {
       card: 'summary_large_image',
       title: `${text?.title} | SummariX`,
-      description: text?.summaryContent,
+      description: text?.title,
       images: [
         {
           url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-          alt: text?.summaryContent,
+          alt: text?.title,
           width: 1200,
           height: 630,
         },
@@ -57,18 +56,14 @@ export async function generateMetadata({ params: { id } }: Props) {
 export default async function SummaryPage({ params: { id } }: Props) {
   const text = await getText(id);
   return (
-    <>
+    <Shell variant='markdown' className='prose dark:prose-invert'>
       {text ? (
-        <Shell variant='markdown' className='prose dark:prose-invert'>
+        <>
           <h1>{text.title}</h1>
           <h2>Content</h2>
           <p>{text.content}</p>
-          <h2>Summary</h2>
-          <p>{text.summaryContent}</p>
-        </Shell>
-      ) : (
-        <Shell></Shell>
-      )}
-    </>
+        </>
+      ) : null}
+    </Shell>
   );
 }

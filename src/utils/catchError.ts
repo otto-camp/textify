@@ -9,6 +9,8 @@ export function catchError(err: unknown) {
     toast(errors.join('\n'));
   } else if (err instanceof Error) {
     toast(err.message);
+  } else if (typeof err === 'string') {
+    toast(err);
   } else {
     toast('Something went wrong, please try again later.');
   }

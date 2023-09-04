@@ -15,7 +15,7 @@ export default authMiddleware({
     '/terms(.*)',
     '/privacy(.*)',
     '/api(.*)',
-    '/summary(.*)',
+    '/tools(.*)',
   ],
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {

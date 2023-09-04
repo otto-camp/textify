@@ -20,7 +20,7 @@ export default function SSOCallback({ searchParams }: SSOCallbackPageProps) {
       aria-describedby='loading-description'
       className='flex items-center justify-center'
     >
-      <Loader2 className='h-16 w-16 animate-spin' aria-hidden='true' />
+      <Loader2 className='animate-spin h-16 w-16' aria-hidden='true' />
     </div>
   );
 }

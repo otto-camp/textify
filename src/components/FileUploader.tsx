@@ -125,7 +125,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
         {isUploading ? (
           <div className='group grid w-full place-items-center gap-1 sm:px-10'>
             <Upload
-              className='h-9 w-9 animate-pulse text-muted-foreground'
+              className='animate-pulse h-9 w-9 text-muted-foreground'
               aria-hidden='true'
             />
           </div>

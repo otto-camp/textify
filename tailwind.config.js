@@ -56,7 +56,11 @@ module.exports = {
       },
       backgroundImage: {
         radial: "radial-gradient(50% 50% at 50% 50%,#a55fa280 0,transparent 100%)"
-      }
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
     keyframes: {
       "accordion-down": {
@@ -68,10 +72,7 @@ module.exports = {
         to: { height: 0 },
       },
     },
-    animation: {
-      "accordion-down": "accordion-down 0.2s ease-out",
-      "accordion-up": "accordion-up 0.2s ease-out",
-    },
+
   },
   plugins: [require('@tailwindcss/typography')],
 }

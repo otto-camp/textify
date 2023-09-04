@@ -16,7 +16,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const data = [{ href: '/summary', text: 'Summary Tool' }];
+const data = [
+  { href: '/tools/summary', text: 'Summary Tool' },
+  { href: '/tools/sentiment', text: 'Sentiment Analysis' },
+];
 
 export default function Header({
   firstName,

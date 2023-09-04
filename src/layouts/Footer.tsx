@@ -11,15 +11,14 @@ export default function Footer() {
         <div className='text-center text-sm leading-loose text-muted-foreground'>
           Built by{' '}
           <a
-            aria-label='Kickflip tutorial on YouTube'
-            href='https://www.linkedin.com/in/ismail-yarar/'
+            href='https://yarar.dev'
             target='_blank'
             rel='noreferrer'
             className='font-semibold transition-colors hover:text-slate-950 dark:hover:text-slate-200'
           >
-            İsmail Yarar
+            yarar.dev
           </a>
-          .
+          
         </div>
         <div className='flex items-center space-x-1'>
           <Link

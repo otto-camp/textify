@@ -13,7 +13,9 @@ export const env = createEnv({
     UPLOADTHING_SECRET: z.string(),
     UPLOADTHING_APP_ID: z.string(),
     API_KEY: z.string(),
-    SUM_API_URL: z.string()
+    SUM_API_URL: z.string(),
+    EXT_API_URL: z.string(),
+    SEN_API_URL: z.string()
   },
 
   /**
@@ -40,6 +42,8 @@ export const env = createEnv({
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
     UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
     API_KEY: process.env.API_KEY,
-    SUM_API_URL: process.env.SUM_API_URL
+    SUM_API_URL: process.env.SUM_API_URL,
+    EXT_API_URL: process.env.EXT_API_URL,
+    SEN_API_URL: process.env.SEN_API_URL
   },
 });

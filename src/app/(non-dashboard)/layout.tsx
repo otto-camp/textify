@@ -1,7 +1,6 @@
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
 import { currentUser } from '@clerk/nextjs';
-import { redirect } from 'next/navigation';
 
 export default async function NonDashboardLayout({
   children,
