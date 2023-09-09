@@ -31,7 +31,7 @@ export function GET() {
           }}
         >
           <div tw='text-5xl font-bold tracking-tight leading-tight dark:text-zinc-50 px-8'>
-            SummariX
+            textify
           </div>
         </div>
       </div>

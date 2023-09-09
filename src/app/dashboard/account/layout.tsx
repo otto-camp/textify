@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Account | SummariX',
+  title: 'Account | textify',
 };
 
 export default async function AccountLayout({

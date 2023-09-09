@@ -1,6 +1,12 @@
 import { SignOutButtons } from '@/components/auth/SignOutButton';
 import { Shell } from '@/components/Shell';
+import { env } from '@/env.mjs';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  title: 'Sign Out',
+};
 export default function SignOutPage() {
   return (
     <Shell className='max-w-xs'>

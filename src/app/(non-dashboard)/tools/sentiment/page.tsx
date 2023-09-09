@@ -5,41 +5,15 @@ import { Metadata } from 'next';
 import React from 'react';
 import SentimentWrapper from './SentimentWrapper';
 
-const TITLE = 'Sentiment Analysis | SummariX';
+const TITLE = 'Sentiment Analysis Tool | textify';
 const DESCRIPTION =
-  'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.';
+  "Analyze sentiment within text using TextVerse Hub's sentiment analysis tool. Understand emotions in your content.";
+const KEYWORDS = ['Sentiment analysis', 'emotional analysis', 'text emotion'];
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  keywords: [
-    'text summary',
-    'concise insights',
-    'key points',
-    'summarization tool',
-    'generate summary',
-    'efficient understanding',
-    'highlight content',
-    'information extraction',
-    'quick comprehension',
-    'effective summarization',
-    'essential details',
-    'main ideas',
-    'clear overview',
-    'condensed content',
-    'efficient reading',
-    'distilled information',
-    'simplify text',
-    'comprehend quickly',
-    'summarized content',
-    'focused information',
-    'main takeaways',
-    'core concepts',
-    'key takeouts',
-    'summary creation',
-    'essential concepts',
-    'quick overview',
-  ],
+  keywords: KEYWORDS,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -56,11 +30,11 @@ export const metadata: Metadata = {
     url: env.NEXT_PUBLIC_APP_URL,
     title: TITLE,
     description: DESCRIPTION,
-    siteName: 'SummariX',
+    siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
+        alt: DESCRIPTION,
         width: 1200,
         height: 630,
       },
@@ -73,7 +47,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
+        alt: DESCRIPTION,
         width: 1200,
         height: 630,
       },
@@ -84,7 +58,10 @@ export const metadata: Metadata = {
 export default function SentimentPage() {
   return (
     <Shell>
-      <PageTitle title='Sentiment Analysis' description='' />
+      <PageTitle
+        title='Sentiment Analysis'
+        description='Gain insights into text emotions with our powerful sentiment analysis tool.'
+      />
       <SentimentWrapper />
     </Shell>
   );

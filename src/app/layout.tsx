@@ -16,7 +16,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang='en'>
         <body
-          className={`${inter.className} min-h-screen bg-background antialiased`}
+          className={`${inter.className} min-h-screen scroll-smooth bg-background antialiased`}
         >
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             {children}

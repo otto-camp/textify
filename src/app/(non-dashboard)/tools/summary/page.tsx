@@ -5,38 +5,15 @@ import { currentUser } from '@clerk/nextjs';
 import { Metadata } from 'next';
 import { env } from '@/env.mjs';
 
+const TITLE = 'Text Summarization Tool | textify';
+const DESCRIPTION =
+  "Effortlessly summarize lengthy text with TextVerse Hub's summarization tool. Get key insights in seconds.";
+const KEYWORDS = ['Text summarization', 'summary tool', 'text analysis'];
+
 export const metadata: Metadata = {
-  title: 'Summary Tool | SummariX',
-  description:
-    'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
-  keywords: [
-    'text summary',
-    'concise insights',
-    'key points',
-    'summarization tool',
-    'generate summary',
-    'efficient understanding',
-    'highlight content',
-    'information extraction',
-    'quick comprehension',
-    'effective summarization',
-    'essential details',
-    'main ideas',
-    'clear overview',
-    'condensed content',
-    'efficient reading',
-    'distilled information',
-    'simplify text',
-    'comprehend quickly',
-    'summarized content',
-    'focused information',
-    'main takeaways',
-    'core concepts',
-    'key takeouts',
-    'summary creation',
-    'essential concepts',
-    'quick overview',
-  ],
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: KEYWORDS,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -51,14 +28,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: 'Summary Tool | SummariX',
-    description:
-      'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
-    siteName: 'SummariX',
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
+        alt: DESCRIPTION,
         width: 1200,
         height: 630,
       },
@@ -66,13 +42,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Summary Tool | SummariX',
-    description:
-      'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Generate concise summaries of lengthy texts with TextSummarizer. Highlight key points for better comprehension. Try now for efficient information retrieval.',
+        alt: DESCRIPTION,
         width: 1200,
         height: 630,
       },
@@ -88,8 +63,7 @@ export default async function SummaryPage() {
       <div className='flex flex-wrap justify-between gap-4'>
         <PageTitle
           title='Summary Tool'
-          description='Generate a concise summary of your lengthy text and highlight key
-        points.'
+          description='Summarize text quickly and effectively with our intuitive summarization tool.'
         />
       </div>
 

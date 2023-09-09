@@ -10,6 +10,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
+import {
+  ListItem,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/NavigationMenu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/Sheet';
 import { LayoutDashboard, LogOut, Menu, TextSelect, User2 } from 'lucide-react';
 import Image from 'next/image';
@@ -17,8 +25,18 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const data = [
-  { href: '/tools/summary', text: 'Summary Tool' },
-  { href: '/tools/sentiment', text: 'Sentiment Analysis' },
+  {
+    href: '/tools/summary',
+    text: 'Summary Tool',
+    description:
+      'Summarize text quickly and effectively with our intuitive summarization tool.',
+  },
+  {
+    href: '/tools/sentiment',
+    text: 'Sentiment Analysis',
+    description:
+      'Gain insights into text emotions with our powerful sentiment analysis tool.',
+  },
 ];
 
 export default function Header({
@@ -39,26 +57,32 @@ export default function Header({
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background'>
       <div className='container mx-auto flex h-16 items-center justify-between p-4'>
-        <Link href='/' className='flex items-center gap-2 text-2xl font-black'>
+        <Link href='/' className='relative flex items-center gap-2 '>
           <Image
-            src='/logo.svg'
-            alt='SummariX'
+            src="/logo.webp"
+            alt='textify'
             width={32}
             height={32}
             aria-hidden
           />
-          <span>SummariX</span>
+          <span className='text-2xl font-black'>textify</span>
+          {/* <span className='absolute bottom-0'>by yarar.dev</span> */}
         </Link>
-        <nav className='hidden items-center gap-4 lg:flex'>
-          {data.map((x) => (
-            <Link
-              key={x.text}
-              href={x.href}
-              className='text-foreground/60 transition-colors hover:text-foreground/80'
-            >
-              {x.text}
-            </Link>
-          ))}
+        <NavigationMenu className='hidden gap-8 lg:flex'>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className='grid grid-cols-2 gap-3 p-4 lg:w-[650px]'>
+                  {data.map((x) => (
+                    <ListItem key={x.text} title={x.text} href={x.href}>
+                      {x.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
           {email ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -122,7 +146,8 @@ export default function Header({
               </div>
             </Link>
           )}
-        </nav>
+        </NavigationMenu>
+
         <div className='flex items-center gap-4 lg:hidden'>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -140,12 +165,11 @@ export default function Header({
             >
               <nav className='flex flex-col gap-4 lg:hidden'>
                 {data.map((x) => (
-                  <Link
-                    key={x.text}
-                    href={x.href}
-                    className='text-foreground/60 transition-colors hover:text-foreground/80'
-                  >
-                    {x.text}
+                  <Link key={x.text} href={x.href} className='group'>
+                    <span className='transition-colors group-hover:text-foreground/80'>
+                      {x.text}
+                    </span>
+                    <p className='text-muted-foreground'>{x.description}</p>
                   </Link>
                 ))}
               </nav>

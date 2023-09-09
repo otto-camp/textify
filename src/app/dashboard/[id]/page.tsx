@@ -19,15 +19,15 @@ async function getText(id: string) {
 export async function generateMetadata({ params: { id } }: Props) {
   const text = await getText(id);
   return {
-    title: `${text?.title} | SummariX`,
+    title: `${text?.title} | textify`,
     description: text?.title,
     openGraph: {
       type: 'website',
       locale: 'en_US',
       url: env.NEXT_PUBLIC_APP_URL,
-      title: `${text?.title} | SummariX`,
+      title: `${text?.title} | textify`,
       description: text?.title,
-      siteName: 'SummariX',
+      siteName: 'textify',
       images: [
         {
           url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
@@ -39,7 +39,7 @@ export async function generateMetadata({ params: { id } }: Props) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${text?.title} | SummariX`,
+      title: `${text?.title} | textify`,
       description: text?.title,
       images: [
         {

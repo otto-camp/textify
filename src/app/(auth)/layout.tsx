@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { AspectRatio } from '@/components/ui/AspectRatio';
 import { ReactNode } from 'react';
+import { Metadata } from 'next';
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -21,7 +22,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           href='/'
           className='absolute left-8 top-6 z-20 flex items-center text-lg font-bold tracking-tight'
         >
-          <Image src='/logo.svg' alt='' width={32} height={32} aria-hidden />
+          <Image src='/logo.webp' alt='' width={80} height={80} aria-hidden />
         </Link>
       </AspectRatio>
       <main className='container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center md:static md:top-0 md:col-span-2 md:flex md:translate-y-0 lg:col-span-1'>

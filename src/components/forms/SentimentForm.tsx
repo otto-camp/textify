@@ -67,7 +67,7 @@ export default function SentimentForm({
     const textarea = ref.current;
     if (textarea) {
       textarea.style.height = 'inherit';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 640)}px`;
+      textarea.style.height = `${Math.min(250, 640)}px`;
     }
   }, [ref.current?.value]);
 
@@ -88,7 +88,7 @@ export default function SentimentForm({
                   {...field}
                   rows={3}
                   placeholder='Enter your text'
-                  className='min-h-[200px] resize-none'
+                  className='resize-none'
                   ref={ref}
                 />
               </FormControl>

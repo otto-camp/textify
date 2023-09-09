@@ -1,40 +1,26 @@
 'use client';
 import React from 'react';
 import SentimentForm from '@/components/forms/SentimentForm';
-import { Button } from '@/components/ui/Button';
 import { SentimentAnalysisResponse } from '@/lib/types';
 import { useUser } from '@clerk/nextjs';
 import { Frown, Meh, Smile } from 'lucide-react';
-import { Loader2 } from 'lucide-react';
-import { catchError } from '@/utils/catchError';
+import SaveButton from '@/components/SaveButton';
 
 export default function SentimentWrapper() {
   const [response, setResponse] =
     React.useState<SentimentAnalysisResponse | null>(null);
+  const responseRef = React.useRef<HTMLDivElement | null>(null);
   const [id, setId] = React.useState('');
-  const [isPending, startTransition] = React.useTransition();
   const { user } = useUser();
 
-  const saveDb = () => {
-    startTransition(async () => {
-      if (!user?.id) {
-        catchError('You need to login to save sentiment analysis.');
-        return;
-      }
-      try {
-        await fetch('/api/save-sentiment', {
-          method: 'POST',
-          body: JSON.stringify({
-            content: response,
-            userId: user.id,
-            id: id,
-          }),
-        });
-      } catch (error) {
-        catchError(error);
-      }
-    });
-  };
+  React.useEffect(() => {
+    if (responseRef.current) {
+      responseRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+      });
+    }
+  }, [response]);
 
   return (
     <div className='mx-auto min-h-screen w-full max-w-4xl space-y-32'>
@@ -56,18 +42,17 @@ export default function SentimentWrapper() {
             <div className='flex gap-2'>
               {/* Download button */}
               {/* Share button */}
-              <Button onClick={saveDb} disabled={isPending} variant='ghost'>
-                {isPending && (
-                  <Loader2
-                    className='mr-2 h-4 w-4 animate-spin'
-                    aria-hidden='true'
-                  />
-                )}
-                Save
-              </Button>
+              <SaveButton
+                userId={user?.id!}
+                endpoint='/api/save-sentiment'
+                body={{ content: response, userId: user?.id!, id: id }}
+              />
             </div>
           </div>
-          <div className='flex justify-center gap-4 p-4 sm:gap-8'>
+          <div
+            ref={responseRef}
+            className='flex justify-center gap-4 p-4 sm:gap-8'
+          >
             <div className='flex items-center gap-2 sm:gap-4'>
               <Frown className='text-red-700 dark:text-red-400 sm:h-16 sm:w-16' />
               <span className='sm:text-2xl'>

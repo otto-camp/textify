@@ -11,9 +11,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'SummariX | Effortless Text Summarization Tool',
+  title: 'textify | Effortless Text Summarization Tool',
   description:
-    'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+    'Transform lengthy texts into clear summaries with textify. Save time and understand key points quickly. Get started now!',
   keywords: [
     'text summarization',
     'generate summaries',
@@ -56,18 +56,19 @@ export const metadata: Metadata = {
       url: 'https://github.com/otto-camp',
     },
   ],
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: 'SummariX | Effortless Text Summarization Tool',
+    title: 'textify | Effortless Text Summarization Tool',
     description:
-      'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
-    siteName: 'SummariX',
+      'Transform lengthy texts into clear summaries with textify. Save time and understand key points quickly. Get started now!',
+    siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+        alt: 'Transform lengthy texts into clear summaries with textify. Save time and understand key points quickly. Get started now!',
         width: 1200,
         height: 630,
       },
@@ -75,13 +76,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SummariX | Effortless Text Summarization Tool',
+    title: 'textify | Effortless Text Summarization Tool',
     description:
-      'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+      'Transform lengthy texts into clear summaries with textify. Save time and understand key points quickly. Get started now!',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
-        alt: 'Transform lengthy texts into clear summaries with SummariX. Save time and understand key points quickly. Get started now!',
+        alt: 'Transform lengthy texts into clear summaries with textify. Save time and understand key points quickly. Get started now!',
         width: 1200,
         height: 630,
       },
@@ -105,12 +106,13 @@ export default function HomePage() {
             New PDF Download Option
           </Link> */}
           <h1 className='text-center text-4xl font-black tracking-tight md:text-6xl lg:text-8xl lg:tracking-tighter'>
-            Effortless Summarization of Lengthy Texts
+            Textify: Transforming Text Processing
           </h1>
           <p className='mt-4 text-center text-lg text-gray-700 dark:text-gray-300 md:px-20 lg:text-2xl lg:leading-normal'>
-            Experience effortless text summarization with SummariX. Transform
-            lengthy content into clear insights with our intuitive tool. Get
-            started now!
+            Experience the ultimate text processing solution with powerful tools
+            for effortless summarization, sentiment analysis, emotion analysis,
+            OCR, and seamless text extraction, making it your one-stop
+            destination for all your text processing needs.
           </p>
           <Button size='lg' asChild>
             <Link href='/tools'>Get Started</Link>
@@ -119,41 +121,38 @@ export default function HomePage() {
       </div>
       <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
         <h2 className='text-balance text-center text-3xl font-black tracking-tight md:text-5xl lg:text-6xl lg:tracking-tighter'>
-          Discover the Power of SummariX
+          Unlock the textify Advantage.
         </h2>
         <p className='text-center text-lg text-gray-700 dark:text-gray-300 md:px-16 lg:text-2xl lg:leading-normal'>
-          Unlock a world of efficient text summarization with SummariX. Our tool
-          is designed to simplify your reading experience, saving you time and
-          helping you grasp essential information quickly.
+          Explore the features that make textify a text processing powerhouse.
         </p>
         <div className='grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3'>
           <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Smart Extract</h3>
+            <h3 className='font-bold'>Text Summarization</h3>
             <p className='text-sm font-light'>
-              SummariX extracts key insights from long texts, providing relevant
-              information without extra details.
+              Textify condenses lengthy text into concise summaries, saving time
+              and helping users extract key insights.
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Tailored Points</h3>
+            <h3 className='font-bold'>Sentiment Analysis</h3>
             <p className='text-sm font-light'>
-              Customize summaries to focus on specific important points.
-              Highlight what matters to you.
+              Textify analyzes the emotional tone within text content,
+              categorizing it as positive, negative, or neutral.
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Merge Summaries</h3>
+            <h3 className='font-bold'>OCR (Optical Character Recognition)</h3>
             <p className='text-sm font-light'>
-              Combine information from different sources into a coherent
-              summary. Get a unified overview of articles, research, and
-              reports.
+              Textify extracts text from images and PDF files, converting visual
+              content into editable text.
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>Concept Maps</h3>
             <p className='text-sm font-light'>
-              SummariX creates visual concept maps that show connections between
-              key concepts, enhancing understanding of complex topics.
+              Textify creates visual concept maps illustrating connections
+              between key concepts in text, enhancing understanding.
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>
@@ -164,28 +163,27 @@ export default function HomePage() {
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Team Summarize</h3>
+            <h3 className='font-bold'>Team Collaboration</h3>
             <p className='text-sm font-light'>
-              Collaborate seamlessly by sharing summaries with your team.
-              Jointly generate and refine summaries for enhanced productivity on
-              projects.
+              Textify supports team collaboration, enabling users to share and
+              refine summaries for enhanced productivity.
             </p>
           </div>
         </div>
       </div>
       <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
         <h2 className='text-balance text-center text-3xl font-black tracking-tight md:text-5xl lg:text-6xl lg:tracking-tighter'>
-          Frequently Asked Questions
+          Common Questions About Textify.
         </h2>
         <p className='text-center text-lg text-gray-700 dark:text-gray-300 md:px-16 lg:text-2xl lg:leading-normal'>
-          Explore common questions about SummariX and find answers to help you
-          make the most of our text summarization tool.
+          Get answers to frequently asked questions to maximize your Textify
+          experience.
         </p>
         <Accordion type='single' collapsible>
           <AccordionItem value='faq-1'>
-            <AccordionTrigger>How does SummariX work?</AccordionTrigger>
+            <AccordionTrigger>How does textify work?</AccordionTrigger>
             <AccordionContent>
-              SummariX uses advanced natural language processing algorithms to
+              Textify uses advanced natural language processing algorithms to
               analyze and condense lengthy texts into concise summaries while
               retaining key insights.
             </AccordionContent>
@@ -195,27 +193,32 @@ export default function HomePage() {
               How accurate are the generated summaries?
             </AccordionTrigger>
             <AccordionContent>
-              SummariX strives for accuracy by focusing on key points. While the
+              Textify strives for accuracy by focusing on key points. While the
               tool may not capture every detail, it ensures that essential
               insights are presented effectively.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value='faq-3'>
-            <AccordionTrigger>
-              Is my data secure with SummariX??
-            </AccordionTrigger>
+            <AccordionTrigger>Is Textify free to use?</AccordionTrigger>
+            <AccordionContent>
+              Textify offers both free and premium subscription options, with
+              premium users enjoying additional features and benefits.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value='faq-4'>
+            <AccordionTrigger>Is my data secure with textify?</AccordionTrigger>
             <AccordionContent>
               Absolutely. We prioritize data security and privacy. Your texts
               and summarized content are processed securely, adhering to strict
               privacy standards.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value='faq-4'>
+          <AccordionItem value='faq-5'>
             <AccordionTrigger>
               Are there limitations to the types of content I can summarize?
             </AccordionTrigger>
             <AccordionContent>
-              While SummariX is versatile, it&apos;s most effective with textual
+              While textify is versatile, it&apos;s most effective with textual
               content. It may not work optimally with highly technical or
               specialized language.
             </AccordionContent>
@@ -227,13 +230,15 @@ export default function HomePage() {
           About Us
         </h2>
         <p className='text-center text-gray-700 dark:text-gray-300 md:px-16 lg:text-lg lg:leading-normal'>
-          At SummariX, we believe that information should be accessible and
-          comprehensible. Our text summarization tool is designed to simplify
-          your reading experience by condensing lengthy content into clear and
-          concise summaries. Whether you&apos;re a student, researcher,
-          professional, or avid learner, SummariX empowers you to quickly grasp
-          essential insights and save valuable time. Join us on a journey to
-          streamline your understanding of complex information with ease.
+          At Textify, we are dedicated to making information accessible and
+          understandable. Our suite of text processing and analysis tools is
+          designed to simplify your interactions with textual content. Whether
+          you&apos;re a student, researcher, professional, or avid learner, Textify
+          empowers you with tools such as text summarization, sentiment
+          analysis, OCR (Optical Character Recognition), concept mapping, and
+          more. Quickly grasp essential insights, save valuable time, and join
+          us on a journey to streamline your understanding of complex
+          information with ease.
         </p>
       </div>
       {/* Email section */}
