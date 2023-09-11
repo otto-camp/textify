@@ -1,5 +1,6 @@
 import PageTitle from '@/components/PageTitle';
 import { Shell } from '@/components/Shell';
+import UpdateDate from '@/components/UpdateDate';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { db } from '@/db';
 import { texts } from '@/db/schema';
@@ -7,6 +8,7 @@ import { formatDate } from '@/utils/formatDate';
 import { currentUser } from '@clerk/nextjs';
 import { eq, gt } from 'drizzle-orm';
 import Link from 'next/link';
+import DataTable from './DataTable';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,7 +39,9 @@ export default async function DashboardPage({
         {/* <UpdateDate /> */}
       </div>
 
-      <div className='grid h-full w-full gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+      <DataTable data={textsResponse}/>
+
+      {/* <div className='grid h-full w-full gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
         {textsResponse.map((textRes) => (
           <Card key={textRes.id}>
             <CardHeader>
@@ -50,7 +54,7 @@ export default async function DashboardPage({
             </CardHeader>
           </Card>
         ))}
-      </div>
+      </div> */}
     </Shell>
   );
 }
