@@ -72,17 +72,13 @@ export default function ToolsPage() {
       title: 'Sentiment Analysis',
       description: 'Analyze text sentiment. Understand emotions within text.',
     },
+
     {
-      href: '/tools/summary',
-      title: 'Summary Tool',
-      description: 'Summarize long text. Get key insights quickly.',
+      href: '/tools/ocr',
+      title: 'OCR (Optical Character Recognition)',
+      description:
+        'Extract text from images and PDFs. Transform visuals into text.',
     },
-    {
-      href: '/tools/sentiment',
-      title: 'Sentiment Analysis',
-      description: 'Analyze text sentiment. Understand emotions within text.',
-    },
-    // {href:'/tools/ocr',title:'OCR (Optical Character Recognition)',description:'Extract text from images and PDFs. Transform visuals into text.'},
   ];
 
   return (

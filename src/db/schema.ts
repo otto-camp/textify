@@ -1,4 +1,4 @@
-import { InferModel } from 'drizzle-orm';
+import { InferModel, relations } from 'drizzle-orm';
 import {
   bigint,
   float,
@@ -14,7 +14,7 @@ export const texts = mysqlTable('texts', {
   userId: varchar('user_id', { length: 255 }).notNull(),
   title: varchar('title', { length: 1000 }).notNull(),
   content: text('content').notNull(),
-  fileId: bigint('file_id', { mode: 'number' }),
+  fileId: bigint('file_id', { mode: 'bigint' }).references(() => files.id),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
@@ -30,6 +30,13 @@ export const files = mysqlTable('files', {
 });
 
 export type Files = InferModel<typeof files>;
+
+export const textsRelations = relations(texts, ({ one }) => ({
+  files: one(files, {
+    fields: [texts.fileId],
+    references: [files.id],
+  }),
+}));
 
 export const ocrResults = mysqlTable('ocr_results', {
   id: serial('id').primaryKey(),

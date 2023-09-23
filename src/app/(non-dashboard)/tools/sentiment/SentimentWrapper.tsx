@@ -1,10 +1,11 @@
 'use client';
-import React from 'react';
+import ResponseConsole from '@/components/ResponseConsole';
+import SaveButton from '@/components/SaveButton';
 import SentimentForm from '@/components/forms/SentimentForm';
 import { SentimentAnalysisResponse } from '@/lib/types';
 import { useUser } from '@clerk/nextjs';
 import { Frown, Meh, Smile } from 'lucide-react';
-import SaveButton from '@/components/SaveButton';
+import React from 'react';
 
 export default function SentimentWrapper() {
   const [response, setResponse] =
@@ -31,14 +32,8 @@ export default function SentimentWrapper() {
       />
 
       {response ? (
-        <div className='grid min-h-[300px] gap-8 rounded-base border'>
-          <div className='flex flex-wrap justify-between rounded-t-base border-b bg-secondary/30 px-4 py-2'>
-            <div className='hidden items-center gap-2 xs:flex'>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-            </div>
-
+        <ResponseConsole
+          control={
             <div className='flex gap-2'>
               {/* Download button */}
               {/* Share button */}
@@ -48,7 +43,8 @@ export default function SentimentWrapper() {
                 body={{ content: response, userId: user?.id!, id: id }}
               />
             </div>
-          </div>
+          }
+        >
           <div
             ref={responseRef}
             className='flex justify-center gap-4 p-4 sm:gap-8'
@@ -101,7 +97,7 @@ export default function SentimentWrapper() {
               ))}
             </ul>
           </div>
-        </div>
+        </ResponseConsole>
       ) : null}
     </div>
   );

@@ -45,7 +45,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
   name,
   setValue,
   accept = {
-    'image/*': [],
+    'image/jpeg, image/png, image/gif, image/tiff, application/pdf': [],
   },
   maxSize = 1024 * 1024 * 2,
   maxFiles = 1,
@@ -125,7 +125,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
         {isUploading ? (
           <div className='group grid w-full place-items-center gap-1 sm:px-10'>
             <Upload
-              className='animate-pulse h-9 w-9 text-muted-foreground'
+              className='h-9 w-9 animate-pulse text-muted-foreground'
               aria-hidden='true'
             />
           </div>

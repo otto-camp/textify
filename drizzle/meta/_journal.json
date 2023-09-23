@@ -36,6 +36,13 @@
       "when": 1693411872062,
       "tag": "0004_shallow_eternity",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1695390969207,
+      "tag": "0005_daily_elektra",
+      "breakpoints": true
     }
   ]
 }

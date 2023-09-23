@@ -1,5 +1,14 @@
 'use client';
+import { SummaryResponse } from '@/lib/types';
+import { textSchemaWithMin } from '@/lib/validations/text';
+import { catchError } from '@/utils/catchError';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
+import { Button } from '../ui/Button';
 import {
   Form,
   FormControl,
@@ -8,16 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/Form';
-import { z } from 'zod';
-import { textSchemaWithMin } from '@/lib/validations/text';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Textarea } from '../ui/TextArea';
-import React from 'react';
-import { catchError } from '@/utils/catchError';
-import { Button } from '../ui/Button';
-import { Loader2 } from 'lucide-react';
-import { SummaryResponse } from '@/lib/types';
-import { toast } from 'sonner';
 
 type Inputs = z.infer<typeof textSchemaWithMin>;
 
@@ -65,7 +65,7 @@ export default function SummaryForm({
     const textarea = ref.current;
     if (textarea) {
       textarea.style.height = 'inherit';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 640)}px`;
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 540)}px`;
     }
   }, [ref.current?.value]);
 
@@ -86,7 +86,7 @@ export default function SummaryForm({
                   {...field}
                   rows={3}
                   placeholder='Enter your text'
-                  className='min-h-[200px] md:min-h-[400px] resize-none'
+                  className='min-h-[200px] resize-none md:min-h-[400px]'
                   ref={ref}
                 />
               </FormControl>
@@ -99,7 +99,7 @@ export default function SummaryForm({
           <Button disabled={isPending} className='w-full'>
             {isPending && (
               <Loader2
-                className='animate-spin mr-2 h-4 w-4'
+                className='mr-2 h-4 w-4 animate-spin'
                 aria-hidden='true'
               />
             )}

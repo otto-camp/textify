@@ -23,6 +23,7 @@ export default async function RootLayout({
             <Toaster />
           </ThemeProvider>
           <Analytics />
+          {/* <LoaderComponent /> */}
         </body>
       </html>
     </ClerkProvider>

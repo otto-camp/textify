@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/DropdownMenu';
 import { Table } from '@tanstack/react-table';
 import { SlidersHorizontal } from 'lucide-react';
-import React from 'react';
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
@@ -48,7 +47,7 @@ export function DataTableViewOptions<TData>({
                 checked={column.getIsVisible()}
                 onCheckedChange={(value) => column.toggleVisibility(!!value)}
               >
-                {column.id}
+                {column.id ==="fileId" ? 'file' : column.id}
               </DropdownMenuCheckboxItem>
             );
           })}

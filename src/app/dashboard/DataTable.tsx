@@ -1,9 +1,13 @@
 'use client';
-import React from 'react';
-import { Texts } from '@/db/schema';
-import { columns } from './Columns';
 import {
-  ColumnDef,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/Table';
+import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
@@ -16,18 +20,32 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/Table';
-import { DataTableToolbar } from './DataTableToolbar';
+import React from 'react';
+import { columns } from './Columns';
 import { DataTablePagination } from './DataTablePagination';
+import { DataTableToolbar } from './DataTableToolbar';
 
-export default function DataTable({ data }: { data: Texts[] }) {
+export default function DataTable({
+  data,
+}: {
+  data:
+    | {
+        id: number;
+        userId: string;
+        title: string;
+        content: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        fileId: bigint | null;
+        files: {
+          id: number;
+          userId: string;
+          url: string;
+          createdAt: Date | null;
+          updatedAt: Date | null;
+        } | null;
+      }[];
+}) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});

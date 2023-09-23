@@ -1,13 +1,7 @@
 import PageTitle from '@/components/PageTitle';
 import { Shell } from '@/components/Shell';
-import UpdateDate from '@/components/UpdateDate';
-import { Card, CardHeader } from '@/components/ui/Card';
 import { db } from '@/db';
-import { texts } from '@/db/schema';
-import { formatDate } from '@/utils/formatDate';
 import { currentUser } from '@clerk/nextjs';
-import { eq, gt } from 'drizzle-orm';
-import Link from 'next/link';
 import DataTable from './DataTable';
 
 export const dynamic = 'force-dynamic';
@@ -22,12 +16,12 @@ export default async function DashboardPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const user = await currentUser();
-  console.log(searchParams);
 
-  const textsResponse = await db
-    .select()
-    .from(texts)
-    .where(eq(texts.userId, user?.id!));
+  const textsResponse = await db.query.texts.findMany({
+    with: {
+      files: true,
+    },
+  });
 
   return (
     <Shell>
@@ -39,22 +33,7 @@ export default async function DashboardPage({
         {/* <UpdateDate /> */}
       </div>
 
-      <DataTable data={textsResponse}/>
-
-      {/* <div className='grid h-full w-full gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
-        {textsResponse.map((textRes) => (
-          <Card key={textRes.id}>
-            <CardHeader>
-              <Link href={`/dashboard/${textRes.id}`}>
-                <time className='text-muted-foreground'>
-                  {formatDate(textRes.createdAt?.toUTCString()!)}
-                </time>
-                <h3 className='leading-4 tracking-tight'>{textRes.title}</h3>
-              </Link>
-            </CardHeader>
-          </Card>
-        ))}
-      </div> */}
+      <DataTable data={textsResponse} />
     </Shell>
   );
 }

@@ -28,3 +28,11 @@ export interface SentimentAnalysisResponse {
   }[];
   sentiment: string;
 }
+
+export interface OcrResponse {
+  app_version: string;
+  time_taken: number;
+  msg: string;
+  ok: boolean;
+  text: string;
+}

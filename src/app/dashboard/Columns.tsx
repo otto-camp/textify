@@ -2,11 +2,27 @@
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Texts } from '@/db/schema';
 import { ColumnDef } from '@tanstack/react-table';
-import React from 'react';
 import { DataTableColumnHeader } from './DataTableColumnHeader';
 import { DataTableRowActions } from './DataTableRowActions';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
-export const columns: ColumnDef<Texts>[] = [
+export const columns: ColumnDef<{
+  id: number;
+  userId: string;
+  title: string;
+  content: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
+  fileId: bigint | null;
+  files: {
+    id: number;
+    userId: string;
+    url: string;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+  } | null;
+}>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -33,7 +49,7 @@ export const columns: ColumnDef<Texts>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='ID' />
     ),
-    cell: ({ row }) => <div className='w-[80px]'>{row.getValue('id')}</div>,
+    cell: ({ row }) => <div>{row.getValue('id')}</div>,
     enableSorting: false,
     enableHiding: false,
   },
@@ -54,60 +70,31 @@ export const columns: ColumnDef<Texts>[] = [
       );
     },
   },
-  // {
-  //   accessorKey: "status",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Status" />
-  //   ),
-  //   cell: ({ row }) => {
-  //     const status = statuses.find(
-  //       (status) => status.value === row.getValue("status")
-  //     )
-
-  //     if (!status) {
-  //       return null
-  //     }
-
-  //     return (
-  //       <div className="flex w-[100px] items-center">
-  //         {status.icon && (
-  //           <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-  //         )}
-  //         <span>{status.label}</span>
-  //       </div>
-  //     )
-  //   },
-  //   filterFn: (row, id, value) => {
-  //     return value.includes(row.getValue(id))
-  //   },
-  // },
-  // {
-  //   accessorKey: "priority",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Priority" />
-  //   ),
-  //   cell: ({ row }) => {
-  //     const priority = priorities.find(
-  //       (priority) => priority.value === row.getValue("priority")
-  //     )
-
-  //     if (!priority) {
-  //       return null
-  //     }
-
-  //     return (
-  //       <div className="flex items-center">
-  //         {priority.icon && (
-  //           <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-  //         )}
-  //         <span>{priority.label}</span>
-  //       </div>
-  //     )
-  //   },
-  //   filterFn: (row, id, value) => {
-  //     return value.includes(row.getValue(id))
-  //   },
-  // },
+  {
+    accessorKey: 'fileId',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='File' noFilter />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className='w-full min-w-[80px]'>
+          <span>
+            {row.getValue('fileId') ? (
+              <Link
+                href={row.original.files?.url!}
+                target='_blank'
+                className='text-sm hover:underline'
+              >
+                View File
+              </Link>
+            ) : (
+              'No File'
+            )}
+          </span>
+        </div>
+      );
+    },
+  },
   {
     id: 'actions',
     cell: ({ row }) => <DataTableRowActions row={row} />,

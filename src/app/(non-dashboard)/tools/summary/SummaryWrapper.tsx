@@ -1,5 +1,6 @@
 'use client';
 import CopyButton from '@/components/CopyButton';
+import ResponseConsole from '@/components/ResponseConsole';
 import SaveButton from '@/components/SaveButton';
 import SummaryForm from '@/components/forms/SummaryForm';
 import React from 'react';
@@ -19,38 +20,31 @@ export default function SummaryWrapper({ userId }: { userId: string }) {
   }, [response.length]);
 
   return (
-    <div className='mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-32'>
+    <div className='grid gap-8 lg:grid-cols-2 '>
       <SummaryForm setResponse={setResponse} setText={setText} />
 
-      {response.length !== 0 ? (
-        <div className='min-h-[300px] w-full rounded-base border shadow-md shadow-primary/30'>
-          <div className='flex flex-wrap justify-between rounded-t-base border-b bg-secondary/30 px-4 py-2'>
-            <div className='hidden items-center gap-2 xs:flex'>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-              <div className='h-3 w-3 rounded-full bg-blue-700'></div>
-            </div>
-
-            <div className='flex gap-2'>
-              {/* Download button */}
-              {/* Share button */}
-              <SaveButton
-                userId={userId}
-                endpoint='/api/save-summary'
-                body={{
-                  content: text,
-                  response: response,
-                  userId: userId,
-                }}
-              />
-              <CopyButton text={response}>Copy Text</CopyButton>
-            </div>
+      <ResponseConsole
+        control={
+          <div className='flex gap-2'>
+            {/* Download button */}
+            {/* Share button */}
+            <SaveButton
+              userId={userId}
+              endpoint='/api/save-summary'
+              body={{
+                content: text,
+                response: response,
+                userId: userId,
+              }}
+            />
+            <CopyButton text={response}>Copy Text</CopyButton>
           </div>
-          <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
-            {response}
-          </p>
-        </div>
-      ) : null}
+        }
+      >
+        <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
+          {response}
+        </p>
+      </ResponseConsole>
     </div>
   );
 }

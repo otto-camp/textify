@@ -37,6 +37,12 @@ const data = [
     description:
       'Gain insights into text emotions with our powerful sentiment analysis tool.',
   },
+  {
+    href: '/tools/ocr',
+    text: 'OCR Tool',
+    description:
+      'Easily convert text from images and PDFs using our efficient OCR tool.',
+  },
 ];
 
 export default function Header({
@@ -59,7 +65,7 @@ export default function Header({
       <div className='container mx-auto flex h-16 items-center justify-between p-4'>
         <Link href='/' className='relative flex items-center gap-2 '>
           <Image
-            src="/logo.webp"
+            src='/logo.webp'
             alt='textify'
             width={32}
             height={32}
