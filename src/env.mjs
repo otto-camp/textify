@@ -15,7 +15,7 @@ export const env = createEnv({
     API_KEY: z.string(),
     SUM_API_URL: z.string(),
     EXT_API_URL: z.string(),
-    SEN_API_URL: z.string()
+    SEN_API_URL: z.string(),
   },
 
   /**
@@ -44,6 +44,6 @@ export const env = createEnv({
     API_KEY: process.env.API_KEY,
     SUM_API_URL: process.env.SUM_API_URL,
     EXT_API_URL: process.env.EXT_API_URL,
-    SEN_API_URL: process.env.SEN_API_URL
+    SEN_API_URL: process.env.SEN_API_URL,
   },
 });

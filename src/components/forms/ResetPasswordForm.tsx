@@ -88,7 +88,7 @@ export function ResetPasswordForm() {
           <Button disabled={isPending}>
             {isPending && (
               <Loader2
-                className='animate-spin mr-2 h-4 w-4'
+                className='mr-2 h-4 w-4 animate-spin'
                 aria-hidden='true'
               />
             )}

@@ -18,7 +18,6 @@ export default function Footer() {
           >
             yarar.dev
           </a>
-          
         </div>
         <div className='flex items-center space-x-1'>
           <Link

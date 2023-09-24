@@ -64,7 +64,7 @@ export default async function page() {
         description='Easily convert text from images and PDFs using our efficient OCR tool.'
       />
       <div>
-        <OcrWrapper userId={user?.id!}/>
+        <OcrWrapper userId={user?.id!} />
       </div>
     </Shell>
   );

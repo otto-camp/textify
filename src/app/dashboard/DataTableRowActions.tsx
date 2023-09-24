@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu';
 import { Texts } from '@/db/schema';
 import { Row } from '@tanstack/react-table';

@@ -11,5 +11,3 @@ export const textSchemaWithMax = z.object({
     message: 'Content must not exceed 1000 characters.',
   }),
 });
-
-

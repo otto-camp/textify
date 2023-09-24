@@ -31,7 +31,7 @@ export function SignOutButtons() {
             className='w-full'
             disabled={isPending}
           >
-            {isPending && <Loader2 className='animate-spin mr-2 h-4 w-4' />}
+            {isPending && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
             Log out
           </Button>
         </SignOutButton>

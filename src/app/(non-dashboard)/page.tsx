@@ -233,8 +233,8 @@ export default function HomePage() {
           At Textify, we are dedicated to making information accessible and
           understandable. Our suite of text processing and analysis tools is
           designed to simplify your interactions with textual content. Whether
-          you&apos;re a student, researcher, professional, or avid learner, Textify
-          empowers you with tools such as text summarization, sentiment
+          you&apos;re a student, researcher, professional, or avid learner,
+          Textify empowers you with tools such as text summarization, sentiment
           analysis, OCR (Optical Character Recognition), concept mapping, and
           more. Quickly grasp essential insights, save valuable time, and join
           us on a journey to streamline your understanding of complex

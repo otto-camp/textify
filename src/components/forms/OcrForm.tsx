@@ -46,7 +46,7 @@ export default function OcrForm({
       if (files && isFile(files[0])) {
         const formData = new FormData();
         formData.append('input_file', files[0]);
-        formData.append('user_id',userId)
+        formData.append('user_id', userId);
 
         try {
           const res = await fetch('/api/ocr/post', {
