@@ -20,19 +20,19 @@ export default function OcrWrapper({ userId }: { userId: string }) {
   return (
     <div className='grid gap-8 lg:grid-cols-2 '>
       <OcrForm userId={userId} setResponse={setResponse} />
-      {response ? (
-        <ResponseConsole
-          control={
-            <div className='flex gap-2'>
-              <CopyButton text={response.text}>Copy Text</CopyButton>
-            </div>
-          }
-        >
-          <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
-            {response.text}
-          </p>
-        </ResponseConsole>
-      ) : null}
+      <ResponseConsole
+        control={
+          <div className='flex gap-2'>
+            <CopyButton text={response ? response.text : ''}>
+              Copy Text
+            </CopyButton>
+          </div>
+        }
+      >
+        <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
+          {response?.text}
+        </p>
+      </ResponseConsole>
     </div>
   );
 }

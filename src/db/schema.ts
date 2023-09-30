@@ -14,7 +14,8 @@ export const texts = mysqlTable('texts', {
   userId: varchar('user_id', { length: 255 }).notNull(),
   title: varchar('title', { length: 1000 }).notNull(),
   content: text('content').notNull(),
-  fileId: bigint('file_id', { mode: 'bigint' }).references(() => files.id),
+  label: varchar('label', { length: 100 }),
+  fileId: bigint('file_id', { mode: 'bigint' }),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });

@@ -34,6 +34,7 @@ export default function DataTable({
         userId: string;
         title: string;
         content: string;
+        label: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
         fileId: bigint | null;

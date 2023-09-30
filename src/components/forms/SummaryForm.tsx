@@ -40,7 +40,7 @@ export default function SummaryForm({
   function onSubmit(data: Inputs) {
     startTransition(async () => {
       try {
-        const res = (await fetch('/api/post-summary', {
+        const res = (await fetch('/api/summary/post', {
           method: 'POST',
           body: JSON.stringify(data.content),
         }).then(async (res) => await res.json())) as SummaryResponse;
@@ -79,7 +79,7 @@ export default function SummaryForm({
           control={form.control}
           name='content'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='space-y-0'>
               <FormLabel className='sr-only'>Summarizer</FormLabel>
               <FormControl>
                 <Textarea

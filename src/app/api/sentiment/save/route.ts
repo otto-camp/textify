@@ -1,15 +1,24 @@
 import { db } from '@/db';
-import { summaryResults, texts } from '@/db/schema';
+import { sentimentResults, texts } from '@/db/schema';
+import { SentimentAnalysisResponse } from '@/lib/types';
 import { catchErrorServer } from '@/utils/catchError';
 import { getFirstSentence } from '@/utils/getFirstSentence';
 import { InferModel } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
+type Sentiment = InferModel<typeof sentimentResults, 'insert'>;
 type InsertText = InferModel<typeof texts, 'insert'>;
-type InsertSummary = InferModel<typeof summaryResults, 'insert'>;
 
 export async function POST(req: Request) {
-  const { content, response, userId } = await req.json();
+  const {
+    content,
+    response,
+    userId,
+  }: {
+    response: SentimentAnalysisResponse;
+    content: string;
+    userId: string;
+  } = await req.json();
 
   const title = getFirstSentence(content);
 
@@ -17,11 +26,15 @@ export async function POST(req: Request) {
     userId: userId,
     title: title,
     content: content,
+    label: 'Sentiment Analysis',
   };
 
-  const summary: InsertSummary = {
+  const sentiment: Sentiment = {
     userId: userId,
-    result: response,
+    result: response.sentiment,
+    negative: response.aggregate_sentiment.neg,
+    neutral: response.aggregate_sentiment.neu,
+    positive: response.aggregate_sentiment.pos,
   };
 
   try {
@@ -29,12 +42,11 @@ export async function POST(req: Request) {
       .insert(texts)
       .values(text)
       .then(async (res) => {
-        summary.id = Number(res.insertId);
-        await db.insert(summaryResults).values(summary);
+        sentiment.id = Number(res.insertId);
+        await db.insert(sentimentResults).values(sentiment);
       });
   } catch (error) {
     catchErrorServer(error);
   }
-
   return NextResponse.json({ status: 'Success' });
 }

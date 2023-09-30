@@ -1,14 +1,15 @@
 import { db } from '@/db';
-import { texts } from '@/db/schema';
+import { summaryResults, texts } from '@/db/schema';
 import { catchErrorServer } from '@/utils/catchError';
 import { getFirstSentence } from '@/utils/getFirstSentence';
 import { InferModel } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
 type InsertText = InferModel<typeof texts, 'insert'>;
+type InsertSummary = InferModel<typeof summaryResults, 'insert'>;
 
 export async function POST(req: Request) {
-  const { content, userId } = await req.json();
+  const { content, response, userId } = await req.json();
 
   const title = getFirstSentence(content);
 
@@ -16,19 +17,25 @@ export async function POST(req: Request) {
     userId: userId,
     title: title,
     content: content,
+    label:'Summary'
   };
 
-  let id: string = '';
+  const summary: InsertSummary = {
+    userId: userId,
+    result: response,
+  };
 
   try {
     await db
       .insert(texts)
       .values(text)
       .then(async (res) => {
-        id = await res.insertId;
+        summary.id = Number(res.insertId);
+        await db.insert(summaryResults).values(summary);
       });
   } catch (error) {
     catchErrorServer(error);
   }
-  return NextResponse.json(id);
+
+  return NextResponse.json({ status: 'Success' });
 }

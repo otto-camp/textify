@@ -1,17 +1,17 @@
 'use client';
 import { Checkbox } from '@/components/ui/Checkbox';
-import { Texts } from '@/db/schema';
 import { ColumnDef } from '@tanstack/react-table';
 import { DataTableColumnHeader } from './DataTableColumnHeader';
 import { DataTableRowActions } from './DataTableRowActions';
-import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/Badge';
 
 export const columns: ColumnDef<{
   id: number;
   userId: string;
   title: string;
   content: string;
+  label: string | null;
   createdAt: Date | null;
   updatedAt: Date | null;
   fileId: bigint | null;
@@ -59,13 +59,25 @@ export const columns: ColumnDef<{
       <DataTableColumnHeader column={column} title='Title' />
     ),
     cell: ({ row }) => {
-      // const label = labels.find((label) => label.value === row.original.label)
+      const label = row.original.label;
 
       return (
-        <div className='flex space-x-2'>
-          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-
+        <div className=''>
           <span className='font-medium'>{row.getValue('title')}</span>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'label',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Label' />
+    ),
+    cell: ({ row }) => {
+      const label = row.original.label;
+      return (
+        <div className='flex w-full justify-center items-center'>
+          <Badge variant='outline' className='whitespace-nowrap'>{label}</Badge>
         </div>
       );
     },

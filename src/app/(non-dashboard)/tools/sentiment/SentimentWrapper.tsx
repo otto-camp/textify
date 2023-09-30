@@ -10,8 +10,8 @@ import React from 'react';
 export default function SentimentWrapper() {
   const [response, setResponse] =
     React.useState<SentimentAnalysisResponse | null>(null);
+  const [text, setText] = React.useState('');
   const responseRef = React.useRef<HTMLDivElement | null>(null);
-  const [id, setId] = React.useState('');
   const { user } = useUser();
 
   React.useEffect(() => {
@@ -25,11 +25,7 @@ export default function SentimentWrapper() {
 
   return (
     <div className='mx-auto min-h-screen w-full max-w-4xl space-y-32'>
-      <SentimentForm
-        setResponse={setResponse}
-        setId={setId}
-        userId={user ? user.id : null}
-      />
+      <SentimentForm setResponse={setResponse} setText={setText} />
 
       {response ? (
         <ResponseConsole
@@ -39,8 +35,12 @@ export default function SentimentWrapper() {
               {/* Share button */}
               <SaveButton
                 userId={user?.id!}
-                endpoint='/api/save-sentiment'
-                body={{ content: response, userId: user?.id!, id: id }}
+                endpoint='/api/sentiment/save'
+                body={{
+                  response: response,
+                  content: text,
+                  userId: user?.id!,
+                }}
               />
             </div>
           }

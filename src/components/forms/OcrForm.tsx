@@ -1,5 +1,17 @@
 'use client';
+import { OurFileRouter } from '@/app/api/uploadthing/core';
+import { OcrResponse } from '@/lib/types';
+import { fileInputSchema } from '@/lib/validations/file';
+import { catchError } from '@/utils/catchError';
+import { isFile } from '@/utils/isFile';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { generateReactHelpers } from '@uploadthing/react/hooks';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { FileDialog, FileWithPreview } from '../FileUploader';
+import { Button } from '../ui/Button';
 import {
   Form,
   FormControl,
@@ -8,19 +20,6 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/Form';
-import { z } from 'zod';
-import { fileInputSchema } from '@/lib/validations/file';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FileDialog, FileWithPreview } from '../FileUploader';
-import { Button } from '../ui/Button';
-import { Loader2 } from 'lucide-react';
-import { OurFileRouter } from '@/app/api/uploadthing/core';
-import { generateReactHelpers } from '@uploadthing/react/hooks';
-import { OcrResponse } from '@/lib/types';
-import { isFile } from '@/utils/isFile';
-import { sanitizeFileName } from '@/utils/sanitizeFileName';
-import { catchError } from '@/utils/catchError';
 
 type Inputs = z.infer<typeof fileInputSchema>;
 
@@ -46,7 +45,7 @@ export default function OcrForm({
       if (files && isFile(files[0])) {
         const formData = new FormData();
         formData.append('input_file', files[0]);
-        formData.append('user_id', userId);
+        formData.append('language', 'english');
 
         try {
           const res = await fetch('/api/ocr/post', {
@@ -71,7 +70,7 @@ export default function OcrForm({
           control={form.control}
           name='file'
           render={() => (
-            <FormItem>
+            <FormItem className='space-y-0'>
               <FormLabel className='sr-only'>File</FormLabel>
               <FormControl>
                 <FileDialog

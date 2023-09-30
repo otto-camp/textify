@@ -30,7 +30,7 @@ export default function SummaryWrapper({ userId }: { userId: string }) {
             {/* Share button */}
             <SaveButton
               userId={userId}
-              endpoint='/api/save-summary'
+              endpoint='/api/summary/save'
               body={{
                 content: text,
                 response: response,

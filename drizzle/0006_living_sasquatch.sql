@@ -1,0 +1,1 @@
+ALTER TABLE `texts` ADD `label` varchar(100);

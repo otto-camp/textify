@@ -1,9 +1,13 @@
 'use client';
+import { SentimentAnalysisResponse } from '@/lib/types';
 import { textSchemaWithMax } from '@/lib/validations/text';
+import { catchError } from '@/utils/catchError';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Button } from '../ui/Button';
 import {
   Form,
   FormControl,
@@ -13,23 +17,17 @@ import {
   FormMessage,
 } from '../ui/Form';
 import { Textarea } from '../ui/TextArea';
-import { Loader2 } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { catchError } from '@/utils/catchError';
-import { SentimentAnalysisResponse } from '@/lib/types';
 
 type Inputs = z.infer<typeof textSchemaWithMax>;
 
 export default function SentimentForm({
   setResponse,
-  setId,
-  userId,
+  setText,
 }: {
   setResponse: React.Dispatch<
     React.SetStateAction<SentimentAnalysisResponse | null>
   >;
-  setId: React.Dispatch<React.SetStateAction<string>>;
-  userId?: string | null;
+  setText: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const ref = React.useRef<HTMLTextAreaElement | null>(null);
   const [isPending, startTransition] = React.useTransition();
@@ -40,22 +38,14 @@ export default function SentimentForm({
   function onSubmit(data: Inputs) {
     startTransition(async () => {
       try {
-        if (userId) {
-          const res = await fetch('/api/save-text', {
-            method: 'POST',
-            body: JSON.stringify({ content: data.content, userId: userId }),
-          });
-          const id = await res.json();
-          setId(id);
-        }
-
-        const res = (await fetch('/api/post-sentiment', {
+        const res = (await fetch('/api/sentiment/post', {
           method: 'POST',
           body: JSON.stringify(data.content),
         }).then(async (res) => await res.json())) as SentimentAnalysisResponse;
 
         if (res.ok) {
           setResponse(res);
+          setText(data.content);
         }
       } catch (error) {
         catchError(error);
