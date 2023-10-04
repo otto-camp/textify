@@ -62,26 +62,31 @@ export const columns: ColumnDef<{
       const label = row.original.label;
 
       return (
-        <div className=''>
-          <span className='font-medium'>{row.getValue('title')}</span>
-        </div>
+        <Link href={`/dashboard/${row.original.id}`}>
+          <div className='flex flex-col gap-2'>
+            <Badge className='w-fit' variant='outline'>
+              {label}
+            </Badge>
+            <span className='font-medium'>{row.getValue('title')}</span>
+          </div>
+        </Link>
       );
     },
   },
-  {
-    accessorKey: 'label',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Label' />
-    ),
-    cell: ({ row }) => {
-      const label = row.original.label;
-      return (
-        <div className='flex w-full justify-center items-center'>
-          <Badge variant='outline' className='whitespace-nowrap'>{label}</Badge>
-        </div>
-      );
-    },
-  },
+  // {
+  //   accessorKey: 'label',
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title='Label' />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const label = row.original.label;
+  //     return (
+  //       <div className='flex w-full justify-center items-center'>
+  //         <Badge variant='outline' className='whitespace-nowrap'>{label}</Badge>
+  //       </div>
+  //     );
+  //   },
+  // },
   {
     accessorKey: 'fileId',
     header: ({ column }) => (

@@ -69,3 +69,5 @@ export const sentimentResults = mysqlTable('sentiment_results', {
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
+
+export type SentimentResults = InferModel<typeof sentimentResults>;

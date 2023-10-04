@@ -1,11 +1,9 @@
 'use client';
-import { OurFileRouter } from '@/app/api/uploadthing/core';
 import { OcrResponse } from '@/lib/types';
 import { fileInputSchema } from '@/lib/validations/file';
 import { catchError } from '@/utils/catchError';
 import { isFile } from '@/utils/isFile';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { generateReactHelpers } from '@uploadthing/react/hooks';
 import { Loader2 } from 'lucide-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -23,8 +21,6 @@ import {
 
 type Inputs = z.infer<typeof fileInputSchema>;
 
-const { useUploadThing } = generateReactHelpers<OurFileRouter>();
-
 export default function OcrForm({
   userId,
   setResponse,
@@ -34,7 +30,6 @@ export default function OcrForm({
 }) {
   const [files, setFiles] = React.useState<FileWithPreview[] | null>(null);
   const [isPending, startTransition] = React.useTransition();
-  const { isUploading, startUpload } = useUploadThing('imageUploader');
 
   const form = useForm<Inputs>({
     resolver: zodResolver(fileInputSchema),
@@ -78,7 +73,6 @@ export default function OcrForm({
                   files={files}
                   setFiles={setFiles}
                   name='file'
-                  isUploading={isUploading}
                   disabled={isPending}
                   maxFiles={1}
                   maxSize={1024 * 1024 * 2}
@@ -88,12 +82,17 @@ export default function OcrForm({
             </FormItem>
           )}
         />
-        <Button disabled={isPending} className='mt-4'>
-          {isPending && (
-            <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
-          )}
-          Create
-        </Button>
+        <div className='flex items-center justify-center'>
+          <Button disabled={isPending} className='mt-4 w-full max-w-[220px]'>
+            {isPending && (
+              <Loader2
+                className='mr-2 h-4 w-4 animate-spin'
+                aria-hidden='true'
+              />
+            )}
+            Convert
+          </Button>
+        </div>
       </form>
     </Form>
   );
