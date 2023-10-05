@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     userId: userId,
     title: title,
     content: content,
-    label:'Summary'
+    label: 'Summary',
   };
 
   const summary: InsertSummary = {
