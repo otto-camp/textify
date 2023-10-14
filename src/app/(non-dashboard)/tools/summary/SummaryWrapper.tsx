@@ -31,11 +31,11 @@ export default function SummaryWrapper({ userId }: { userId: string }) {
             <SaveButton
               userId={userId}
               endpoint='/api/summary/save'
-              body={{
+              body={JSON.stringify({
                 content: text,
                 response: response,
                 userId: userId,
-              }}
+              })}
             />
             <CopyButton text={response}>Copy Text</CopyButton>
           </div>

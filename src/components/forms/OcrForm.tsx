@@ -22,20 +22,21 @@ import {
 type Inputs = z.infer<typeof fileInputSchema>;
 
 export default function OcrForm({
-  userId,
+  files,
+  setFiles,
   setResponse,
 }: {
-  userId: string;
+  files: FileWithPreview[] | null;
+  setFiles: React.Dispatch<React.SetStateAction<FileWithPreview[] | null>>;
   setResponse: React.Dispatch<React.SetStateAction<OcrResponse | null>>;
 }) {
-  const [files, setFiles] = React.useState<FileWithPreview[] | null>(null);
   const [isPending, startTransition] = React.useTransition();
 
   const form = useForm<Inputs>({
     resolver: zodResolver(fileInputSchema),
   });
 
-  function onSubmit(data: Inputs) {
+  function onSubmit() {
     startTransition(async () => {
       if (files && isFile(files[0])) {
         const formData = new FormData();
@@ -76,6 +77,7 @@ export default function OcrForm({
                   disabled={isPending}
                   maxFiles={1}
                   maxSize={1024 * 1024 * 2}
+                  className='lg:min-h-[400px]'
                 />
               </FormControl>
               <FormMessage />

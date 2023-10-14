@@ -45,7 +45,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
   name,
   setValue,
   accept = {
-    'image/jpeg, image/png, image/gif, image/tiff, application/pdf': [],
+    'image/jpeg, image/png, image/gif, image/tiff': [],
   },
   maxSize = 1024 * 1024 * 2,
   maxFiles = 1,

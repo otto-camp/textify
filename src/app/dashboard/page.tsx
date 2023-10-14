@@ -4,12 +4,10 @@ import { db } from '@/db';
 import { currentUser } from '@clerk/nextjs';
 import DataTable from './DataTable';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: 'Dashboard | textify',
 };
-//add table layout
+
 export default async function DashboardPage({
   searchParams,
 }: {
@@ -30,7 +28,6 @@ export default async function DashboardPage({
           title='Dashboard'
           description='Effortlessly manage, track, and customize your summarization experience with the textify Dashboard. Stay organized and save time as you access and tailor your summarized content with ease.'
         />
-        {/* <UpdateDate /> */}
       </div>
 
       <DataTable data={textsResponse} />

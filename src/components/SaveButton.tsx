@@ -11,7 +11,7 @@ export default function SaveButton({
 }: {
   userId: string;
   endpoint: string;
-  body: object;
+  body: BodyInit|null|undefined;
 }) {
   const [isPending, startTransition] = React.useTransition();
 
@@ -24,7 +24,7 @@ export default function SaveButton({
       try {
         await fetch(endpoint, {
           method: 'POST',
-          body: JSON.stringify(body),
+          body: body,
         });
       } catch (error) {
         catchError(error);

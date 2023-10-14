@@ -57,6 +57,13 @@
       "when": 1695737845888,
       "tag": "0007_abnormal_korvac",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1697293450979,
+      "tag": "0008_secret_mordo",
+      "breakpoints": true
     }
   ]
 }

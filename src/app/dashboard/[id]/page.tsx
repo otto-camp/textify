@@ -9,6 +9,7 @@ import { Calendar } from 'lucide-react';
 import { Metadata } from 'next';
 import SentimentFetchResult from './SentimentFetchResult';
 import SummaryFetchResult from './SummaryFetchResult';
+import OcrFilePreview from './OcrFilePreview';
 
 type Props = {
   params: { id: string };
@@ -79,13 +80,18 @@ export default async function SummaryPage({ params: { id } }: Props) {
           </div>
           <h2>Content</h2>
           <p>{text.content}</p>
-          <h2 className='capitalize'>{text.label}</h2>
+          {text.label === 'OCR' ? (
+            <></>
+          ) : (
+            <h2 className='capitalize'>{text.label}</h2>
+          )}
           {text.label === 'Summary' ? (
             <SummaryFetchResult id={Number(id)} />
           ) : null}
           {text.label === 'Sentiment Analysis' ? (
             <SentimentFetchResult id={Number(id)} />
           ) : null}
+          {text.label === 'OCR' ? <OcrFilePreview id={Number(id)} /> : null}
         </Shell>
       ) : null}
     </>

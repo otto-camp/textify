@@ -73,26 +73,14 @@ export const columns: ColumnDef<{
       );
     },
   },
-  // {
-  //   accessorKey: 'label',
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title='Label' />
-  //   ),
-  //   cell: ({ row }) => {
-  //     const label = row.original.label;
-  //     return (
-  //       <div className='flex w-full justify-center items-center'>
-  //         <Badge variant='outline' className='whitespace-nowrap'>{label}</Badge>
-  //       </div>
-  //     );
-  //   },
-  // },
   {
     accessorKey: 'fileId',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='File' noFilter />
     ),
     cell: ({ row }) => {
+      console.log(row.original.files?.url);
+      
       return (
         <div className='w-full min-w-[80px]'>
           <span>

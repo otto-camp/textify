@@ -7,7 +7,7 @@ import SentimentWrapper from './SentimentWrapper';
 
 const TITLE = 'Sentiment Analysis Tool | textify';
 const DESCRIPTION =
-  "Analyze sentiment within text using TextVerse Hub's sentiment analysis tool. Understand emotions in your content.";
+  "Analyze sentiment within text using textify's sentiment analysis tool. Understand emotions in your content.";
 const KEYWORDS = ['Sentiment analysis', 'emotional analysis', 'text emotion'];
 
 export const metadata: Metadata = {

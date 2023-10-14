@@ -33,32 +33,6 @@ export default async function SentimentFetchResult({ id }: { id: number }) {
       <h2 className='text-center text-2xl font-bold capitalize sm:text-3xl md:text-4xl lg:text-5xl'>
         {response.result}
       </h2>
-      {/* <div className='grid gap-4 p-4'>
-        <h3 className='text-lg font-semibold sm:text-xl md:text-2xl'>
-          Sentence List
-        </h3>
-         <ul className='flex flex-col gap-4'>
-          {response.sentiment_list.map((sentiment, index) => (
-            <li key={index} className='space-y-2'>
-              <div className='flex items-center gap-4'>
-                <div className='flex items-center gap-2 sm:gap-4'>
-                  <Frown className='text-red-700 dark:text-red-400 ' />
-                  <span>%{(sentiment.neg * 100).toFixed()}</span>
-                </div>
-                <div className='flex items-center gap-2 sm:gap-4'>
-                  <Meh />
-                  <span>%{(sentiment.neu * 100).toFixed()}</span>
-                </div>
-                <div className='flex items-center gap-2 sm:gap-4'>
-                  <Smile className='text-green-700 dark:text-green-400 ' />
-                  <span>%{(sentiment.pos * 100).toFixed()}</span>
-                </div>
-              </div>
-              <p>{sentiment.sentence}</p>
-            </li>
-          ))}
-        </ul> 
-          </div> */}
     </>
   );
 }

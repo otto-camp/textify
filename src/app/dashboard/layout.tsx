@@ -15,7 +15,7 @@ export default async function DashboardLayout({
         firstName={user?.firstName!}
         lastName={user?.lastName!}
         imageUrl={user?.imageUrl!}
-        email={user?.emailAddresses[0].emailAddress!}
+        email={user?.emailAddresses.at(0)?.emailAddress!}
       />
       <main className='min-h-screen'>{children}</main>
       <Footer />

@@ -5,7 +5,7 @@ const nextConfig = {
     serverActions: true
   },
   images: {
-    domains: ["uploadthing.com"]
+    domains: ["uploadthing.com","utfs.io"]
   }
 }
 

@@ -7,7 +7,7 @@ import { env } from '@/env.mjs';
 
 const TITLE = 'Text Summarization Tool | textify';
 const DESCRIPTION =
-  "Effortlessly summarize lengthy text with TextVerse Hub's summarization tool. Get key insights in seconds.";
+  "Effortlessly summarize lengthy text with textify's summarization tool. Get key insights in seconds.";
 const KEYWORDS = ['Text summarization', 'summary tool', 'text analysis'];
 
 export const metadata: Metadata = {

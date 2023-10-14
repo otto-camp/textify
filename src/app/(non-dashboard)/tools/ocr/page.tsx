@@ -7,7 +7,7 @@ import { currentUser } from '@clerk/nextjs';
 
 const TITLE = 'OCR Tool | textify';
 const DESCRIPTION =
-  "Extract text from images and PDFs effortlessly with TextVerse Hub's OCR tool. Transform visuals into text.";
+  "Extract text from images effortlessly with textify's OCR tool. Transform visuals into text.";
 const KEYWORDS = ['OCR', 'optical character recognition', 'text extraction'];
 
 export const metadata: Metadata = {
@@ -61,9 +61,9 @@ export default async function page() {
     <Shell>
       <PageTitle
         title='OCR Tool'
-        description='Easily convert text from images and PDFs using our efficient OCR tool.'
+        description='Easily convert text from images using our efficient OCR tool.'
       />
-      <div>
+      <div className='min-h-screen'>
         <OcrWrapper userId={user?.id!} />
       </div>
     </Shell>

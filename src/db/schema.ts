@@ -39,16 +39,6 @@ export const textsRelations = relations(texts, ({ one }) => ({
   }),
 }));
 
-export const ocrResults = mysqlTable('ocr_results', {
-  id: serial('id').primaryKey(),
-  userId: varchar('user_id', { length: 255 }).notNull(),
-  result: text('result').notNull(),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').onUpdateNow(),
-});
-
-export type OcrResults = InferModel<typeof ocrResults>;
-
 export const summaryResults = mysqlTable('summary_results', {
   id: serial('id').primaryKey(),
   userId: varchar('user_id', { length: 255 }).notNull(),

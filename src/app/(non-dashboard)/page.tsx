@@ -95,16 +95,6 @@ export default function HomePage() {
     <Shell className='p-0'>
       <div className='mx-auto w-full max-w-6xl px-4'>
         <div className='space-y-12 py-24 text-center dark:bg-radial'>
-          {/* <Link
-            href='/dashboard'
-            className={cn(
-              badgeVariants({ variant: 'default' }),
-              'hover:underline'
-            )}
-          >
-            <Asterisk className='mr-2 h-4 w-4' />
-            New PDF Download Option
-          </Link> */}
           <h1 className='text-center text-4xl font-black tracking-tight md:text-6xl lg:text-8xl lg:tracking-tighter'>
             Textify: Transforming Text Processing
           </h1>
@@ -144,7 +134,7 @@ export default function HomePage() {
           <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>OCR (Optical Character Recognition)</h3>
             <p className='text-sm font-light'>
-              Textify extracts text from images and PDF files, converting visual
+              Textify extracts text from images, converting visual
               content into editable text.
             </p>
           </div>

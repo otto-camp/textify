@@ -36,11 +36,11 @@ export default function SentimentWrapper() {
               <SaveButton
                 userId={user?.id!}
                 endpoint='/api/sentiment/save'
-                body={{
+                body={JSON.stringify({
                   response: response,
                   content: text,
                   userId: user?.id!,
-                }}
+                })}
               />
             </div>
           }
