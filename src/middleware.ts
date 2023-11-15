@@ -1,6 +1,5 @@
 import { authMiddleware, clerkClient } from '@clerk/nextjs';
-import { NextRequest, NextResponse } from 'next/server';
-import { createSession } from './lib/analytics/session';
+import { NextResponse } from 'next/server';
 
 export default authMiddleware({
   // Public routes are routes that don't require authentication
