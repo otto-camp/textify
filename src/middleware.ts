@@ -1,5 +1,6 @@
 import { authMiddleware, clerkClient } from '@clerk/nextjs';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { createSession } from './lib/analytics/session';
 
 export default authMiddleware({
   // Public routes are routes that don't require authentication
@@ -17,6 +18,7 @@ export default authMiddleware({
     '/api(.*)',
     '/tools(.*)',
   ],
+
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {
       //  For public routes, we don't need to do anything

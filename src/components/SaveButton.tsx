@@ -11,7 +11,7 @@ export default function SaveButton({
 }: {
   userId: string;
   endpoint: string;
-  body: BodyInit|null|undefined;
+  body: BodyInit | null | undefined;
 }) {
   const [isPending, startTransition] = React.useTransition();
 

@@ -76,8 +76,7 @@ export default function ToolsPage() {
     {
       href: '/tools/ocr',
       title: 'OCR (Optical Character Recognition)',
-      description:
-        'Extract text from images and PDFs. Transform visuals into text.',
+      description: 'Extract text from images. Transform visuals into text.',
     },
   ];
 

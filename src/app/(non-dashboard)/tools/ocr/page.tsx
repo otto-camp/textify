@@ -63,7 +63,7 @@ export default async function page() {
         title='OCR Tool'
         description='Easily convert text from images using our efficient OCR tool.'
       />
-      <div className='min-h-screen'>
+      <div>
         <OcrWrapper userId={user?.id!} />
       </div>
     </Shell>

@@ -134,8 +134,8 @@ export default function HomePage() {
           <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>OCR (Optical Character Recognition)</h3>
             <p className='text-sm font-light'>
-              Textify extracts text from images, converting visual
-              content into editable text.
+              Textify extracts text from images, converting visual content into
+              editable text.
             </p>
           </div>
           <div className='space-y-3 rounded-base border p-4'>

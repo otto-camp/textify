@@ -1,11 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    serverActions: true
-  },
   images: {
-    domains: ["uploadthing.com","utfs.io"]
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'uploadthing.com',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        pathname: '**'
+      }
+    ]
   }
 }
 

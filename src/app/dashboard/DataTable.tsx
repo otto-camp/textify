@@ -28,24 +28,23 @@ import { DataTableToolbar } from './DataTableToolbar';
 export default function DataTable({
   data,
 }: {
-  data:
-    | {
-        id: number;
-        userId: string;
-        title: string;
-        content: string;
-        label: string | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        fileId: bigint | null;
-        files: {
-          id: number;
-          userId: string;
-          url: string;
-          createdAt: Date | null;
-          updatedAt: Date | null;
-        } | null;
-      }[];
+  data: {
+    id: number;
+    userId: string;
+    title: string;
+    content: string;
+    label: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    fileId: bigint | null;
+    files: {
+      id: number;
+      userId: string;
+      url: string;
+      createdAt: Date | null;
+      updatedAt: Date | null;
+    } | null;
+  }[];
 }) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
