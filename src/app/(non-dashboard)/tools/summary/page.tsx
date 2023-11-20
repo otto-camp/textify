@@ -5,19 +5,30 @@ import { currentUser } from '@clerk/nextjs';
 import { Metadata } from 'next';
 import { env } from '@/env.mjs';
 
-const TITLE = 'Text Summarization Tool | textify';
+const TITLE = 'Fast, Accurate, and Free Summarization Tool';
 const DESCRIPTION =
-  "Effortlessly summarize lengthy text with textify's summarization tool. Get key insights in seconds.";
-const KEYWORDS = ['Text summarization', 'summary tool', 'text analysis'];
+  "Experience the speed and accuracy of textify's Summarization Tool. Condense lengthy text with ease, share the essence effortlessly. Transforming text has never been this quick and accessible. Try it for free now!";
+const KEYWORDS = [
+  'summarization tool',
+  'text summarization',
+  'rapid summarization',
+  'accurate summarization',
+  'free summarization',
+  'text transformation',
+  'condense text',
+  'efficient summarization',
+  'online tool',
+  'quick text processing',
+  'textify summarization',
+  'summary generation',
+  'text compression',
+];
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: KEYWORDS,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   authors: [
     {
       name: 'otto-camp',
@@ -63,7 +74,7 @@ export default async function SummaryPage() {
       <div className='flex flex-wrap justify-between gap-4'>
         <PageTitle
           title='Summary Tool'
-          description='Summarize text quickly and effectively with our intuitive summarization tool.'
+          description="Experience the speed and accuracy of textify's Summarization Tool. Condense lengthy text with ease and share the distilled essence effortlessly. Elevate your summarization game with textify."
         />
       </div>
 

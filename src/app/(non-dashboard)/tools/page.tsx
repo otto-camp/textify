@@ -5,24 +5,31 @@ import { env } from '@/env.mjs';
 import { Metadata } from 'next';
 import React from 'react';
 
-const TITLE = 'Text Processing Tools | textify';
+const TITLE = 'Text Processing Tools';
 const DESCRIPTION =
   'Discover our text processing tools for summarization, sentiment analysis, and OCR. Simplify your text-related tasks.';
 const KEYWORDS = [
-  'Text processing tools',
+  'text processing tools',
+  'free tools',
   'summarization',
   'sentiment analysis',
   'OCR',
+  'ease of use',
+  'speed',
+  'text transformation',
+  'online utilities',
+  'textify tools',
+  'user-friendly',
+  'rapid summarization',
+  'accurate sentiment analysis',
+  'efficient OCR',
 ];
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: KEYWORDS,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   authors: [
     {
       name: 'otto-camp',
@@ -83,8 +90,8 @@ export default function ToolsPage() {
   return (
     <Shell>
       <PageTitle
-        title='Text Processing Tools'
-        description='Explore our powerful text processing tools for all your summarization, sentiment analysis, and OCR needs.'
+        title='Empower Your Text Processing Journey with textify Tools'
+        description='Welcome to textify, where powerful text processing tools meet user-friendly design. Dive into a world of free tools, from summarization to sentiment analysis and OCR, designed for speed and accuracy.'
       />
       <div className='grid justify-items-center gap-8 overflow-hidden md:grid-cols-2'>
         {data.map((d) => (

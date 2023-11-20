@@ -28,13 +28,13 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const text = await getText(id);
   return {
-    title: `${text?.title} | textify`,
+    title: `${text?.title}`,
     description: text?.title,
     openGraph: {
       type: 'website',
       locale: 'en_US',
       url: env.NEXT_PUBLIC_APP_URL,
-      title: `${text?.title} | textify`,
+      title: `${text?.title}`,
       description: text?.title,
       siteName: 'textify',
       images: [
@@ -48,7 +48,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${text?.title} | textify`,
+      title: `${text?.title}`,
       description: text?.title,
       images: [
         {

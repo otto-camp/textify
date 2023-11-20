@@ -1,6 +1,14 @@
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
 import { currentUser } from '@clerk/nextjs';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: 'textify | %s',
+    default: 'textify',
+  },
+};
 
 export default async function NonDashboardLayout({
   children,

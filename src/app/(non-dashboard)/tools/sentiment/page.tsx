@@ -5,19 +5,30 @@ import { Metadata } from 'next';
 import React from 'react';
 import SentimentWrapper from './SentimentWrapper';
 
-const TITLE = 'Sentiment Analysis Tool | textify';
+const TITLE = 'Analyze Text Emotions Instantly for Free';
 const DESCRIPTION =
-  "Analyze sentiment within text using textify's sentiment analysis tool. Understand emotions in your content.";
-const KEYWORDS = ['Sentiment analysis', 'emotional analysis', 'text emotion'];
+  "Unlock the emotional tone of text with textify's Sentiment Analysis Tool. Speed, accuracy, and free access make it the go-to choice. Dive into the sentiments within text and share the insights effortlessly.";
+const KEYWORDS = [
+  'sentiment analysis',
+  'text emotions',
+  'emotional tone analysis',
+  'free sentiment analysis',
+  'textify sentiment tool',
+  'analyze sentiments',
+  'emotional analysis',
+  'text processing',
+  'sentiment insights',
+  'online sentiment tool',
+  'emotional text analysis',
+  'accurate sentiment analysis',
+  'text emotion discovery',
+];
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: KEYWORDS,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   authors: [
     {
       name: 'otto-camp',
@@ -60,7 +71,7 @@ export default function SentimentPage() {
     <Shell>
       <PageTitle
         title='Sentiment Analysis'
-        description='Gain insights into text emotions with our powerful sentiment analysis tool.'
+        description="Unlock the emotional tones within text with textify's Sentiment Analysis Tool. Analyze sentiments instantly, with speed, accuracy, and free access. Dive into the emotions conveyed in your text."
       />
       <SentimentWrapper />
     </Shell>

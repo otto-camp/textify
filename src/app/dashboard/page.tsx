@@ -5,7 +5,7 @@ import { currentUser } from '@clerk/nextjs';
 import DataTable from './DataTable';
 
 export const metadata = {
-  title: 'Dashboard | textify',
+  title: 'Dashboard',
 };
 
 export default async function DashboardPage({
