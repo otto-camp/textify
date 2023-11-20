@@ -29,4 +29,4 @@ export const ourFileRouter = {
 
 export type OurFileRouter = typeof ourFileRouter;
 
-export const utapi = new UTApi()
+export const utapi = new UTApi();

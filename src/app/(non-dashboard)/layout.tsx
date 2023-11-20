@@ -1,6 +1,14 @@
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
 import { currentUser } from '@clerk/nextjs';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: 'textify | %s',
+    default: 'textify',
+  },
+};
 
 export default async function NonDashboardLayout({
   children,
@@ -11,12 +19,7 @@ export default async function NonDashboardLayout({
 
   return (
     <>
-      <Header
-        firstName={user?.firstName!}
-        lastName={user?.lastName!}
-        imageUrl={user?.imageUrl!}
-        email={user?.emailAddresses.at(0)?.emailAddress!}
-      />
+      <Header email={user?.emailAddresses.at(0)?.emailAddress!} />
       <main>{children}</main>
       <Footer />
     </>

@@ -58,21 +58,12 @@ export function FileDialog<TFieldValues extends FieldValues>({
 }: FileDialogProps<TFieldValues>) {
   const onDrop = React.useCallback(
     (acceptedFiles: FileWithPath[], rejectedFiles: FileRejection[]) => {
-      setValue(
-        name,
-        acceptedFiles as PathValue<TFieldValues, Path<TFieldValues>>,
-        {
-          shouldValidate: true,
-        }
-      );
-
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
+      acceptedFiles.forEach((file) => {
+        const fileWithPreview = Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        });
+        setFiles((prev) => [...(prev ?? []), fileWithPreview]);
+      });
 
       if (rejectedFiles.length > 0) {
         rejectedFiles.forEach(({ errors }) => {
@@ -87,7 +78,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
       }
     },
 
-    [maxSize, name, setFiles, setValue]
+    [maxSize, setFiles]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -98,6 +89,38 @@ export function FileDialog<TFieldValues extends FieldValues>({
     multiple: maxFiles > 1,
     disabled,
   });
+
+  React.useEffect(() => {
+    function handlePaste(event: ClipboardEvent) {
+      const item = event.clipboardData?.items[0];
+
+      if (!item) {
+        return;
+      }
+
+      if (item.kind === 'file' && item.type.match('image/*')) {
+        const file = item.getAsFile();
+
+        if (file) {
+          const fileWithPreview = Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          });
+
+          setFiles((prev) =>
+            prev ? [...prev, fileWithPreview] : [fileWithPreview]
+          );
+        }
+      }
+    }
+
+    document.addEventListener('paste', handlePaste);
+
+    return () => {
+      document.removeEventListener('paste', handlePaste);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Revoke preview url when component unmounts
   React.useEffect(() => {
@@ -122,6 +145,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
         {...props}
       >
         <input {...getInputProps()} />
+
         {isUploading ? (
           <div className='group grid w-full place-items-center gap-1 sm:px-10'>
             <Upload
@@ -239,9 +263,9 @@ function FileCard<TFieldValues extends FieldValues>({
         <Image
           src={cropData ? cropData : file.preview}
           alt={file.name}
-          className='h-10 w-10 shrink-0 rounded-base'
-          width={40}
-          height={40}
+          className='shrink-0 rounded-base'
+          width={100}
+          height={100}
           loading='lazy'
         />
         <div className='flex flex-col'>
@@ -275,7 +299,7 @@ function FileCard<TFieldValues extends FieldValues>({
                 <Cropper
                   ref={cropperRef}
                   className='h-[450px] w-[450px] object-cover'
-                  zoomTo={0.5}
+                  zoomTo={0}
                   initialAspectRatio={1 / 1}
                   preview='.img-preview'
                   src={file.preview}

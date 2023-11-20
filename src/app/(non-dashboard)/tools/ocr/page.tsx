@@ -5,19 +5,31 @@ import { Metadata } from 'next';
 import OcrWrapper from './OcrWrapper';
 import { currentUser } from '@clerk/nextjs';
 
-const TITLE = 'OCR Tool | textify';
+const TITLE = ' Extract Text from Images with Speed and Precision';
 const DESCRIPTION =
-  "Extract text from images effortlessly with textify's OCR tool. Transform visuals into text.";
-const KEYWORDS = ['OCR', 'optical character recognition', 'text extraction'];
+  "textify's OCR tool transforms images into editable text swiftly and precisely. Unlock the text within images for free, and share the results seamlessly. Elevate your OCR experience with textify.";
+const KEYWORDS = [
+  'OCR',
+  'text extraction',
+  'image text conversion',
+  'image to text',
+  'free OCR',
+  'textify OCR',
+  'image processing',
+  'text recognition',
+  'extract text from images',
+  'online OCR tool',
+  'swift OCR',
+  'accurate OCR',
+  'precise text extraction',
+  'image text conversion utility',
+];
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: KEYWORDS,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   authors: [
     {
       name: 'otto-camp',
@@ -61,9 +73,9 @@ export default async function page() {
     <Shell>
       <PageTitle
         title='OCR Tool'
-        description='Easily convert text from images using our efficient OCR tool.'
+        description="Transform images into editable text with textify's OCR tool. Swift and precise, our OCR tool provides free access to extract text effortlessly. Elevate your OCR experience with textify."
       />
-      <div className='min-h-screen'>
+      <div>
         <OcrWrapper userId={user?.id!} />
       </div>
     </Shell>

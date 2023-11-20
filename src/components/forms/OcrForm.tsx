@@ -35,12 +35,24 @@ export default function OcrForm({
   const form = useForm<Inputs>({
     resolver: zodResolver(fileInputSchema),
   });
+  console.log(files);
 
   function onSubmit() {
     startTransition(async () => {
-      if (files && isFile(files[0])) {
+      if (!files) {
+        catchError('You need to upload a file first.');
+        return;
+      }
+
+      if (files.length > 1 || files.length === 0) {
+        catchError('You need to upload only 1 file.');
+        return;
+      }
+
+      if (isFile(files.at(0))) {
+        const file = files.at(0)!;
         const formData = new FormData();
-        formData.append('input_file', files[0]);
+        formData.append('input_file', file);
         formData.append('language', 'english');
 
         try {
@@ -53,8 +65,6 @@ export default function OcrForm({
         } catch (error) {
           catchError(error);
         }
-      } else {
-        catchError('You need to upload a file first.');
       }
     });
   }

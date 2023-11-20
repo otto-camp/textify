@@ -79,8 +79,6 @@ export const columns: ColumnDef<{
       <DataTableColumnHeader column={column} title='File' noFilter />
     ),
     cell: ({ row }) => {
-      console.log(row.original.files?.url);
-      
       return (
         <div className='w-full min-w-[80px]'>
           <span>

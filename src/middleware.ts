@@ -17,6 +17,7 @@ export default authMiddleware({
     '/api(.*)',
     '/tools(.*)',
   ],
+
   async afterAuth(auth, req) {
     if (auth.isPublicRoute) {
       //  For public routes, we don't need to do anything

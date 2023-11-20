@@ -1,25 +1,15 @@
 'use client';
 import CopyButton from '@/components/CopyButton';
-import { FileWithPreview } from '@/components/FileUploader';
+import { type FileWithPreview } from '@/components/FileUploader';
 import ResponseConsole from '@/components/ResponseConsole';
 import SaveButton from '@/components/SaveButton';
 import OcrForm from '@/components/forms/OcrForm';
-import { OcrResponse } from '@/lib/types';
+import { type OcrResponse } from '@/lib/types';
 import React from 'react';
 
 export default function OcrWrapper({ userId }: { userId: string }) {
   const [files, setFiles] = React.useState<FileWithPreview[] | null>(null);
   const [response, setResponse] = React.useState<OcrResponse | null>(null);
-  const responseRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    if (responseRef.current) {
-      responseRef.current.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-      });
-    }
-  }, [response]);
 
   const body = () => {
     const formData = new FormData();
@@ -46,9 +36,7 @@ export default function OcrWrapper({ userId }: { userId: string }) {
           </div>
         }
       >
-        <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
-          {response?.text}
-        </p>
+        <p className='p-4 tracking-[-0.02em]'>{response?.text}</p>
       </ResponseConsole>
     </div>
   );
