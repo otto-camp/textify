@@ -1,6 +1,6 @@
 import { currentUser } from '@clerk/nextjs';
-import Header from '@/layouts/Header';
-import Footer from '@/layouts/Footer';
+import Header from '@/components/layouts/Header';
+import Footer from '@/components/layouts/Footer';
 
 export default async function DashboardLayout({
   children,
