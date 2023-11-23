@@ -3,7 +3,7 @@ import { components } from '@/slices';
 import { SliceZone } from '@prismicio/react';
 import { notFound } from 'next/navigation';
 
-export const dymaic = "force-dynamic"
+export const dynamic = 'force-dynamic'
 
 export default async function BlogPostPage({
   params: { uid },
@@ -12,7 +12,6 @@ export default async function BlogPostPage({
 }) {
   const client = createClient();
   const post = await client.getByUID('blog', uid).catch(() => notFound());
-  console.log(post.data.slices);
 
   return (
     <div className='prose mx-auto min-h-screen p-4 dark:prose-invert'>
