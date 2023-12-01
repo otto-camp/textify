@@ -50,6 +50,9 @@ export default function Header({ email }: { email: string }) {
           <Link href='/tools' className='hidden text-sm font-semibold lg:block'>
             Tools
           </Link>
+          <Link href='/blog' className='hidden text-sm font-semibold lg:block'>
+            Blog
+          </Link>
         </div>
 
         {/* FIX WIDTH */}
@@ -110,14 +113,20 @@ export default function Header({ email }: { email: string }) {
               className='flex flex-col justify-between'
             >
               <nav className='flex flex-col gap-4 lg:hidden'>
-                {data.map((x) => (
+                <Link href="/tools" className='text-lg hover:underline underline-offset-2'>
+                  Tools
+                </Link>
+                <Link href="/blog" className='text-lg hover:underline underline-offset-2'>
+                  Blog
+                </Link>
+                {/* {data.map((x) => (
                   <Link key={x.text} href={x.href} className='group'>
                     <span className='transition-colors group-hover:text-foreground/80'>
                       {x.text}
                     </span>
                     <p className='text-muted-foreground'>{x.description}</p>
                   </Link>
-                ))}
+                ))} */}
               </nav>
               {email ? (
                 <div className='flex flex-col gap-4'>
