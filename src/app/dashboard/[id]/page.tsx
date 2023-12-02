@@ -41,7 +41,7 @@ export async function generateMetadata({
         {
           url: new URL(
             `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURIComponent(
-              post.title
+              text?.title ?? 'textify'
             )}&mode=dark`
           ),
           alt: text?.title,
@@ -58,7 +58,7 @@ export async function generateMetadata({
         {
           url: new URL(
             `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURIComponent(
-              post.title
+              text?.title ?? 'textify'
             )}&mode=dark`
           ),
           alt: text?.title,

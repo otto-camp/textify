@@ -14,11 +14,6 @@ module.exports = withContentlayer({
         protocol: 'https',
         hostname: 'utfs.io',
         pathname: '**'
-      },
-      process.env.NODE_ENV === 'development' && {
-        protocol: 'http',
-        hostname: 'localhost',
-        pathname: '**'
       }
     ]
   }
