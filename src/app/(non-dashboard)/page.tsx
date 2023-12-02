@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'textify',
     images: [
       {
-        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -82,8 +82,8 @@ export default function HomePage() {
             Unleash the Power of Text with textify
           </h1>
           <p className='mt-4 text-center text-lg text-gray-700 dark:text-gray-300 md:px-20 lg:text-2xl lg:leading-normal'>
-            Transform text effortlessly with textify&apos;s suite of free and fast
-            online tools. From summarization to sentiment analysis and OCR,
+            Transform text effortlessly with textify&apos;s suite of free and
+            fast online tools. From summarization to sentiment analysis and OCR,
             experience the speed and ease of text processing.
           </p>
           <Button size='lg' asChild>
@@ -172,9 +172,7 @@ export default function HomePage() {
           </AccordionItem>
           <AccordionItem value='faq-3'>
             <AccordionTrigger>Is textify free to use?</AccordionTrigger>
-            <AccordionContent>
-              textify is completely free.
-            </AccordionContent>
+            <AccordionContent>textify is completely free.</AccordionContent>
           </AccordionItem>
           <AccordionItem value='faq-4'>
             <AccordionTrigger>Is my data secure with textify?</AccordionTrigger>

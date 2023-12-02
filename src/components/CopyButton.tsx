@@ -3,6 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Button } from './ui/Button';
 import { Check, ClipboardCopy } from 'lucide-react';
 
+//TODO: refactor as skateshop copybutton
 export default function CopyButton({
   children,
   text,

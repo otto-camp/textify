@@ -39,7 +39,11 @@ export async function generateMetadata({
       siteName: 'textify',
       images: [
         {
-          url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+          url: new URL(
+            `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURIComponent(
+              post.title
+            )}&mode=dark`
+          ),
           alt: text?.title,
           width: 1200,
           height: 630,
@@ -52,7 +56,11 @@ export async function generateMetadata({
       description: text?.title,
       images: [
         {
-          url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+          url: new URL(
+            `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURIComponent(
+              post.title
+            )}&mode=dark`
+          ),
           alt: text?.title,
           width: 1200,
           height: 630,

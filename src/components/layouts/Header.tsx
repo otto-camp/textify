@@ -113,10 +113,16 @@ export default function Header({ email }: { email: string }) {
               className='flex flex-col justify-between'
             >
               <nav className='flex flex-col gap-4 lg:hidden'>
-                <Link href="/tools" className='text-lg hover:underline underline-offset-2'>
+                <Link
+                  href='/tools'
+                  className='text-lg underline-offset-2 hover:underline'
+                >
                   Tools
                 </Link>
-                <Link href="/blog" className='text-lg hover:underline underline-offset-2'>
+                <Link
+                  href='/blog'
+                  className='text-lg underline-offset-2 hover:underline'
+                >
                   Blog
                 </Link>
                 {/* {data.map((x) => (

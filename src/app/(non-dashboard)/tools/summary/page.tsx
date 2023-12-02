@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: 'textify',
     images: [
       {
-        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Summary%20Tool&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: `${env.NEXT_PUBLIC_APP_URL}/api/og/`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Summary%20Tool&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,

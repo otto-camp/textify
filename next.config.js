@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const { withContentlayer } = require('next-contentlayer')
+
+module.exports = withContentlayer({
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -12,9 +14,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'utfs.io',
         pathname: '**'
+      },
+      process.env.NODE_ENV === 'development' && {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '**'
       }
     ]
   }
 }
-
-module.exports = nextConfig
+)
