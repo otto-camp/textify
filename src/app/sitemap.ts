@@ -1,5 +1,6 @@
 import { env } from '@/env.mjs';
 import { type MetadataRoute } from 'next';
+import { allBlogs } from 'contentlayer/generated';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -13,5 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...routes];
+  const postRoutes = allBlogs.map((post) => ({
+    url: `${env.NEXT_PUBLIC_APP_URL}blog/${post.slug}`,
+    lastModified: post.date,
+  }));
+
+  return [...routes, ...postRoutes];
 }
