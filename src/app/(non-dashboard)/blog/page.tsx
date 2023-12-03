@@ -25,13 +25,13 @@ export default async function BlogPage() {
             <article className='flex flex-col gap-2.5'>
               <AspectRatio ratio={16 / 9}>
                 {post.image ? (
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    // fill
+                    fill
                     sizes='(min-width: 1024px) 384px, (min-width: 768px) 288px, (min-width: 640px) 224px, 100vw'
                     className='rounded-lg object-cover'
-                    // priority={i <= 1}
+                    priority={i <= 1}
                   />
                 ) : (
                   <Image

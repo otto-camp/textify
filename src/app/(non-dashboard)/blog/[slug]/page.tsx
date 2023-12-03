@@ -132,13 +132,12 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
       {post.image ? (
         <AspectRatio ratio={16 / 9}>
-          {/* TODO: Replace img with <Image/> and don't use og image for this purpose. */}
-          <img
+          <Image
             src={post.image}
             alt={post.title}
-            
+            fill
             className='rounded-md border bg-muted'
-            
+            priority
           />
         </AspectRatio>
       ) : (
