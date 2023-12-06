@@ -18,6 +18,7 @@
     "@clerk/themes": "^1.7.9",
     "@headlessui/react": "^1.7.17",
     "@hookform/resolvers": "^3.3.2",
+    "@loglib/tracker": "^0.8.0",
     "@planetscale/database": "^1.11.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
