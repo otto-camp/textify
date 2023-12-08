@@ -46,6 +46,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    keywords: post.keywords.split(','),
     authors: {
       name: post.author,
       url: `https://www.github.com/${post.author}`,
@@ -89,6 +90,7 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) {
     notFound();
   }
+
   const url = env.NEXT_PUBLIC_APP_URL;
   const ogUrl = new URL(`${url}/api/og`);
   ogUrl.searchParams.set('title', post.title);

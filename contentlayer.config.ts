@@ -1,11 +1,14 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from 'contentlayer/source-files';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-/** @type {import('contentlayer/source-files').ComputedFields} */
-const computedFields = {
+const computedFields: ComputedFields = {
   path: {
     type: 'string',
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
@@ -52,6 +55,10 @@ export const Blog = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    keywords: {
+      type: 'string',
+      required: true,
+    },
   },
   computedFields,
 }));
@@ -64,19 +71,15 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       [
+        //@ts-expect-error
         rehypePrettyCode,
         {
-          theme: 'github-dark',
-          onVisitLine(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }];
-            }
+          theme: {
+            dark: 'one-dark-pro',
+            light: 'github-light',
           },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push('line--highlighted');
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ['word--highlighted'];
+          defaultLang: {
+            block: 'typescript',
           },
         },
       ],
