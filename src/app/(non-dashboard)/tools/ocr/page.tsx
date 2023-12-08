@@ -1,9 +1,13 @@
-import PageTitle from '@/components/PageTitle';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 import { Shell } from '@/components/Shell';
 import { env } from '@/env.mjs';
+import { currentUser } from '@clerk/nextjs';
 import { Metadata } from 'next';
 import OcrWrapper from './OcrWrapper';
-import { currentUser } from '@clerk/nextjs';
 
 const TITLE = ' Extract Text from Images with Speed and Precision';
 const DESCRIPTION =
@@ -45,9 +49,7 @@ export const metadata: Metadata = {
     siteName: 'textify',
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&type=OCR&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=OCR&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -60,9 +62,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&type=OCR&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=OCR&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -75,10 +75,15 @@ export default async function page() {
   const user = await currentUser();
   return (
     <Shell>
-      <PageTitle
-        title='OCR Tool'
-        description="Transform images into editable text with textify's OCR tool. Swift and precise, our OCR tool provides free access to extract text effortlessly. Elevate your OCR experience with textify."
-      />
+      <PageHeader>
+        <PageHeaderHeading>OCR Tool</PageHeaderHeading>
+        <PageHeaderDescription>
+          Transform images into editable text with textify&apos;s OCR tool.
+          Swift and precise, our OCR tool provides free access to extract text
+          effortlessly. Elevate your OCR experience with textify.
+        </PageHeaderDescription>
+      </PageHeader>
+
       <div>
         <OcrWrapper userId={user?.id!} />
       </div>

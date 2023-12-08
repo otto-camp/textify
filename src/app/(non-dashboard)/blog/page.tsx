@@ -1,3 +1,4 @@
+import { PageHeader, PageHeaderHeading } from '@/components/PageHeader';
 import { Shell } from '@/components/Shell';
 import { AspectRatio } from '@/components/ui/AspectRatio';
 import { Separator } from '@/components/ui/Separator';
@@ -14,9 +15,9 @@ export default async function BlogPage() {
   );
   return (
     <Shell className='p-4'>
-      <h1 className='text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl'>
-        Blog
-      </h1>
+      <PageHeader>
+        <PageHeaderHeading>Blog</PageHeaderHeading>
+      </PageHeader>
 
       <Separator className='mb-2.5' />
       <section className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>

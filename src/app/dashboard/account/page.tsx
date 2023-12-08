@@ -4,6 +4,11 @@ import { dark } from '@clerk/themes';
 import { Shell } from '@/components/Shell';
 import { useTheme } from 'next-themes';
 import { type Theme } from '@clerk/types';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 
 const appearance: Theme = {
   baseTheme: undefined,
@@ -23,14 +28,12 @@ export default function AccountPage() {
   const { theme } = useTheme();
   return (
     <Shell>
-      <div>
-        <h1 className='line-clamp-1 text-3xl font-bold tracking-tight'>
-          Account
-        </h1>
-        <p className='line-clamp-2 text-muted-foreground'>
+      <PageHeader>
+        <PageHeaderHeading>Account</PageHeaderHeading>
+        <PageHeaderDescription>
           Manage your account settings
-        </p>
-      </div>
+        </PageHeaderDescription>
+      </PageHeader>
 
       <div className='mx-auto overflow-hidden rounded-lg'>
         <UserProfile

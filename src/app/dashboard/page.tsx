@@ -1,8 +1,12 @@
-import PageTitle from '@/components/PageTitle';
 import { Shell } from '@/components/Shell';
 import { db } from '@/db';
 import { currentUser } from '@clerk/nextjs';
 import DataTable from './DataTable';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 
 export const metadata = {
   title: 'Dashboard',
@@ -23,12 +27,14 @@ export default async function DashboardPage({
 
   return (
     <Shell>
-      <div className='flex justify-between gap-4'>
-        <PageTitle
-          title='Dashboard'
-          description='Effortlessly manage, track, and customize your summarization experience with the textify Dashboard. Stay organized and save time as you access and tailor your summarized content with ease.'
-        />
-      </div>
+      <PageHeader>
+        <PageHeaderHeading>Dashboard</PageHeaderHeading>
+        <PageHeaderDescription>
+          Effortlessly manage, track, and customize your summarization
+          experience with the textify Dashboard. Stay organized and save time as
+          you access and tail
+        </PageHeaderDescription>
+      </PageHeader>
 
       <DataTable data={textsResponse} />
     </Shell>

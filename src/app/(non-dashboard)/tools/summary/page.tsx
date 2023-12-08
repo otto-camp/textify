@@ -1,9 +1,13 @@
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 import { Shell } from '@/components/Shell';
-import SummaryWrapper from './SummaryWrapper';
-import PageTitle from '@/components/PageTitle';
+import { env } from '@/env.mjs';
 import { currentUser } from '@clerk/nextjs';
 import { Metadata } from 'next';
-import { env } from '@/env.mjs';
+import SummaryWrapper from './SummaryWrapper';
 
 const TITLE = 'Fast, Accurate, and Free Summarization Tool';
 const DESCRIPTION =
@@ -72,10 +76,14 @@ export default async function SummaryPage() {
   return (
     <Shell>
       <div className='flex flex-wrap justify-between gap-4'>
-        <PageTitle
-          title='Summary Tool'
-          description="Experience the speed and accuracy of textify's Summarization Tool. Condense lengthy text with ease and share the distilled essence effortlessly. Elevate your summarization game with textify."
-        />
+        <PageHeader>
+          <PageHeaderHeading>Summary Tool</PageHeaderHeading>
+          <PageHeaderDescription>
+            Experience the speed and accuracy of textify&apos;s Summarization
+            Tool. Condense lengthy text with ease and share the distilled
+            essence effortlessly. Elevate your summarization game with textify.
+          </PageHeaderDescription>
+        </PageHeader>
       </div>
 
       <SummaryWrapper userId={user?.id!} />

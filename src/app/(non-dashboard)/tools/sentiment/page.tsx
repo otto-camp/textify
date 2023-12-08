@@ -1,8 +1,11 @@
-import PageTitle from '@/components/PageTitle';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 import { Shell } from '@/components/Shell';
 import { env } from '@/env.mjs';
 import { Metadata } from 'next';
-import React from 'react';
 import SentimentWrapper from './SentimentWrapper';
 
 const TITLE = 'Analyze Text Emotions Instantly for Free';
@@ -44,9 +47,7 @@ export const metadata: Metadata = {
     siteName: 'textify',
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -59,9 +60,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -73,10 +72,14 @@ export const metadata: Metadata = {
 export default function SentimentPage() {
   return (
     <Shell>
-      <PageTitle
-        title='Sentiment Analysis'
-        description="Unlock the emotional tones within text with textify's Sentiment Analysis Tool. Analyze sentiments instantly, with speed, accuracy, and free access. Dive into the emotions conveyed in your text."
-      />
+      <PageHeader>
+        <PageHeaderHeading>Sentiment Analysis</PageHeaderHeading>
+        <PageHeaderDescription>
+          Unlock the emotional tones within text with textify&apos;s Sentiment
+          Analysis Tool. Analyze sentiments instantly, with speed, accuracy, and
+          free access. Dive into the emotions conveyed in your text.
+        </PageHeaderDescription>
+      </PageHeader>
       <SentimentWrapper />
     </Shell>
   );

@@ -1,9 +1,13 @@
-import PageTitle from '@/components/PageTitle';
+import React from 'react';
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/PageHeader';
 import RainbowCard from '@/components/RainbowCard';
 import { Shell } from '@/components/Shell';
 import { env } from '@/env.mjs';
 import { Metadata } from 'next';
-import React from 'react';
 
 const TITLE = 'Text Processing Tools';
 const DESCRIPTION =
@@ -45,9 +49,7 @@ export const metadata: Metadata = {
     siteName: 'textify',
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -60,9 +62,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: `${
-            env.NEXT_PUBLIC_APP_URL
-          }/api/og?title=textify&mode=dark`,
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
         alt: DESCRIPTION,
         width: 1200,
         height: 630,
@@ -93,10 +93,18 @@ export default function ToolsPage() {
 
   return (
     <Shell>
-      <PageTitle
-        title='Empower Your Text Processing Journey with textify Tools'
-        description='Welcome to textify, where powerful text processing tools meet user-friendly design. Dive into a world of free tools, from summarization to sentiment analysis and OCR, designed for speed and accuracy.'
-      />
+      <PageHeader>
+        <PageHeaderHeading>
+          Empower Your Text Processing Journey with textify Tools
+        </PageHeaderHeading>
+        <PageHeaderDescription>
+          Welcome to textify, where powerful text processing tools meet
+          user-friendly design. Dive into a world of free tools, from
+          summarization to sentiment analysis and OCR, designed for speed and
+          accuracy.
+        </PageHeaderDescription>
+      </PageHeader>
+
       <div className='grid justify-items-center gap-8 overflow-hidden md:grid-cols-2'>
         {data.map((d) => (
           <React.Fragment key={d.title}>

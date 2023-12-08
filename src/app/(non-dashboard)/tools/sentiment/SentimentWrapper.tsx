@@ -24,7 +24,7 @@ export default function SentimentWrapper() {
   }, [response]);
 
   return (
-    <div className='mx-auto min-h-screen w-full max-w-4xl space-y-32'>
+    <div className='mx-auto min-h-screen w-full space-y-32'>
       <SentimentForm setResponse={setResponse} setText={setText} />
 
       {response ? (
