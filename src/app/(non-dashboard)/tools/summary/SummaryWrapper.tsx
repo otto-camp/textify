@@ -8,16 +8,6 @@ import React from 'react';
 export default function SummaryWrapper({ userId }: { userId: string }) {
   const [text, setText] = React.useState('');
   const [response, setResponse] = React.useState('');
-  const responseRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    if (responseRef.current) {
-      responseRef.current.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-      });
-    }
-  }, [response.length]);
 
   return (
     <div className='grid gap-8 lg:grid-cols-2 '>
@@ -41,9 +31,7 @@ export default function SummaryWrapper({ userId }: { userId: string }) {
           </div>
         }
       >
-        <p ref={responseRef} className='p-4 tracking-[-0.02em]'>
-          {response}
-        </p>
+        <p className='p-4 tracking-[-0.02em]'>{response}</p>
       </ResponseConsole>
     </div>
   );

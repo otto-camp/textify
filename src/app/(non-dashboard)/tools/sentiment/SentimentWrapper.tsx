@@ -3,25 +3,13 @@ import ResponseConsole from '@/components/ResponseConsole';
 import SaveButton from '@/components/SaveButton';
 import SentimentForm from '@/components/forms/SentimentForm';
 import { SentimentAnalysisResponse } from '@/lib/types';
-import { useUser } from '@clerk/nextjs';
 import { Frown, Meh, Smile } from 'lucide-react';
 import React from 'react';
 
-export default function SentimentWrapper() {
+export default function SentimentWrapper({ userId }: { userId: string }) {
   const [response, setResponse] =
     React.useState<SentimentAnalysisResponse | null>(null);
   const [text, setText] = React.useState('');
-  const responseRef = React.useRef<HTMLDivElement | null>(null);
-  const { user } = useUser();
-
-  React.useEffect(() => {
-    if (responseRef.current) {
-      responseRef.current.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-      });
-    }
-  }, [response]);
 
   return (
     <div className='mx-auto min-h-screen w-full space-y-32'>
@@ -34,18 +22,18 @@ export default function SentimentWrapper() {
               {/* Download button */}
               {/* Share button */}
               <SaveButton
-                userId={user?.id!}
+                userId={userId}
                 endpoint='/api/sentiment/save'
                 body={JSON.stringify({
                   response: response,
                   content: text,
-                  userId: user?.id!,
+                  userId: userId,
                 })}
               />
             </div>
           }
         >
-          <div ref={responseRef}>
+          <div>
             <div className='flex justify-center gap-4 p-4 sm:gap-8'>
               <div className='flex items-center gap-2 sm:gap-4'>
                 <Frown className='text-red-700 dark:text-red-400 sm:h-16 sm:w-16' />

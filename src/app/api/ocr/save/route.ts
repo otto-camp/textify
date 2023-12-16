@@ -1,13 +1,11 @@
-import { NextResponse } from 'next/server';
-import { utapi } from '../../uploadthing/core';
-import { env } from '@/env.mjs';
-import { InferModel } from 'drizzle-orm';
+import { db } from '@/db';
 import { files, texts } from '@/db/schema';
 import { getFirstSentence } from '@/utils/getFirstSentence';
-import { db } from '@/db';
+import { NextResponse } from 'next/server';
+import { utapi } from '../../uploadthing/core';
 
-type InsertText = InferModel<typeof texts, 'insert'>;
-type InsertFiles = InferModel<typeof files, 'insert'>;
+type InsertText = typeof texts.$inferInsert;
+type InsertFiles = typeof files.$inferInsert;
 
 export async function POST(req: Request) {
   const formData = await req.formData();

@@ -1,4 +1,4 @@
-import { InferModel, relations } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import {
   bigint,
   float,
@@ -20,7 +20,7 @@ export const texts = mysqlTable('texts', {
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
 
-export type Texts = InferModel<typeof texts>;
+export type Texts = typeof texts.$inferSelect;
 
 export const files = mysqlTable('files', {
   id: serial('id').primaryKey(),
@@ -30,7 +30,7 @@ export const files = mysqlTable('files', {
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
 
-export type Files = InferModel<typeof files>;
+export type Files = typeof files.$inferSelect;
 
 export const textsRelations = relations(texts, ({ one }) => ({
   files: one(files, {
@@ -47,7 +47,7 @@ export const summaryResults = mysqlTable('summary_results', {
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
 
-export type SummaryResults = InferModel<typeof summaryResults>;
+export type SummaryResults = typeof summaryResults.$inferSelect;
 
 export const sentimentResults = mysqlTable('sentiment_results', {
   id: serial('id').primaryKey(),
@@ -60,4 +60,4 @@ export const sentimentResults = mysqlTable('sentiment_results', {
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });
 
-export type SentimentResults = InferModel<typeof sentimentResults>;
+export type SentimentResults = typeof sentimentResults.$inferSelect;

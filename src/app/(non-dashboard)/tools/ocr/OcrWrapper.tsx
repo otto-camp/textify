@@ -1,11 +1,11 @@
 'use client';
+import React from 'react';
 import CopyButton from '@/components/CopyButton';
 import { type FileWithPreview } from '@/components/FileUploader';
 import ResponseConsole from '@/components/ResponseConsole';
 import SaveButton from '@/components/SaveButton';
 import OcrForm from '@/components/forms/OcrForm';
 import { type OcrResponse } from '@/lib/types';
-import React from 'react';
 
 export default function OcrWrapper({ userId }: { userId: string }) {
   const [files, setFiles] = React.useState<FileWithPreview[] | null>(null);

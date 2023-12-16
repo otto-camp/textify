@@ -2,11 +2,10 @@ import { db } from '@/db';
 import { summaryResults, texts } from '@/db/schema';
 import { catchErrorServer } from '@/utils/catchError';
 import { getFirstSentence } from '@/utils/getFirstSentence';
-import { InferModel } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
-type InsertText = InferModel<typeof texts, 'insert'>;
-type InsertSummary = InferModel<typeof summaryResults, 'insert'>;
+type InsertText = typeof texts.$inferInsert;
+type InsertSummary = typeof summaryResults.$inferInsert;
 
 export async function POST(req: Request) {
   const { content, response, userId } = await req.json();

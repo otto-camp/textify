@@ -18,12 +18,11 @@ export default async function RootLayout({
         <body
           className={`${inter.className} min-h-screen scroll-smooth bg-background antialiased`}
         >
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
             {children}
             <Toaster />
           </ThemeProvider>
           <Analytics />
-          {/* <LoaderComponent /> */}
         </body>
       </html>
     </ClerkProvider>

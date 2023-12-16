@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from './ui/Button';
 import { Loader2 } from 'lucide-react';
 import { catchError } from '@/utils/catchError';
+import { toast } from 'sonner';
 
 export default function SaveButton({
   userId,
@@ -22,10 +23,14 @@ export default function SaveButton({
         return;
       }
       try {
-        await fetch(endpoint, {
+        const res = await fetch(endpoint, {
           method: 'POST',
           body: body,
         });
+
+        if (res.ok) {
+          toast.success('Saved!');
+        }
       } catch (error) {
         catchError(error);
       }

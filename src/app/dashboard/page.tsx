@@ -9,7 +9,7 @@ import {
 } from '@/components/PageHeader';
 
 export const metadata = {
-  title: 'Dashboard',
+  title: 'textify | Dashboard',
 };
 
 export default async function DashboardPage({

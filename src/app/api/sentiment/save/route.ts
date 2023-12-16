@@ -3,11 +3,10 @@ import { sentimentResults, texts } from '@/db/schema';
 import { SentimentAnalysisResponse } from '@/lib/types';
 import { catchErrorServer } from '@/utils/catchError';
 import { getFirstSentence } from '@/utils/getFirstSentence';
-import { InferModel } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
-type Sentiment = InferModel<typeof sentimentResults, 'insert'>;
-type InsertText = InferModel<typeof texts, 'insert'>;
+type Sentiment = typeof sentimentResults.$inferInsert;
+type InsertText = typeof texts.$inferInsert;
 
 export async function POST(req: Request) {
   const {
