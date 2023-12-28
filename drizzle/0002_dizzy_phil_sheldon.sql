@@ -1,1 +1,0 @@
-ALTER TABLE `texts` ADD `file_url` varchar(500);

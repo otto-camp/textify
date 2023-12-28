@@ -1,1 +1,0 @@
-ALTER TABLE `texts` ADD `title` varchar(1000) NOT NULL;

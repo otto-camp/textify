@@ -1,1 +1,0 @@
-DROP TABLE `ocr_results`;

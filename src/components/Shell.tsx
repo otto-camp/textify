@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from '@/utils/cn';
+import { cn } from "@/lib/utils";
 
-const shellVariants = cva('grid items-center gap-8 py-8 px-4', {
+const shellVariants = cva("grid items-center gap-8 pb-8 pt-6 md:py-8", {
   variants: {
     variant: {
-      default: 'container mx-auto',
-      sidebar: '',
-      centered: 'mb-16 mt-20 max-w-md justify-center',
-      markdown: 'container max-w-3xl py-8 md:py-10 lg:py-10',
+      default: "container",
+      sidebar: "",
+      centered: "container flex h-[100dvh] max-w-2xl flex-col justify-center",
+      markdown: "container max-w-3xl py-8 md:py-10 lg:py-10",
     },
   },
   defaultVariants: {
-    variant: 'default',
+    variant: "default",
   },
 });
 
@@ -25,7 +25,7 @@ interface ShellProps
 
 function Shell({
   className,
-  as: Comp = 'section',
+  as: Comp = "section",
   variant,
   ...props
 }: ShellProps) {

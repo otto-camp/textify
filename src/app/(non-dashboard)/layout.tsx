@@ -1,12 +1,12 @@
-import Footer from '@/components/layouts/Footer';
-import Header from '@/components/layouts/Header';
-import { currentUser } from '@clerk/nextjs';
-import { Metadata } from 'next';
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
+import { currentUser } from "@clerk/nextjs";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: 'textify | %s',
-    default: 'textify',
+    template: "textify | %s",
+    default: "textify",
   },
 };
 
