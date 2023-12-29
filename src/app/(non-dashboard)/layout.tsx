@@ -1,12 +1,12 @@
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
-import { currentUser } from "@clerk/nextjs";
-import { Metadata } from "next";
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
+import { currentUser } from '@clerk/nextjs';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    template: "textify | %s",
-    default: "textify",
+    template: 'textify | %s',
+    default: 'textify',
   },
 };
 
@@ -19,7 +19,7 @@ export default async function NonDashboardLayout({
 
   return (
     <>
-      <Header email={user?.emailAddresses.at(0)?.emailAddress!} />
+      <Header email={user?.emailAddresses.at(0)?.emailAddress} />
       <main>{children}</main>
       <Footer />
     </>

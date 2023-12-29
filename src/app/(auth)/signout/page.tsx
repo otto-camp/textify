@@ -1,7 +1,7 @@
-import { SignOutButtons } from '@/components/auth/SignOutButton';
-import { Shell } from '@/components/Shell';
+import { SignOutButtons } from '@/components/auth/logout-button';
+import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

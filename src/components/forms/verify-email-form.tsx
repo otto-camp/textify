@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Button } from "../ui/button";
+import { Button } from '../ui/button';
 import {
   Form,
   FormControl,
@@ -8,17 +8,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { verfifyEmailSchema } from "@/lib/validations/auth";
-import { isClerkAPIResponseError, useSignUp } from "@clerk/nextjs";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
-import * as React from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type { z } from "zod";
+} from '../ui/form';
+import { Input } from '../ui/input';
+import { verfifyEmailSchema } from '@/lib/validations/auth';
+import { isClerkAPIResponseError, useSignUp } from '@clerk/nextjs';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type { z } from 'zod';
 
 type Inputs = z.infer<typeof verfifyEmailSchema>;
 
@@ -31,7 +31,7 @@ export function VerifyEmailForm() {
   const form = useForm<Inputs>({
     resolver: zodResolver(verfifyEmailSchema),
     defaultValues: {
-      code: "",
+      code: '',
     },
   });
 
@@ -43,18 +43,18 @@ export function VerifyEmailForm() {
         const completeSignUp = await signUp.attemptEmailAddressVerification({
           code: data.code,
         });
-        if (completeSignUp.status !== "complete") {
+        if (completeSignUp.status !== 'complete') {
           /*  investigate the response, to see if there was an error
              or if the user needs to complete more steps.*/
           console.log(JSON.stringify(completeSignUp, null, 2));
         }
-        if (completeSignUp.status === "complete") {
+        if (completeSignUp.status === 'complete') {
           await setActive({ session: completeSignUp.createdSessionId });
 
           router.push(`${window.location.origin}/`);
         }
       } catch (error) {
-        const unknownError = "Something went wrong, please try again.";
+        const unknownError = 'Something went wrong, please try again.';
 
         isClerkAPIResponseError(error)
           ? toast.error(error.errors[0]?.longMessage ?? unknownError)
@@ -66,18 +66,18 @@ export function VerifyEmailForm() {
   return (
     <Form {...form}>
       <form
-        className="grid gap-4"
+        className='grid gap-4'
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <FormField
           control={form.control}
-          name="code"
+          name='code'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Verification Code</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="169420"
+                  placeholder='169420'
                   {...field}
                   onChange={(e) => {
                     e.target.value = e.target.value.trim();
@@ -91,10 +91,10 @@ export function VerifyEmailForm() {
         />
         <Button disabled={isPending}>
           {isPending && (
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+            <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
           )}
           Create account
-          <span className="sr-only">Create account</span>
+          <span className='sr-only'>Create account</span>
         </Button>
       </form>
     </Form>

@@ -1,13 +1,10 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./src/**/*.{ts,tsx,mdx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +15,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xs: "380px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -54,9 +54,13 @@ const config = {
         },
       },
       borderRadius: {
+        base: "var(--radius)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        radial: "radial-gradient(50% 50% at 50% 50%,#a55fa280 0,transparent 100%)"
       },
       keyframes: {
         "accordion-down": {
@@ -74,7 +78,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
 
-export default config
+export default config;

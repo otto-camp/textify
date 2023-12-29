@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { isClerkAPIResponseError, useSignUp } from "@clerk/nextjs";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import * as React from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type { z } from "zod";
+import { isClerkAPIResponseError, useSignUp } from '@clerk/nextjs';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type { z } from 'zod';
 
-import { authSchema } from "@/lib/validations/auth";
-import { Loader2 } from "lucide-react";
-import { PasswordInput } from "../password-input";
-import { Button } from "../ui/button";
+import { authSchema } from '@/lib/validations/auth';
+import { Loader2 } from 'lucide-react';
+import { PasswordInput } from '../password-input';
+import { Button } from '../ui/button';
 import {
   Form,
   FormControl,
@@ -19,8 +19,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
+} from '../ui/form';
+import { Input } from '../ui/input';
 
 type Inputs = z.infer<typeof authSchema>;
 
@@ -33,8 +33,8 @@ export function SignUpForm() {
   const form = useForm<Inputs>({
     resolver: zodResolver(authSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -50,15 +50,15 @@ export function SignUpForm() {
 
         // Send email verification code
         await signUp.prepareEmailAddressVerification({
-          strategy: "email_code",
+          strategy: 'email_code',
         });
 
-        router.push("/signup/verify-email");
-        toast.message("Check your email", {
-          description: "We sent you a 6-digit verification code.",
+        router.push('/signup/verify-email');
+        toast.message('Check your email', {
+          description: 'We sent you a 6-digit verification code.',
         });
       } catch (error) {
-        const unknownError = "Something went wrong, please try again.";
+        const unknownError = 'Something went wrong, please try again.';
 
         isClerkAPIResponseError(error)
           ? toast.error(error.errors[0]?.longMessage ?? unknownError)
@@ -70,17 +70,17 @@ export function SignUpForm() {
   return (
     <Form {...form}>
       <form
-        className="grid gap-4"
+        className='grid gap-4'
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <FormField
           control={form.control}
-          name="email"
+          name='email'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="your@email.com" {...field} />
+                <Input placeholder='your@email.com' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,12 +88,12 @@ export function SignUpForm() {
         />
         <FormField
           control={form.control}
-          name="password"
+          name='password'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <PasswordInput placeholder="**********" {...field} />
+                <PasswordInput placeholder='**********' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -101,10 +101,10 @@ export function SignUpForm() {
         />
         <Button disabled={isPending}>
           {isPending && (
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+            <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
           )}
           Continue
-          <span className="sr-only">Continue to email verification page</span>
+          <span className='sr-only'>Continue to email verification page</span>
         </Button>
       </form>
     </Form>

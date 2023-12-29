@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { SignOutButton } from "@clerk/nextjs";
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import { SignOutButton } from '@clerk/nextjs';
 
-import { cn } from "@/lib/utils";
-import { useMounted } from "@/hooks/use-mounted";
-import { Button, buttonVariants } from "../ui/button";
-import { Skeleton } from "../ui/skeleton";
-import { Loader2 } from "lucide-react";
+import { cn } from '@/lib/utils';
+import { useMounted } from '@/hooks/use-mounted';
+import { Button, buttonVariants } from '../ui/button';
+import { Skeleton } from '../ui/skeleton';
+import { Loader2 } from 'lucide-react';
 
 export function SignOutButtons() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export function SignOutButtons() {
   const [isPending, startTransition] = React.useTransition();
 
   return (
-    <div className="flex w-full items-center space-x-2">
+    <div className='flex w-full items-center space-x-2'>
       {mounted ? (
         <SignOutButton
           signOutCallback={() =>
@@ -26,30 +26,30 @@ export function SignOutButtons() {
           }
         >
           <Button
-            aria-label="Log out"
-            size="sm"
-            className="w-full"
+            aria-label='Log out'
+            size='sm'
+            className='w-full'
             disabled={isPending}
           >
-            {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isPending && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
             Log out
           </Button>
         </SignOutButton>
       ) : (
         <Skeleton
           className={cn(
-            buttonVariants({ size: "sm" }),
-            "w-full bg-muted text-muted-foreground"
+            buttonVariants({ size: 'sm' }),
+            'w-full bg-muted text-muted-foreground'
           )}
         >
           Log out
         </Skeleton>
       )}
       <Button
-        aria-label="Go back to the previous page"
-        variant="outline"
-        size="sm"
-        className="w-full"
+        aria-label='Go back to the previous page'
+        variant='outline'
+        size='sm'
+        className='w-full'
         onClick={() => router.back()}
         disabled={isPending}
       >

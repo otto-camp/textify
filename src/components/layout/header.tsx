@@ -1,56 +1,60 @@
-"use client";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+'use client';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
+import { Menu } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
-const data = [
-  {
-    href: "/tools/summary",
-    text: "Summary Tool",
-    description:
-      "Summarize text quickly and effectively with our intuitive summarization tool.",
-  },
-  {
-    href: "/tools/sentiment",
-    text: "Sentiment Analysis",
-    description:
-      "Gain insights into text emotions with our powerful sentiment analysis tool.",
-  },
-  {
-    href: "/tools/ocr",
-    text: "OCR Tool",
-    description:
-      "Easily convert text from images using our efficient OCR tool.",
-  },
-];
+// const data = [
+//   {
+//     href: '/tools/summary',
+//     text: 'Summary Tool',
+//     description:
+//       'Summarize text quickly and effectively with our intuitive summarization tool.',
+//   },
+//   {
+//     href: '/tools/sentiment',
+//     text: 'Sentiment Analysis',
+//     description:
+//       'Gain insights into text emotions with our powerful sentiment analysis tool.',
+//   },
+//   {
+//     href: '/tools/ocr',
+//     text: 'OCR Tool',
+//     description:
+//       'Easily convert text from images using our efficient OCR tool.',
+//   },
+// ];
 
-export default function Header({ email }: { email: string }) {
+export default function Header({
+  email,
+}: {
+  email: string | null | undefined;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container mx-auto flex h-16 items-center justify-between p-4">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="relative flex items-center gap-2 ">
+    <header className='sticky top-0 z-40 w-full border-b bg-background'>
+      <div className='container mx-auto flex h-16 items-center justify-between p-4'>
+        <div className='flex items-center gap-8'>
+          <Link href='/' className='relative flex items-center gap-2 '>
             <Image
-              src="/logo.webp"
-              alt="textify"
+              src='/logo.webp'
+              alt='textify'
               width={32}
               height={32}
               aria-hidden
             />
-            <span className="text-2xl font-black">textify</span>
+            <span className='text-2xl font-black'>textify</span>
             {/* <span className='absolute bottom-0'>by yarar.dev</span> */}
           </Link>
 
-          <Link href="/tools" className="hidden text-sm font-semibold lg:block">
+          <Link href='/tools' className='hidden text-sm font-semibold lg:block'>
             Tools
           </Link>
-          <Link href="/blog" className="hidden text-sm font-semibold lg:block">
+          <Link href='/blog' className='hidden text-sm font-semibold lg:block'>
             Blog
           </Link>
         </div>
@@ -74,54 +78,54 @@ export default function Header({ email }: { email: string }) {
         </NavigationMenu> */}
 
         {email ? (
-          <div className="hidden items-center justify-between gap-4 lg:flex">
-            <Link href="/dashboard">
+          <div className='hidden items-center justify-between gap-4 lg:flex'>
+            <Link href='/dashboard'>
               <Button>Dashboard</Button>
             </Link>
 
-            <Link href="/signout">
-              <Button variant="ghost">Sign Out</Button>
+            <Link href='/signout'>
+              <Button variant='ghost'>Sign Out</Button>
             </Link>
           </div>
         ) : (
           <Link
-            href="/signin"
+            href='/signin'
             className={cn(
               buttonVariants({
-                size: "sm",
+                size: 'sm',
               }),
-              "hidden lg:inline-flex"
+              'hidden lg:inline-flex'
             )}
           >
             Sign In
           </Link>
         )}
 
-        <div className="flex items-center gap-4 lg:hidden">
+        <div className='flex items-center gap-4 lg:hidden'>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
-                variant="ghost"
-                className="p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                variant='ghost'
+                className='p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0'
               >
                 <Menu />
-                <span className="sr-only">Toggle Menu</span>
+                <span className='sr-only'>Toggle Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent
-              side="right"
-              className="flex flex-col justify-between"
+              side='right'
+              className='flex flex-col justify-between'
             >
-              <nav className="flex flex-col gap-4 lg:hidden">
+              <nav className='flex flex-col gap-4 lg:hidden'>
                 <Link
-                  href="/tools"
-                  className="text-lg underline-offset-2 hover:underline"
+                  href='/tools'
+                  className='text-lg underline-offset-2 hover:underline'
                 >
                   Tools
                 </Link>
                 <Link
-                  href="/blog"
-                  className="text-lg underline-offset-2 hover:underline"
+                  href='/blog'
+                  className='text-lg underline-offset-2 hover:underline'
                 >
                   Blog
                 </Link>
@@ -135,16 +139,16 @@ export default function Header({ email }: { email: string }) {
                 ))} */}
               </nav>
               {email ? (
-                <div className="flex flex-col gap-4">
+                <div className='flex flex-col gap-4'>
                   <Link
-                    href="/dashboard"
-                    className={buttonVariants({ size: "sm" })}
+                    href='/dashboard'
+                    className={buttonVariants({ size: 'sm' })}
                   >
                     Dashboard
                   </Link>
                   <Link
-                    href="/signout"
-                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                    href='/signout'
+                    className={buttonVariants({ variant: 'ghost', size: 'sm' })}
                   >
                     Sign Out
                   </Link>
@@ -195,9 +199,9 @@ export default function Header({ email }: { email: string }) {
                 //   </DropdownMenuContent>
                 // </DropdownMenu>
                 <Link
-                  href="/signin"
+                  href='/signin'
                   className={buttonVariants({
-                    size: "sm",
+                    size: 'sm',
                   })}
                 >
                   Sign In
