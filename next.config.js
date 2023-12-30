@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
-import { withContentlayer } from 'next-contentlayer';
+const { withContentlayer } = require('next-contentlayer')
 
-export default withContentlayer({
+module.exports = withContentlayer({
   reactStrictMode: true,
   images: {
     remotePatterns: [
