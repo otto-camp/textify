@@ -1,1 +1,13 @@
-{"version":"5","dialect":"mysql","entries":[]}
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1704383721356,
+      "tag": "0000_gigantic_vision",
+      "breakpoints": true
+    }
+  ]
+}
