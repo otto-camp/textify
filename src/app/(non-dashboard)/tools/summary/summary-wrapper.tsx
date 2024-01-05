@@ -4,6 +4,7 @@ import { CopyButton } from '@/components/copy-button';
 import SummaryForm from '@/components/forms/summary-form';
 import ResponseConsole from '@/components/response-console';
 import SaveButton from '@/components/save-button';
+import { saveSummary } from '@/lib/actions/summary';
 import React from 'react';
 
 export default function SummaryWrapper({
@@ -11,27 +12,22 @@ export default function SummaryWrapper({
 }: {
   userId: string | null | undefined;
 }) {
-  const [text, setText] = React.useState('');
+  const [content, setContent] = React.useState('');
   const [response, setResponse] = React.useState('');
 
   return (
     <div className='grid gap-8 lg:grid-cols-2 '>
-      <SummaryForm setResponse={setResponse} setText={setText} />
+      <SummaryForm setResponse={setResponse} setContent={setContent} />
 
       <ResponseConsole
         control={
           <div className='flex gap-2'>
             {/* Download button */}
             {/* Share button */}
-            {/* <SaveButton
+            <SaveButton
               userId={userId}
-              endpoint='/api/summary/save'
-              body={JSON.stringify({
-                content: text,
-                response: response,
-                userId: userId,
-              })}
-            /> */}
+              func={async () => await saveSummary(userId,content,response)}
+            />
             <CopyButton value={response} />
           </div>
         }

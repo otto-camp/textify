@@ -1,19 +1,15 @@
 'use client';
-import React from 'react';
-import { saveSummary } from '@/lib/actions/summary';
 import { catchError } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
-import { toast } from 'sonner';
+import React from 'react';
 import { Button } from './ui/button';
 
 export default function SaveButton({
   userId,
-  type,
-  body,
+  func,
 }: {
   userId: string | null | undefined;
-  type: 'Summary' | 'Sentiment' | 'Ocr';
-  body: { content: string; response: string } | FormData;
+  func: () => Promise<boolean>;
 }) {
   const [isPending, startTransition] = React.useTransition();
 
@@ -23,19 +19,7 @@ export default function SaveButton({
         catchError('You need to login to save.');
         return;
       }
-
-      if (body instanceof FormData) {
-      } else {
-        try {
-          const res = await saveSummary(userId, body.content, body.response);
-
-          if (res) {
-            toast.success('Saved!');
-          }
-        } catch (error) {
-          catchError(error);
-        }
-      }
+      await func();
     });
   };
 

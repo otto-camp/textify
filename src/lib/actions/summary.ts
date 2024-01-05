@@ -1,7 +1,7 @@
 'use server';
 import { env } from '@/env.mjs';
 import { type SummaryResponse } from '@/types';
-import { getFirstSentence } from '../utils';
+import { getFirstSentence, getSlug } from '../utils';
 import { summaryResults, texts } from '@/db/schema';
 import { db } from '@/db';
 
@@ -34,17 +34,21 @@ type InsertText = typeof texts.$inferInsert;
 type InsertSummary = typeof summaryResults.$inferInsert;
 
 export async function saveSummary(
-  userId: string,
+  userId: string | undefined | null,
   content: string,
   response: string
 ) {
+  if (!userId) throw new Error('You need to login to save.');
+
   try {
     const title = getFirstSentence(content);
+    const slug = getSlug(title);
 
     const text: InsertText = {
       userId: userId,
       title: title,
       content: content,
+      slug: slug,
       label: 'Summary',
     };
 

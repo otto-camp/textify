@@ -1,6 +1,8 @@
-"use client"
+'use client';
 import SentimentForm from '@/components/forms/sentiment-form';
 import ResponseConsole from '@/components/response-console';
+import SaveButton from '@/components/save-button';
+import { saveSentimentAnalysis } from '@/lib/actions/sentiment';
 import { type SentimentAnalysisResponse } from '@/types';
 import { Frown, Meh, Smile } from 'lucide-react';
 import React from 'react';
@@ -12,11 +14,11 @@ export default function SentimentWrapper({
 }) {
   const [response, setResponse] =
     React.useState<SentimentAnalysisResponse | null>(null);
-  const [text, setText] = React.useState('');
+  const [content, setContent] = React.useState('');
 
   return (
     <div className='mx-auto min-h-screen w-full space-y-32'>
-      <SentimentForm setResponse={setResponse} setText={setText} />
+      <SentimentForm setResponse={setResponse} setContent={setContent} />
 
       {response ? (
         <ResponseConsole
@@ -24,15 +26,12 @@ export default function SentimentWrapper({
             <div className='flex gap-2'>
               {/* Download button */}
               {/* Share button */}
-              {/* <SaveButton
+              <SaveButton
                 userId={userId}
-                endpoint='/api/sentiment/save'
-                body={JSON.stringify({
-                  response: response,
-                  content: text,
-                  userId: userId,
-                })}
-              /> */}
+                func={async () =>
+                  await saveSentimentAnalysis(userId, content, response)
+                }
+              />
             </div>
           }
         >

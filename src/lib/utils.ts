@@ -88,3 +88,17 @@ export function sanitizeFileName(fileName: string) {
 export function truncate(str: string, length: number) {
   return str.length > length ? `${str.substring(0, length)}...` : str;
 }
+
+export function getSlug(text: string) {
+  const rawSlug = text
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/^-+|-+$/g, '');
+
+  if (rawSlug.length > 199) {
+    return rawSlug.substring(0, 199).replace(/-+$/g, '');
+  }
+
+  return rawSlug;
+}

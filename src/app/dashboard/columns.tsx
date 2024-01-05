@@ -15,6 +15,7 @@ export const columns: ColumnDef<{
   createdAt: Date | null;
   updatedAt: Date | null;
   fileId: bigint | null;
+  slug: string | null;
   files: {
     id: number;
     userId: string;
@@ -62,7 +63,11 @@ export const columns: ColumnDef<{
       const label = row.original.label;
 
       return (
-        <Link href={`/dashboard/${row.original.id}`}>
+        <Link
+          href={`/preview/${row.original.id}/${
+            row.original.slug ? row.original.slug : ''
+          }`}
+        >
           <div className='flex flex-col gap-2'>
             <Badge className='w-fit' variant='outline'>
               {label}

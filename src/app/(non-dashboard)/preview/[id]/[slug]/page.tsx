@@ -1,18 +1,17 @@
 import { Shell } from '@/components/shell';
 import { Badge } from '@/components/ui/badge';
 import { db } from '@/db';
-import { type Texts, texts } from '@/db/schema';
+import { texts, type Texts } from '@/db/schema';
 import { env } from '@/env.mjs';
 import { formatDate } from '@/lib/utils';
 import { eq } from 'drizzle-orm';
-import { Calendar } from 'lucide-react';
 import { type Metadata } from 'next';
+import OcrFilePreview from './ocr-file-preview';
 import SentimentFetchResult from './sentiment-fetch-result';
 import SummaryFetchResult from './summary-fetch-result';
-import OcrFilePreview from './ocr-file-preview';
 
 type Props = {
-  params: { id: string };
+  params: { id: string; slug: string };
 };
 
 async function getText(id: string) {
@@ -76,16 +75,21 @@ export default async function SummaryPage({ params: { id } }: Props) {
   return (
     <>
       {text ? (
-        <Shell variant='markdown' className='prose dark:prose-invert'>
-          <h1>{text.title}</h1>
-          <div className='flex items-center justify-between'>
-            <div className='flex gap-2'>
-              <Calendar />
-              <time>{formatDate(text.createdAt!)}</time>
-            </div>
-
+        <Shell
+          variant='markdown'
+          as='article'
+          className='prose dark:prose-invert'
+        >
+          <div className='flex items-center justify-between gap-2'>
+            {text.createdAt ? (
+              <time dateTime={text.createdAt.toISOString()} className='block'>
+                Published on {formatDate(text.createdAt)}
+              </time>
+            ) : null}
             <Badge>{text.label}</Badge>
           </div>
+          <h1 className='text-2xl sm:text-3xl md:text-4xl'>{text.title}</h1>
+          <hr className='my-2' />
           <h2>Content</h2>
           <p>{text.content}</p>
           {text.label === 'OCR' ? (
