@@ -57,6 +57,9 @@ export default function Header({
           <Link href='/blog' className='hidden text-sm font-semibold lg:block'>
             Blog
           </Link>
+          <Link href='/preview' className='hidden text-sm font-semibold lg:block'>
+            Explore
+          </Link>
         </div>
 
         {/* FIX WIDTH */}
@@ -128,6 +131,12 @@ export default function Header({
                   className='text-lg underline-offset-2 hover:underline'
                 >
                   Blog
+                </Link>
+                <Link
+                  href='/preview'
+                  className='text-lg underline-offset-2 hover:underline'
+                >
+                  Explore
                 </Link>
                 {/* {data.map((x) => (
                   <Link key={x.text} href={x.href} className='group'>

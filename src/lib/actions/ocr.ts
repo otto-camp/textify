@@ -53,11 +53,11 @@ export async function saveOcr(formData: FormData) {
 
   try {
     await db
-      .insert(texts)
-      .values(text)
+      .insert(files)
+      .values(file)
       .then(async (res) => {
-        file.id = Number(res.insertId);
-        await db.insert(files).values(file);
+        text.fileId = BigInt(res.insertId);
+        await db.insert(texts).values(text);
       });
 
     return true;

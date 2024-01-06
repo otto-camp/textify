@@ -1,10 +1,8 @@
 import { Shell } from '@/components/shell';
 import { Badge } from '@/components/ui/badge';
-import { db } from '@/db';
-import { texts, type Texts } from '@/db/schema';
 import { env } from '@/env.mjs';
+import { getText } from '@/lib/actions/text';
 import { formatDate } from '@/lib/utils';
-import { eq } from 'drizzle-orm';
 import { type Metadata } from 'next';
 import OcrFilePreview from './ocr-file-preview';
 import SentimentFetchResult from './sentiment-fetch-result';
@@ -14,18 +12,10 @@ type Props = {
   params: { id: string; slug: string };
 };
 
-async function getText(id: string) {
-  const res = await db
-    .select()
-    .from(texts)
-    .where(eq(texts.id, Number(id)));
-  return res.at(0) as Texts | undefined;
-}
-
 export async function generateMetadata({
   params: { id },
 }: Props): Promise<Metadata> {
-  const text = await getText(id);
+  const text = await getText(Number(id));
   return {
     title: `${text?.title}`,
     description: text?.title,
@@ -69,8 +59,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function SummaryPage({ params: { id } }: Props) {
-  const text = await getText(id);
+export default async function SlugPage({ params: { id } }: Props) {
+  const text = await getText(Number(id));
 
   return (
     <>
@@ -103,7 +93,9 @@ export default async function SummaryPage({ params: { id } }: Props) {
           {text.label === 'Sentiment Analysis' ? (
             <SentimentFetchResult id={Number(id)} />
           ) : null}
-          {text.label === 'OCR' ? <OcrFilePreview id={Number(id)} /> : null}
+          {text.label === 'OCR' ? (
+            <OcrFilePreview id={Number(text.fileId)} />
+          ) : null}
         </Shell>
       ) : null}
     </>
