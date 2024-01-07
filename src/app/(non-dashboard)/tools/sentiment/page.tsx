@@ -2,11 +2,11 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from '@/components/PageHeader';
-import { Shell } from '@/components/Shell';
+} from '@/components/page-header';
+import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
-import { Metadata } from 'next';
-import SentimentWrapper from './SentimentWrapper';
+import { type Metadata } from 'next';
+import SentimentWrapper from './sentiment-wrapper';
 import { currentUser } from '@clerk/nextjs';
 
 const TITLE = 'Analyze Text Emotions Instantly for Free';
@@ -82,7 +82,7 @@ export default async function SentimentPage() {
           free access. Dive into the emotions conveyed in your text.
         </PageHeaderDescription>
       </PageHeader>
-      <SentimentWrapper userId={user?.id!} />
+      <SentimentWrapper userId={user?.id} />
     </Shell>
   );
 }

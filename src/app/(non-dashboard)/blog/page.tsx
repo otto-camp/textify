@@ -1,15 +1,15 @@
-import { PageHeader, PageHeaderHeading } from '@/components/PageHeader';
-import { Shell } from '@/components/Shell';
-import { AspectRatio } from '@/components/ui/AspectRatio';
-import { Separator } from '@/components/ui/Separator';
+import { PageHeader, PageHeaderHeading } from '@/components/page-header';
+import { Shell } from '@/components/shell';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Separator } from '@/components/ui/separator';
 import { env } from '@/env.mjs';
-import { formatDate } from '@/utils/formatDate';
+import { formatDate } from '@/lib/utils';
 import { allBlogs } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function BlogPage() {
+export default function BlogPage() {
   const posts = allBlogs.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );

@@ -1,1 +1,0 @@
-ALTER TABLE `texts` ADD CONSTRAINT `texts_file_id_files_id_fk` FOREIGN KEY (`file_id`) REFERENCES `files`(`id`) ON DELETE no action ON UPDATE no action;

@@ -2,12 +2,12 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from '@/components/PageHeader';
-import { Shell } from '@/components/Shell';
+} from '@/components/page-header';
+import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
 import { currentUser } from '@clerk/nextjs';
-import { Metadata } from 'next';
-import OcrWrapper from './OcrWrapper';
+import { type Metadata } from 'next';
+import OcrWrapper from './ocr-wrapper';
 
 const TITLE = ' Extract Text from Images with Speed and Precision';
 const DESCRIPTION =
@@ -85,7 +85,7 @@ export default async function page() {
       </PageHeader>
 
       <div>
-        <OcrWrapper userId={user?.id!} />
+        <OcrWrapper userId={user?.id} />
       </div>
     </Shell>
   );

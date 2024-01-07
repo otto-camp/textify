@@ -16,6 +16,7 @@ export const texts = mysqlTable('texts', {
   content: text('content').notNull(),
   label: varchar('label', { length: 100 }),
   fileId: bigint('file_id', { mode: 'bigint' }),
+  slug: varchar('slug', { length: 200 }),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').onUpdateNow(),
 });

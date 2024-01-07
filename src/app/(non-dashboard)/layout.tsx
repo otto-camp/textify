@@ -1,7 +1,7 @@
-import Footer from '@/components/layouts/Footer';
-import Header from '@/components/layouts/Header';
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
 import { currentUser } from '@clerk/nextjs';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +19,7 @@ export default async function NonDashboardLayout({
 
   return (
     <>
-      <Header email={user?.emailAddresses.at(0)?.emailAddress!} />
+      <Header email={user?.emailAddresses.at(0)?.emailAddress} />
       <main>{children}</main>
       <Footer />
     </>

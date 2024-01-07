@@ -1,15 +1,14 @@
-import { Shell } from '@/components/Shell';
-import { Mdx } from '@/components/mdx/Mdx';
-import { MdxPager } from '@/components/mdx/MdxPager';
-import { AspectRatio } from '@/components/ui/AspectRatio';
-import { buttonVariants } from '@/components/ui/Button';
-import { Separator } from '@/components/ui/Separator';
+import { Mdx } from '@/components/mdx/mdx';
+import { MdxPager } from '@/components/mdx/mdx-pager';
+import { Shell } from '@/components/shell';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { buttonVariants } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import { env } from '@/env.mjs';
-import { cn } from '@/utils/cn';
-import { formatDate } from '@/utils/formatDate';
+import { cn, formatDate } from '@/lib/utils';
 import { allBlogs } from 'contentlayer/generated';
 import { ChevronLeft } from 'lucide-react';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -20,21 +19,21 @@ interface PostPageProps {
   };
 }
 
-export async function generateStaticParams(): Promise<
-  PostPageProps['params'][]
-> {
-  return allBlogs.map((post) => ({
-    slug: post.slug,
-  }));
+export function generateStaticParams(): Promise<PostPageProps['params'][]> {
+  return Promise.resolve(
+    allBlogs.map((post) => ({
+      slug: post.slug,
+    }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params.slug);
+  const post = getPostFromParams(params.slug);
 
   if (!post) {
-    return {};
+    return Promise.resolve({});
   }
 
   const url = env.NEXT_PUBLIC_APP_URL;
@@ -74,7 +73,7 @@ export async function generateMetadata({
   };
 }
 
-async function getPostFromParams(slug: PostPageProps['params']['slug']) {
+function getPostFromParams(slug: PostPageProps['params']['slug']) {
   const post = allBlogs.find((post) => post.slug === slug);
 
   if (!post) {
@@ -84,8 +83,8 @@ async function getPostFromParams(slug: PostPageProps['params']['slug']) {
   return post;
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params.slug);
+export default function PostPage({ params }: PostPageProps) {
+  const post = getPostFromParams(params.slug);
 
   if (!post) {
     notFound();

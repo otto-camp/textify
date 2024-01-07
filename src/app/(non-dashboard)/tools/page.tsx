@@ -3,11 +3,11 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from '@/components/PageHeader';
-import RainbowCard from '@/components/RainbowCard';
-import { Shell } from '@/components/Shell';
+} from '@/components/page-header';
+import RainbowCard from '@/components/rainbow-card';
+import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 const TITLE = 'Text Processing Tools';
 const DESCRIPTION =

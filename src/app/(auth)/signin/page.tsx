@@ -11,10 +11,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/Card';
-import OAuthSignIn from '@/components/auth/OAuthSignIn';
-import { SignInForm } from '@/components/forms/SignInForm';
-import { Shell } from '@/components/Shell';
+} from '@/components/ui/card';
+import OAuthSignIn from '@/components/auth/oauth-signin';
+import { SignInForm } from '@/components/forms/signin-form';
+import { Shell } from '@/components/shell';
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

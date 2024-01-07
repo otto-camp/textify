@@ -8,6 +8,8 @@ export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
   imageUploader: f({ image: { maxFileSize: '16MB' } })
     // Set permissions and file types for this FileRoute
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .middleware(async ({ req }) => {
       // This code runs on your server before upload
       const user = await currentUser();
@@ -19,7 +21,7 @@ export const ourFileRouter = {
       return { userId: user.id };
     })
 
-    .onUploadComplete(async ({ metadata, file }) => {
+    .onUploadComplete(({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       console.log('Upload complete for userId:', metadata.userId);
 

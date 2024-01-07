@@ -1,0 +1,1 @@
+ALTER TABLE `texts` ADD `slug` varchar(200) NOT NULL;

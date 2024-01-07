@@ -1,13 +1,9 @@
-import {
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from '@/components/PageHeader';
-import { Shell } from '@/components/Shell';
-import { env } from '@/env.mjs';
-import { currentUser } from '@clerk/nextjs';
-import { Metadata } from 'next';
-import SummaryWrapper from './SummaryWrapper';
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
+import { Shell } from "@/components/shell";
+import { env } from "@/env.mjs";
+import { currentUser } from "@clerk/nextjs";
+import { type Metadata } from "next";
+import SummaryWrapper from "./summary-wrapper";
 
 const TITLE = 'Fast, Accurate, and Free Summarization Tool';
 const DESCRIPTION =
@@ -86,7 +82,7 @@ export default async function SummaryPage() {
         </PageHeader>
       </div>
 
-      <SummaryWrapper userId={user?.id!} />
+      <SummaryWrapper userId={user?.id} />
     </Shell>
   );
 }

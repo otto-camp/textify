@@ -16,6 +16,7 @@ export default authMiddleware({
     '/privacy(.*)',
     '/api(.*)',
     '/tools(.*)',
+    '/preview(.*)',
   ],
 
   async afterAuth(auth, req) {

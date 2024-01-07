@@ -1,23 +1,18 @@
-import { Shell } from '@/components/Shell';
-import { db } from '@/db';
-import { currentUser } from '@clerk/nextjs';
-import DataTable from './DataTable';
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from '@/components/PageHeader';
+} from '@/components/page-header';
+import { Shell } from '@/components/shell';
+import { db } from '@/db';
+import DataTable from './data-table';
 
 export const metadata = {
   title: 'textify | Dashboard',
 };
 
-export default async function DashboardPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const user = await currentUser();
+export default async function DashboardPage() {
+  // const user = await currentUser();
 
   const textsResponse = await db.query.texts.findMany({
     with: {
