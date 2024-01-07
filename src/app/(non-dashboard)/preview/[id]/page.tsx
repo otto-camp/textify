@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs';
-import { getText } from '@/lib/actions/text';
+import { getText } from '@/lib/fetchFromServer';
 import { redirect } from 'next/navigation';
 
 export default async function IdPage({ params }: { params: { id: string } }) {

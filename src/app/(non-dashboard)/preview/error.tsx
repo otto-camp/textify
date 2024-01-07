@@ -12,6 +12,7 @@ export default function Error({
       <div className='text-center'>
         <h1>{error.name}</h1>
         <h2>{error.message}</h2>
+        <h2>{error.digest}</h2>
 
         <Link href='/preview'>Go Back</Link>
       </div>

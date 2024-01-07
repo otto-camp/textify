@@ -1,7 +1,7 @@
 import { Shell } from '@/components/shell';
 import { Badge } from '@/components/ui/badge';
 import { env } from '@/env.mjs';
-import { getText } from '@/lib/actions/text';
+import { getText } from '@/lib/fetchFromServer';
 import { formatDate } from '@/lib/utils';
 import { type Metadata } from 'next';
 import OcrFilePreview from './ocr-file-preview';
