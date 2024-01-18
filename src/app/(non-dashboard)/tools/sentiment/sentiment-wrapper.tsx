@@ -1,24 +1,17 @@
 'use client';
 import SentimentForm from '@/components/forms/sentiment-form';
 import ResponseConsole from '@/components/response-console';
-import SaveButton from '@/components/save-button';
-import { saveSentimentAnalysis } from '@/lib/actions/sentiment';
 import { type SentimentAnalysisResponse } from '@/types';
 import { Frown, Meh, Smile } from 'lucide-react';
 import React from 'react';
 
-export default function SentimentWrapper({
-  userId,
-}: {
-  userId: string | null | undefined;
-}) {
+export default function SentimentWrapper() {
   const [response, setResponse] =
     React.useState<SentimentAnalysisResponse | null>(null);
-  const [content, setContent] = React.useState('');
 
   return (
     <div className='mx-auto min-h-screen w-full space-y-32'>
-      <SentimentForm setResponse={setResponse} setContent={setContent} />
+      <SentimentForm setResponse={setResponse} />
 
       {response ? (
         <ResponseConsole
@@ -26,19 +19,13 @@ export default function SentimentWrapper({
             <div className='flex gap-2'>
               {/* Download button */}
               {/* Share button */}
-              <SaveButton
-                userId={userId}
-                func={async () =>
-                  await saveSentimentAnalysis(userId, content, response)
-                }
-              />
             </div>
           }
         >
           <div>
             <div className='flex justify-center gap-4 p-4 sm:gap-8'>
               <div className='flex items-center gap-2 sm:gap-4'>
-                <Frown className='text-red-700 sm:h-16 sm:w-16 dark:text-red-400' />
+                <Frown className='text-red-700 dark:text-red-400 sm:h-16 sm:w-16' />
                 <span className='sm:text-2xl'>
                   %{(response.aggregate_sentiment.neg * 100).toFixed()}
                 </span>
@@ -50,7 +37,7 @@ export default function SentimentWrapper({
                 </span>
               </div>
               <div className='flex items-center gap-2 sm:gap-4'>
-                <Smile className='text-green-700 sm:h-16 sm:w-16 dark:text-green-400' />
+                <Smile className='text-green-700 dark:text-green-400 sm:h-16 sm:w-16' />
                 <span className='sm:text-2xl'>
                   %{(response.aggregate_sentiment.pos * 100).toFixed()}
                 </span>

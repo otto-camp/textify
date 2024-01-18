@@ -5,7 +5,6 @@ import {
 } from '@/components/page-header';
 import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
-import { currentUser } from '@clerk/nextjs';
 import { type Metadata } from 'next';
 import OcrWrapper from './ocr-wrapper';
 
@@ -71,8 +70,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function page() {
-  const user = await currentUser();
+export default function page() {
   return (
     <Shell>
       <PageHeader>
@@ -85,7 +83,7 @@ export default async function page() {
       </PageHeader>
 
       <div>
-        <OcrWrapper userId={user?.id} />
+        <OcrWrapper />
       </div>
     </Shell>
   );

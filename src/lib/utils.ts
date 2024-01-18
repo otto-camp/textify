@@ -1,9 +1,9 @@
 import { env } from '@/env.mjs';
-import { type ClassValue, clsx } from 'clsx';
+import { clsx, type ClassValue } from 'clsx';
+import dayjs from 'dayjs';
 import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 import * as z from 'zod';
-import dayjs from 'dayjs';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -29,16 +29,19 @@ export function catchError(err: unknown) {
 }
 
 export function catchErrorServer(err: unknown) {
+  let error = '';
   if (err instanceof z.ZodError) {
     const errors = err.issues.map((issue) => {
-      throw new Error(issue.message);
+      error = issue.message;
     });
-    throw new Error(errors.join('\n'));
+    error = errors.join('\n');
   } else if (err instanceof Error) {
-    throw new Error(err.message);
+    error = err.message;
   } else {
-    throw new Error('Something went wrong, please try again later.');
+    error = 'Something went wrong, please try again later.';
   }
+
+  return error;
 }
 
 export function fileExtension(path: string) {

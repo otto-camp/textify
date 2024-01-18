@@ -1,7 +1,6 @@
 'use client';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,11 +27,7 @@ import { useState } from 'react';
 //   },
 // ];
 
-export default function Header({
-  email,
-}: {
-  email: string | null | undefined;
-}) {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -57,7 +52,10 @@ export default function Header({
           <Link href='/blog' className='hidden text-sm font-semibold lg:block'>
             Blog
           </Link>
-          <Link href='/preview' className='hidden text-sm font-semibold lg:block'>
+          <Link
+            href='/preview'
+            className='hidden text-sm font-semibold lg:block'
+          >
             Explore
           </Link>
         </div>
@@ -79,30 +77,6 @@ export default function Header({
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu> */}
-
-        {email ? (
-          <div className='hidden items-center justify-between gap-4 lg:flex'>
-            <Link href='/dashboard'>
-              <Button>Dashboard</Button>
-            </Link>
-
-            <Link href='/signout'>
-              <Button variant='ghost'>Sign Out</Button>
-            </Link>
-          </div>
-        ) : (
-          <Link
-            href='/signin'
-            className={cn(
-              buttonVariants({
-                size: 'sm',
-              }),
-              'hidden lg:inline-flex'
-            )}
-          >
-            Sign In
-          </Link>
-        )}
 
         <div className='flex items-center gap-4 lg:hidden'>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -147,75 +121,6 @@ export default function Header({
                   </Link>
                 ))} */}
               </nav>
-              {email ? (
-                <div className='flex flex-col gap-4'>
-                  <Link
-                    href='/dashboard'
-                    className={buttonVariants({ size: 'sm' })}
-                  >
-                    Dashboard
-                  </Link>
-                  <Link
-                    href='/signout'
-                    className={buttonVariants({ variant: 'ghost', size: 'sm' })}
-                  >
-                    Sign Out
-                  </Link>
-                </div>
-              ) : (
-                // <DropdownMenu>
-                //   <DropdownMenuTrigger asChild>
-                //     <Button variant='ghost' className='justify-start'>
-                //       <Avatar className='h-8 w-8'>
-                //         <AvatarImage src={imageUrl!} alt={firstName ?? ''} />
-                //         <AvatarFallback>{initials}</AvatarFallback>
-                //       </Avatar>
-                //       <DropdownMenuLabel className='font-normal'>
-                //         <div className='flex flex-col items-start gap-1'>
-                //           <p className='text-sm font-medium leading-none'>
-                //             {firstName} {lastName}
-                //           </p>
-                //           <p className='text-xs leading-none text-muted-foreground'>
-                //             {email}
-                //           </p>
-                //         </div>
-                //       </DropdownMenuLabel>
-                //     </Button>
-                //   </DropdownMenuTrigger>
-                //   <DropdownMenuContent className='w-56' align='end' forceMount>
-                //     <DropdownMenuItem asChild>
-                //       <Link href='/dashboard'>
-                //         <LayoutDashboard
-                //           className='mr-2 h-4 w-4'
-                //           aria-hidden='true'
-                //         />
-                //         Dashboard
-                //       </Link>
-                //     </DropdownMenuItem>
-                //     <DropdownMenuItem asChild>
-                //       <Link href='/dashboard/account'>
-                //         <User2 className='mr-2 h-4 w-4' aria-hidden='true' />
-                //         Account
-                //       </Link>
-                //     </DropdownMenuItem>
-                //     <DropdownMenuSeparator />
-                //     <DropdownMenuItem asChild>
-                //       <Link href='/signout'>
-                //         <LogOut className='mr-2 h-4 w-4' aria-hidden='true' />
-                //         Log out
-                //       </Link>
-                //     </DropdownMenuItem>
-                //   </DropdownMenuContent>
-                // </DropdownMenu>
-                <Link
-                  href='/signin'
-                  className={buttonVariants({
-                    size: 'sm',
-                  })}
-                >
-                  Sign In
-                </Link>
-              )}
             </SheetContent>
           </Sheet>
         </div>

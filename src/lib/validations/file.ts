@@ -12,3 +12,8 @@ export const fileInputSchema = z.object({
     .nullable()
     .default(null),
 });
+
+export const fileInputSchemaWithResponse = fileInputSchema.extend({
+  response: z.string(),
+  userId: z.string(),
+});

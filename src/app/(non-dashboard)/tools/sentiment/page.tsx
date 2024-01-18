@@ -7,7 +7,6 @@ import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 import SentimentWrapper from './sentiment-wrapper';
-import { currentUser } from '@clerk/nextjs';
 
 const TITLE = 'Analyze Text Emotions Instantly for Free';
 const DESCRIPTION =
@@ -70,8 +69,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function SentimentPage() {
-  const user = await currentUser();
+export default function SentimentPage() {
   return (
     <Shell>
       <PageHeader>
@@ -82,7 +80,7 @@ export default async function SentimentPage() {
           free access. Dive into the emotions conveyed in your text.
         </PageHeaderDescription>
       </PageHeader>
-      <SentimentWrapper userId={user?.id} />
+      <SentimentWrapper />
     </Shell>
   );
 }

@@ -1,7 +1,6 @@
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
 import { Shell } from "@/components/shell";
 import { env } from "@/env.mjs";
-import { currentUser } from "@clerk/nextjs";
 import { type Metadata } from "next";
 import SummaryWrapper from "./summary-wrapper";
 
@@ -66,8 +65,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function SummaryPage() {
-  const user = await currentUser();
+export default  function SummaryPage() {
 
   return (
     <Shell>
@@ -82,7 +80,7 @@ export default async function SummaryPage() {
         </PageHeader>
       </div>
 
-      <SummaryWrapper userId={user?.id} />
+      <SummaryWrapper />
     </Shell>
   );
 }

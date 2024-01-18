@@ -7,11 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string(),
     NODE_ENV: z.enum(['development', 'test', 'production']),
-    CLERK_SECRET_KEY: z.string(),
-    UPLOADTHING_SECRET: z.string(),
-    UPLOADTHING_APP_ID: z.string(),
     API_KEY: z.string(),
     SUM_API_URL: z.string(),
     EXT_API_URL: z.string(),
@@ -25,7 +21,6 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
   },
 
   /**
@@ -34,13 +29,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
-    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
-    UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
     API_KEY: process.env.API_KEY,
     SUM_API_URL: process.env.SUM_API_URL,
     EXT_API_URL: process.env.EXT_API_URL,

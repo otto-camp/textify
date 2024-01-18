@@ -1,9 +1,6 @@
 'use server';
 import { env } from '@/env.mjs';
 import { type SummaryResponse } from '@/types';
-import { getFirstSentence, getSlug } from '../utils';
-import { summaryResults, texts } from '@/db/schema';
-import { db } from '@/db';
 
 export async function getSummary(content: string) {
   try {
@@ -25,47 +22,6 @@ export async function getSummary(content: string) {
     }
 
     return (await res.json()) as SummaryResponse;
-  } catch (error) {
-    throw error;
-  }
-}
-
-type InsertText = typeof texts.$inferInsert;
-type InsertSummary = typeof summaryResults.$inferInsert;
-
-export async function saveSummary(
-  userId: string | undefined | null,
-  content: string,
-  response: string
-) {
-  if (!userId) throw new Error('You need to login to save.');
-
-  try {
-    const title = getFirstSentence(content);
-    const slug = getSlug(title);
-
-    const text: InsertText = {
-      userId: userId,
-      title: title,
-      content: content,
-      slug: slug,
-      label: 'Summary',
-    };
-
-    const summary: InsertSummary = {
-      userId: userId,
-      result: response,
-    };
-
-    await db
-      .insert(texts)
-      .values(text)
-      .then(async (res) => {
-        summary.id = Number(res.insertId);
-        await db.insert(summaryResults).values(summary);
-      });
-
-    return true;
   } catch (error) {
     throw error;
   }

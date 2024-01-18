@@ -23,12 +23,10 @@ type Inputs = z.infer<typeof textSchemaWithMax>;
 
 export default function SentimentForm({
   setResponse,
-  setContent,
 }: {
   setResponse: React.Dispatch<
     React.SetStateAction<SentimentAnalysisResponse | null>
   >;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const ref = React.useRef<HTMLTextAreaElement | null>(null);
   const [isPending, startTransition] = React.useTransition();
@@ -43,7 +41,6 @@ export default function SentimentForm({
 
         if (res.ok) {
           setResponse(res);
-          setContent(data.content);
         }
       } catch (error) {
         catchError(error);

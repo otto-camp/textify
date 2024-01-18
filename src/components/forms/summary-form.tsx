@@ -23,10 +23,8 @@ type Inputs = z.infer<typeof textSchemaWithMin>;
 
 export default function SummaryForm({
   setResponse,
-  setContent,
 }: {
   setResponse: React.Dispatch<React.SetStateAction<string>>;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const [isPending, startTransition] = React.useTransition();
   const form = useForm<Inputs>({
@@ -38,7 +36,6 @@ export default function SummaryForm({
       try {
         const res = await getSummary(data.content);
         setResponse(res.summary);
-        setContent(data.content);
 
         if (res.summary.length === 0) {
           toast.error(

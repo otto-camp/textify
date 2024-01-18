@@ -1,1 +1,0 @@
-ALTER TABLE `texts` MODIFY COLUMN `slug` varchar(200);
