@@ -1,31 +1,41 @@
 'use client';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import {
+  ListItem,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '../ui/navigation-menu';
 
-// const data = [
-//   {
-//     href: '/tools/summary',
-//     text: 'Summary Tool',
-//     description:
-//       'Summarize text quickly and effectively with our intuitive summarization tool.',
-//   },
-//   {
-//     href: '/tools/sentiment',
-//     text: 'Sentiment Analysis',
-//     description:
-//       'Gain insights into text emotions with our powerful sentiment analysis tool.',
-//   },
-//   {
-//     href: '/tools/ocr',
-//     text: 'OCR Tool',
-//     description:
-//       'Easily convert text from images using our efficient OCR tool.',
-//   },
-// ];
+const links = [
+  {
+    href: '/tools/summary',
+    text: 'Summary Tool',
+    description:
+      'Summarize text quickly and effectively with our intuitive summarization tool.',
+  },
+  {
+    href: '/tools/sentiment',
+    text: 'Sentiment Analysis',
+    description:
+      'Gain insights into text emotions with our powerful sentiment analysis tool.',
+  },
+  {
+    href: '/tools/ocr',
+    text: 'OCR Tool',
+    description:
+      'Easily convert text from images using our efficient OCR tool.',
+  },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,50 +43,47 @@ export default function Header() {
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background'>
       <div className='container mx-auto flex h-16 items-center justify-between p-4'>
-        <div className='flex items-center gap-8'>
-          <Link href='/' className='relative flex items-center gap-2 '>
-            <Image
-              src='/logo.webp'
-              alt='textify'
-              width={32}
-              height={32}
-              aria-hidden
-            />
-            <span className='text-2xl font-black'>textify</span>
-            {/* <span className='absolute bottom-0'>by yarar.dev</span> */}
-          </Link>
+        <Link href='/' className='relative flex items-center gap-2 '>
+          <Image
+            src='/logo.webp'
+            alt='textify'
+            width={32}
+            height={32}
+            aria-hidden
+          />
+          <span className='text-2xl font-black'>textify</span>
+        </Link>
 
-          <Link href='/tools' className='hidden text-sm font-semibold lg:block'>
-            Tools
-          </Link>
-          <Link href='/blog' className='hidden text-sm font-semibold lg:block'>
-            Blog
-          </Link>
-          <Link
-            href='/preview'
-            className='hidden text-sm font-semibold lg:block'
-          >
-            Explore
-          </Link>
-        </div>
-
-        {/* FIX WIDTH */}
-        {/* <NavigationMenu className='hidden gap-8 lg:flex'>
+        <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className='grid grid-cols-2 gap-3 p-4 lg:w-[500px]'>
-                  {data.map((x) => (
-                    <ListItem key={x.text} title={x.text} href={x.href}>
-                      {x.description}
+                <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+                  {links.map((link) => (
+                    <ListItem
+                      key={link.href}
+                      title={link.text}
+                      href={link.href}
+                    >
+                      {link.description}
                     </ListItem>
                   ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href='/blog' legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Blog
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <Link href='/tools' className={buttonVariants()}>
+              Get Started
+            </Link>
           </NavigationMenuList>
-        </NavigationMenu> */}
+        </NavigationMenu>
 
         <div className='flex items-center gap-4 lg:hidden'>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -123,6 +130,7 @@ export default function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+          N
         </div>
       </div>
     </header>
