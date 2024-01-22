@@ -5,14 +5,14 @@ import { type MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
-    '/blog',
-    '/explore',
-    '/tools',
-    '/tools/ocr',
-    '/tools/sentiment',
-    '/tools/summary',
+    'blog',
+    'explore',
+    'tools',
+    'tools/ocr',
+    'tools/sentiment',
+    'tools/summary',
   ].map((url) => ({
-    url: `${env.NEXT_PUBLIC_APP_URL}/${url}`,
+    url: `${env.NEXT_PUBLIC_APP_URL}${url}`,
     lastModified: new Date().toISOString(),
   }));
 
