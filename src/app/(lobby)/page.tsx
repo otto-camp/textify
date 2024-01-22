@@ -10,10 +10,10 @@ import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 import Link from 'next/link';
 
-const TITLE = 'textify | Transforming Text with Ease';
-const DESCRIPTION =
+const title = 'textify | Transforming Text with Ease';
+const description =
   'Unlock the potential of text processing with textify. Summarize, analyze sentiments, perform OCR, and more – all for free. Experience the speed and ease of transforming text. Share your results effortlessly.';
-const KEYWORDS = [
+const keywords = [
   'text processing',
   'text transformation',
   'online tools',
@@ -32,9 +32,9 @@ const KEYWORDS = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  keywords: KEYWORDS,
+  title,
+  description,
+  keywords,
   authors: [
     {
       name: 'otto-camp',
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -60,12 +60,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -121,27 +121,6 @@ export default function HomePage() {
               editable text.
             </p>
           </div>
-          {/* <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Concept Maps</h3>
-            <p className='text-sm font-light'>
-              textify creates visual concept maps illustrating connections
-              between key concepts in text, enhancing understanding.
-            </p>
-          </div>
-          <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Quick Learn</h3>
-            <p className='text-sm font-light'>
-              Engage with summarized content in efficient learning mode. Grasp
-              main ideas rapidly for optimized study sessions.
-            </p>
-          </div>
-          <div className='space-y-3 rounded-base border p-4'>
-            <h3 className='font-bold'>Team Collaboration</h3>
-            <p className='text-sm font-light'>
-              textify supports team collaboration, enabling users to share and
-              refine summaries for enhanced productivity.
-            </p>
-          </div> */}
         </div>
       </div>
       <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>

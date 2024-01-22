@@ -6,8 +6,65 @@ import { env } from '@/env.mjs';
 import { formatDate } from '@/lib/utils';
 import { allBlogs } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
+import { type Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+
+const title = 'The Blog';
+const description = 'The latest news from textify.';
+const keywords = [
+  'textify',
+  'blog',
+  'news',
+  'updates',
+  'announcements',
+  'latest',
+  'latest news',
+  'latest updates',
+  'latest announcements',
+];
+
+export const metadata: Metadata = {
+  title,
+  description,
+  keywords,
+  authors: [
+    {
+      name: 'otto-camp',
+      url: 'https://github.com/otto-camp',
+    },
+  ],
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: env.NEXT_PUBLIC_APP_URL,
+    title,
+    description,
+    siteName: 'textify',
+    images: [
+      {
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
+        alt: description,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [
+      {
+        url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
+        alt: description,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
 
 export default function BlogPage() {
   const posts = allBlogs.sort((a, b) =>

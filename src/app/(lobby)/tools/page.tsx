@@ -9,10 +9,10 @@ import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 
-const TITLE = 'Text Processing Tools';
-const DESCRIPTION =
+const title = 'Text Processing Tools';
+const description =
   'Discover our text processing tools for summarization, sentiment analysis, and OCR. Simplify your text-related tasks.';
-const KEYWORDS = [
+const keywords = [
   'text processing tools',
   'free tools',
   'summarization',
@@ -30,9 +30,9 @@ const KEYWORDS = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  keywords: KEYWORDS,
+  title,
+  description,
+  keywords,
 
   authors: [
     {
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -58,12 +58,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },

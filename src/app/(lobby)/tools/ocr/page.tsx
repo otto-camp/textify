@@ -8,10 +8,10 @@ import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 import OcrWrapper from './ocr-wrapper';
 
-const TITLE = ' Extract Text from Images with Speed and Precision';
-const DESCRIPTION =
+const title = ' Extract Text from Images with Speed and Precision';
+const description =
   "textify's OCR tool transforms images into editable text swiftly and precisely. Unlock the text within images for free, and share the results seamlessly. Elevate your OCR experience with textify.";
-const KEYWORDS = [
+const keywords = [
   'OCR',
   'text extraction',
   'image text conversion',
@@ -29,9 +29,9 @@ const KEYWORDS = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  keywords: KEYWORDS,
+  title,
+  description,
+  keywords,
 
   authors: [
     {
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=OCR&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -57,12 +57,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=OCR&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },

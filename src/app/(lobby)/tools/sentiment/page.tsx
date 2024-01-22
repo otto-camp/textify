@@ -8,10 +8,10 @@ import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 import SentimentWrapper from './sentiment-wrapper';
 
-const TITLE = 'Analyze Text Emotions Instantly for Free';
-const DESCRIPTION =
+const title = 'Analyze Text Emotions Instantly for Free';
+const description =
   "Unlock the emotional tone of text with textify's Sentiment Analysis Tool. Speed, accuracy, and free access make it the go-to choice. Dive into the sentiments within text and share the insights effortlessly.";
-const KEYWORDS = [
+const keywords = [
   'sentiment analysis',
   'text emotions',
   'emotional tone analysis',
@@ -28,9 +28,9 @@ const KEYWORDS = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  keywords: KEYWORDS,
+  title,
+  description,
+  keywords,
 
   authors: [
     {
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Sentiment%20Analysis&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },

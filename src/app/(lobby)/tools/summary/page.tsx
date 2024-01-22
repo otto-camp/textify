@@ -1,13 +1,17 @@
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/components/page-header";
-import { Shell } from "@/components/shell";
-import { env } from "@/env.mjs";
-import { type Metadata } from "next";
-import SummaryWrapper from "./summary-wrapper";
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/page-header';
+import { Shell } from '@/components/shell';
+import { env } from '@/env.mjs';
+import { type Metadata } from 'next';
+import SummaryWrapper from './summary-wrapper';
 
-const TITLE = 'Fast, Accurate, and Free Summarization Tool';
-const DESCRIPTION =
+const title = 'Fast, Accurate, and Free Summarization Tool';
+const description =
   "Experience the speed and accuracy of textify's Summarization Tool. Condense lengthy text with ease, share the essence effortlessly. Transforming text has never been this quick and accessible. Try it for free now!";
-const KEYWORDS = [
+const keywords = [
   'summarization tool',
   'text summarization',
   'rapid summarization',
@@ -24,9 +28,9 @@ const KEYWORDS = [
 ];
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  keywords: KEYWORDS,
+  title,
+  description,
+  keywords,
 
   authors: [
     {
@@ -38,13 +42,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: env.NEXT_PUBLIC_APP_URL,
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     siteName: 'textify',
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Summary%20Tool&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -52,12 +56,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     images: [
       {
         url: `${env.NEXT_PUBLIC_APP_URL}/api/og?title=textify&type=Summary%20Tool&mode=dark`,
-        alt: DESCRIPTION,
+        alt: description,
         width: 1200,
         height: 630,
       },
@@ -65,8 +69,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default  function SummaryPage() {
-
+export default function SummaryPage() {
   return (
     <Shell>
       <div className='flex flex-wrap justify-between gap-4'>
