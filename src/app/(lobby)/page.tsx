@@ -77,14 +77,15 @@ export default function HomePage() {
   return (
     <Shell className='p-0'>
       <div className='mx-auto w-full max-w-6xl px-4'>
-        <div className='dark:bg-radial space-y-12 py-24 text-center'>
+        <div className='space-y-12 py-24 text-center dark:bg-radial'>
           <h1 className='text-center text-4xl font-black tracking-tight md:text-6xl lg:text-8xl lg:tracking-tighter'>
-            Unleash the Power of Text with textify
+            Elevate Your Text Experience
           </h1>
-          <p className='mt-4 text-center text-lg text-gray-700 md:px-20 lg:text-2xl lg:leading-normal dark:text-gray-300'>
-            Transform text effortlessly with textify&apos;s suite of free and
-            fast online tools. From summarization to sentiment analysis and OCR,
-            experience the speed and ease of text processing.
+          <p className='mt-4 text-center text-lg text-gray-700 dark:text-gray-300 md:px-20 lg:text-2xl lg:leading-normal'>
+            At textify, we believe in the magic of words. Welcome to a world
+            where text transforms into a playground of possibilities. Discover
+            our cutting-edge text tools designed to elevate your experience
+            effortlessly.
           </p>
           <Button size='lg' asChild>
             <Link href='/tools'>Get Started</Link>
@@ -95,25 +96,25 @@ export default function HomePage() {
         <h2 className='text-balance text-center text-3xl font-black tracking-tight md:text-5xl lg:text-6xl lg:tracking-tighter'>
           Unlock the textify Advantage.
         </h2>
-        <p className='text-center text-lg text-gray-700 md:px-16 lg:text-2xl lg:leading-normal dark:text-gray-300'>
+        <p className='text-center text-lg text-gray-700 dark:text-gray-300 md:px-16 lg:text-2xl lg:leading-normal'>
           Explore the features that make textify a text processing powerhouse.
         </p>
         <div className='grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3'>
-          <div className='rounded-base space-y-3 border p-4'>
+          <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>Text Summarization</h3>
             <p className='text-sm font-light'>
               textify condenses lengthy text into concise summaries, saving time
               and helping users extract key insights.
             </p>
           </div>
-          <div className='rounded-base space-y-3 border p-4'>
+          <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>Sentiment Analysis</h3>
             <p className='text-sm font-light'>
               textify analyzes the emotional tone within text content,
               categorizing it as positive, negative, or neutral.
             </p>
           </div>
-          <div className='rounded-base space-y-3 border p-4'>
+          <div className='space-y-3 rounded-base border p-4'>
             <h3 className='font-bold'>OCR (Optical Character Recognition)</h3>
             <p className='text-sm font-light'>
               textify extracts text from images, converting visual content into
@@ -147,7 +148,7 @@ export default function HomePage() {
         <h2 className='text-balance text-center text-3xl font-black tracking-tight md:text-5xl lg:text-6xl lg:tracking-tighter'>
           Common Questions About textify.
         </h2>
-        <p className='text-center text-lg text-gray-700 md:px-16 lg:text-2xl lg:leading-normal dark:text-gray-300'>
+        <p className='text-center text-lg text-gray-700 dark:text-gray-300 md:px-16 lg:text-2xl lg:leading-normal'>
           Get answers to frequently asked questions to maximize your textify
           experience.
         </p>
@@ -198,7 +199,7 @@ export default function HomePage() {
         <h2 className='text-balance text-center text-3xl font-black tracking-tight md:text-5xl lg:text-6xl lg:tracking-tighter'>
           About Us
         </h2>
-        <p className='text-center text-gray-700 md:px-16 lg:text-lg lg:leading-normal dark:text-gray-300'>
+        <p className='text-center text-gray-700 dark:text-gray-300 md:px-16 lg:text-lg lg:leading-normal'>
           At textify, we are dedicated to making information accessible and
           understandable. Our suite of text processing and analysis tools is
           designed to simplify your interactions with textual content. Whether
