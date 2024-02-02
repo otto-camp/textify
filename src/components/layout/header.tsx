@@ -15,6 +15,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '../ui/navigation-menu';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../ui/accordion';
+import { cn } from '@/lib/utils';
 
 const links = [
   {
@@ -39,6 +47,7 @@ const links = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const segment = useSelectedLayoutSegment();
 
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background'>
@@ -54,7 +63,7 @@ export default function Header() {
           <span className='text-2xl font-black'>textify</span>
         </Link>
 
-        <NavigationMenu>
+        <NavigationMenu className='hidden lg:flex'>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
@@ -79,9 +88,11 @@ export default function Header() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <Link href='/tools' className={buttonVariants()}>
-              Get Started
-            </Link>
+            <NavigationMenuItem>
+              <Link href='/tools' className={buttonVariants()}>
+                Get Started
+              </Link>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -96,41 +107,38 @@ export default function Header() {
                 <span className='sr-only'>Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent
-              side='right'
-              className='flex flex-col justify-between'
-            >
-              <nav className='flex flex-col gap-4 lg:hidden'>
-                <Link
-                  href='/tools'
-                  className='text-lg underline-offset-2 hover:underline'
-                >
-                  Tools
-                </Link>
-                <Link
-                  href='/blog'
-                  className='text-lg underline-offset-2 hover:underline'
-                >
-                  Blog
-                </Link>
-                <Link
-                  href='/preview'
-                  className='text-lg underline-offset-2 hover:underline'
-                >
-                  Explore
-                </Link>
-                {/* {data.map((x) => (
-                  <Link key={x.text} href={x.href} className='group'>
-                    <span className='transition-colors group-hover:text-foreground/80'>
-                      {x.text}
-                    </span>
-                    <p className='text-muted-foreground'>{x.description}</p>
-                  </Link>
-                ))} */}
-              </nav>
+            <SheetContent side='right' className='flex flex-col'>
+              <Accordion type='single' defaultValue='Tools' className='w-full'>
+                <AccordionItem value='Tools'>
+                  <AccordionTrigger className='text-sm capitalize'>
+                    Tools
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className='flex flex-col gap-2'>
+                      {links.map((link) => (
+                        <Link
+                          key={link.text}
+                          href={link.href}
+                          className={cn(
+                            'text-foreground/70 transition-colors hover:text-foreground',
+                            link.href.includes(String(segment))
+                              ? 'text-foreground'
+                              : 'text-foreground/70'
+                          )}
+                        >
+                          {link.text}
+                        </Link>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <Link href='/blog'>Blog</Link>
+              <Link href='/tools' className={buttonVariants()}>
+                Get Started
+              </Link>
             </SheetContent>
           </Sheet>
-          N
         </div>
       </div>
     </header>
