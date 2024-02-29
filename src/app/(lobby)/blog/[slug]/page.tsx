@@ -105,7 +105,7 @@ export default function PostPage({ params }: PostPageProps) {
           'absolute left-[-200px] top-14 hidden xl:inline-flex'
         )}
       >
-        <ChevronLeft className='mr-2 h-4 w-4' />
+        <ChevronLeft className='mr-2 size-4' />
         See all posts
       </Link>
       <div className='space-y-2'>
@@ -161,7 +161,7 @@ export default function PostPage({ params }: PostPageProps) {
           buttonVariants({ variant: 'ghost', className: 'mx-auto mt-4 w-fit' })
         )}
       >
-        <ChevronLeft className='mr-2 h-4 w-4' aria-hidden='true' />
+        <ChevronLeft className='mr-2 size-4' aria-hidden='true' />
         See all posts
         <span className='sr-only'>See all posts</span>
       </Link>

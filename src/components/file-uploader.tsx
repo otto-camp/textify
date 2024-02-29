@@ -149,14 +149,14 @@ export function FileDialog<TFieldValues extends FieldValues>({
         {isUploading ? (
           <div className='group grid w-full place-items-center gap-1 sm:px-10'>
             <Upload
-              className='h-9 w-9 animate-pulse text-muted-foreground'
+              className='size-9 animate-pulse text-muted-foreground'
               aria-hidden='true'
             />
           </div>
         ) : isDragActive ? (
           <div className='grid place-items-center gap-2 text-muted-foreground sm:px-5'>
             <Upload
-              className={cn('h-8 w-8', isDragActive && 'animate-bounce')}
+              className={cn('size-8', isDragActive && 'animate-bounce')}
               aria-hidden='true'
             />
             <p className='text-base font-medium'>Drop the file here</p>
@@ -164,7 +164,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
         ) : (
           <div className='grid place-items-center gap-1 sm:px-5'>
             <Upload
-              className='h-8 w-8 text-muted-foreground'
+              className='size-8 text-muted-foreground'
               aria-hidden='true'
             />
             <p className='mt-2 text-base font-medium text-muted-foreground'>
@@ -285,9 +285,9 @@ function FileCard<TFieldValues extends FieldValues>({
                 type='button'
                 variant='outline'
                 size='sm'
-                className='h-7 w-7 p-0'
+                className='size-7 p-0'
               >
-                <Crop className='h-4 w-4 text-white' aria-hidden='true' />
+                <Crop className='size-4 text-white' aria-hidden='true' />
                 <span className='sr-only'>Crop image</span>
               </Button>
             </DialogTrigger>
@@ -298,7 +298,7 @@ function FileCard<TFieldValues extends FieldValues>({
               <div className='mt-8 grid place-items-center space-y-5'>
                 <Cropper
                   ref={cropperRef}
-                  className='h-[450px] w-[450px] object-cover'
+                  className='size-[450px] object-cover'
                   zoomTo={0}
                   initialAspectRatio={1 / 1}
                   preview='.img-preview'
@@ -323,7 +323,7 @@ function FileCard<TFieldValues extends FieldValues>({
                       setIsOpen(false);
                     }}
                   >
-                    <Crop className='mr-2 h-3.5 w-3.5' aria-hidden='true' />
+                    <Crop className='mr-2 size-3.5' aria-hidden='true' />
                     Crop Image
                   </Button>
                   <Button
@@ -338,7 +338,7 @@ function FileCard<TFieldValues extends FieldValues>({
                     }}
                   >
                     <ListRestart
-                      className='mr-2 h-3.5 w-3.5'
+                      className='mr-2 size-3.5'
                       aria-hidden='true'
                     />
                     Reset Crop
@@ -352,7 +352,7 @@ function FileCard<TFieldValues extends FieldValues>({
           type='button'
           variant='outline'
           size='sm'
-          className='h-7 w-7 p-0'
+          className='size-7 p-0'
           onClick={() => {
             if (!files) return;
             setFiles(files.filter((_, j) => j !== i));
@@ -368,7 +368,7 @@ function FileCard<TFieldValues extends FieldValues>({
             );
           }}
         >
-          <X className='h-4 w-4 text-white' aria-hidden='true' />
+          <X className='size-4 text-white' aria-hidden='true' />
           <span className='sr-only'>Remove file</span>
         </Button>
       </div>

@@ -1,13 +1,15 @@
-import React from 'react';
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from '@/components/page-header';
-import RainbowCard from '@/components/rainbow-card';
 import { Shell } from '@/components/shell';
+import { buttonVariants } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { env } from '@/env.mjs';
+import { ArrowBigRight, ImageIcon } from 'lucide-react';
 import { type Metadata } from 'next';
+import Link from 'next/link';
 
 const title = 'Text Processing Tools';
 const description =
@@ -72,24 +74,24 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsPage() {
-  const data = [
-    {
-      href: '/tools/summary',
-      title: 'Summary Tool',
-      description: 'Summarize long text. Get key insights quickly.',
-    },
-    {
-      href: '/tools/sentiment',
-      title: 'Sentiment Analysis',
-      description: 'Analyze text sentiment. Understand emotions within text.',
-    },
+  // const data = [
+  //   {
+  //     href: '/tools/summary',
+  //     title: 'Summary Tool',
+  //     description: 'Summarize long text. Get key insights quickly.',
+  //   },
+  //   {
+  //     href: '/tools/sentiment',
+  //     title: 'Sentiment Analysis',
+  //     description: 'Analyze text sentiment. Understand emotions within text.',
+  //   },
 
-    {
-      href: '/tools/ocr',
-      title: 'OCR (Optical Character Recognition)',
-      description: 'Extract text from images. Transform visuals into text.',
-    },
-  ];
+  //   {
+  //     href: '/tools/ocr',
+  //     title: 'OCR (Optical Character Recognition)',
+  //     description: 'Extract text from images. Transform visuals into text.',
+  //   },
+  // ];
 
   return (
     <Shell>
@@ -105,12 +107,73 @@ export default function ToolsPage() {
         </PageHeaderDescription>
       </PageHeader>
 
-      <div className='grid justify-items-center gap-8 overflow-hidden md:grid-cols-2'>
-        {data.map((d) => (
-          <React.Fragment key={d.title}>
-            <RainbowCard data={d} />
-          </React.Fragment>
-        ))}
+      <div className='relative grid justify-items-stretch gap-8'>
+        <div className='absolute -z-20 size-full bg-radial' />
+        <Card>
+          <CardHeader className='items-center justify-between xs:flex-row'>
+            <CardTitle className='md:text-3xl lg:text-4xl'>
+              Summary Tool
+            </CardTitle>
+            <Link href='/tools/summary' className={buttonVariants()}>
+              Use This Tool
+            </Link>
+          </CardHeader>
+          <CardContent>
+            <div className='flex flex-col justify-between gap-4 sm:flex-row'>
+              <p className='basis-1/2 text-sm md:text-lg'>
+                Efficiently summarize extensive texts for quick insights.
+                Rapidly extract key information, enhancing comprehension.
+                Streamline the process to save time and focus on essential
+                details.
+              </p>
+              <div className='flex items-center justify-center'>
+                <ArrowBigRight className='size-8 rotate-90 sm:rotate-0' />
+              </div>
+              <p className='basis-1/2 text-sm md:text-lg'>
+                Summarize long text. Get key insights quickly.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className='items-center justify-between xs:flex-row'>
+            <CardTitle className='md:text-3xl lg:text-4xl'>
+              Sentiment Analysis
+            </CardTitle>
+            <Link href='/tools/sentiment' className={buttonVariants()}>
+              Use This Tool
+            </Link>
+          </CardHeader>
+          <CardContent>
+            <p>
+              Conduct a comprehensive analysis of the sentiment expressed in a
+              given text, delving into the nuanced realm of emotions
+              encapsulated within the written content. Explore and discern the
+              subtle shades of feelings, uncovering the intricate emotional
+              landscape embedded within the textual context.
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className='items-center justify-between xs:flex-row'>
+            <CardTitle className='md:text-3xl lg:text-4xl'>Ocr</CardTitle>
+            <Link href='/tools/ocr' className={buttonVariants()}>
+              Use This Tool
+            </Link>
+          </CardHeader>
+          <CardContent className='flex flex-col items-center justify-between gap-8 md:flex-row'>
+            <p className='basis-1/2'>
+              Capture and convert the information present in images into written
+              text. Change what you see in pictures into words for better
+              understanding.
+            </p>
+            <div className='flex basis-1/2 items-center justify-between gap-8'>
+              <ImageIcon className='size-12' />
+              <ArrowBigRight className='size-12' />
+              <p>Capture and convert the information </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </Shell>
   );

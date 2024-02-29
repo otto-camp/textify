@@ -21,9 +21,9 @@ export function CopyButton({ value, ...props }: ButtonProps) {
       {...props}
     >
       {isCopied ? (
-        <Check className='h-4 w-4' aria-hidden='true' />
+        <Check className='size-4' aria-hidden='true' />
       ) : (
-        <ClipboardCopy className='h-4 w-4' aria-hidden='true' />
+        <ClipboardCopy className='size-4' aria-hidden='true' />
       )}
       <span className='sr-only'>
         {isCopied ? 'Copied' : 'Copy to clipboard'}

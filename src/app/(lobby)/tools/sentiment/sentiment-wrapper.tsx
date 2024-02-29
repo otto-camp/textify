@@ -25,19 +25,19 @@ export default function SentimentWrapper() {
           <div>
             <div className='flex justify-center gap-4 p-4 sm:gap-8'>
               <div className='flex items-center gap-2 sm:gap-4'>
-                <Frown className='text-red-700 dark:text-red-400 sm:h-16 sm:w-16' />
+                <Frown className='text-red-700 dark:text-red-400 sm:size-16' />
                 <span className='sm:text-2xl'>
                   %{(response.aggregate_sentiment.neg * 100).toFixed()}
                 </span>
               </div>
               <div className='flex items-center gap-2 sm:gap-4'>
-                <Meh className='sm:h-16 sm:w-16' />
+                <Meh className='sm:size-16' />
                 <span className='sm:text-2xl'>
                   %{(response.aggregate_sentiment.neu * 100).toFixed()}
                 </span>
               </div>
               <div className='flex items-center gap-2 sm:gap-4'>
-                <Smile className='text-green-700 dark:text-green-400 sm:h-16 sm:w-16' />
+                <Smile className='text-green-700 dark:text-green-400 sm:size-16' />
                 <span className='sm:text-2xl'>
                   %{(response.aggregate_sentiment.pos * 100).toFixed()}
                 </span>

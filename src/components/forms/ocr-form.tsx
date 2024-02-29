@@ -50,7 +50,7 @@ export default function OcrForm({
       const formData = new FormData();
       formData.append('input_file', file);
       formData.append('language', 'english');
-      
+
       try {
         const res = await getOcr(formData);
         if (res.ok) {
@@ -91,7 +91,7 @@ export default function OcrForm({
           <Button disabled={isPending} className='mt-4 w-full max-w-[220px]'>
             {isPending && (
               <Loader2
-                className='mr-2 h-4 w-4 animate-spin'
+                className='mr-2 size-4 animate-spin'
                 aria-hidden='true'
               />
             )}

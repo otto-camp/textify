@@ -108,7 +108,12 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side='right' className='flex flex-col'>
-              <Accordion type='single' defaultValue='Tools' className='w-full'>
+              <Accordion
+                type='single'
+                defaultValue='Tools'
+                collapsible
+                className='w-full'
+              >
                 <AccordionItem value='Tools'>
                   <AccordionTrigger className='text-sm capitalize'>
                     Tools
