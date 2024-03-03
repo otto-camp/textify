@@ -5,10 +5,11 @@ import {
 } from '@/components/page-header';
 import { Shell } from '@/components/shell';
 import { buttonVariants } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import { env } from '@/env.mjs';
-import { ArrowBigRight, ImageIcon } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
 import { type Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const title = 'Text Processing Tools';
@@ -74,25 +75,6 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsPage() {
-  // const data = [
-  //   {
-  //     href: '/tools/summary',
-  //     title: 'Summary Tool',
-  //     description: 'Summarize long text. Get key insights quickly.',
-  //   },
-  //   {
-  //     href: '/tools/sentiment',
-  //     title: 'Sentiment Analysis',
-  //     description: 'Analyze text sentiment. Understand emotions within text.',
-  //   },
-
-  //   {
-  //     href: '/tools/ocr',
-  //     title: 'OCR (Optical Character Recognition)',
-  //     description: 'Extract text from images. Transform visuals into text.',
-  //   },
-  // ];
-
   return (
     <Shell>
       <PageHeader>
@@ -106,74 +88,135 @@ export default function ToolsPage() {
           accuracy.
         </PageHeaderDescription>
       </PageHeader>
-
-      <div className='relative grid justify-items-stretch gap-8'>
-        <div className='absolute -z-20 size-full bg-radial' />
-        <Card>
-          <CardHeader className='items-center justify-between xs:flex-row'>
-            <CardTitle className='md:text-3xl lg:text-4xl'>
-              Summary Tool
-            </CardTitle>
-            <Link href='/tools/summary' className={buttonVariants()}>
-              Use This Tool
-            </Link>
-          </CardHeader>
-          <CardContent>
-            <div className='flex flex-col justify-between gap-4 sm:flex-row'>
-              <p className='basis-1/2 text-sm md:text-lg'>
-                Efficiently summarize extensive texts for quick insights.
-                Rapidly extract key information, enhancing comprehension.
-                Streamline the process to save time and focus on essential
-                details.
-              </p>
-              <div className='flex items-center justify-center'>
-                <ArrowBigRight className='size-8 rotate-90 sm:rotate-0' />
-              </div>
-              <p className='basis-1/2 text-sm md:text-lg'>
-                Summarize long text. Get key insights quickly.
-              </p>
+      <Separator className='my-4 md:my-12' />
+      <div className='grid min-h-screen grid-rows-3 gap-12 text-balance'>
+        <div className='grid items-center gap-4 lg:grid-cols-2'>
+          <div className='order-2 space-y-3 md:space-y-6 lg:order-none'>
+            <h2 className='text-3xl font-medium md:text-5xl'>Summary Tool</h2>
+            <p className='text-sm text-muted-foreground md:text-base'>
+              Efficiently summarize extensive texts for quick insights. Rapidly
+              extract key information, enhancing comprehension. Streamline the
+              process to save time and focus on essential details.
+            </p>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Grasp key points of long texts quickly.
+              </span>
             </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className='items-center justify-between xs:flex-row'>
-            <CardTitle className='md:text-3xl lg:text-4xl'>
-              Sentiment Analysis
-            </CardTitle>
-            <Link href='/tools/sentiment' className={buttonVariants()}>
-              Use This Tool
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Save time by focusing on essentials.
+              </span>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Understand better with concise summaries.
+              </span>
+            </div>
+
+            <Link href='/tools/summary' className={buttonVariants()}>
+              Summarize Text Now
             </Link>
-          </CardHeader>
-          <CardContent>
-            <p>
+          </div>
+
+          <Image
+            src='/summary.webp'
+            alt=''
+            aria-hidden
+            width={1000}
+            height={1000}
+            className='aspect-square rounded-2xl object-cover'
+          />
+        </div>
+        <div className='grid items-center gap-4 lg:grid-cols-2'>
+          <Image
+            src='/sentiment.webp'
+            alt=''
+            aria-hidden
+            width={1000}
+            height={1000}
+            className='aspect-square rounded-2xl object-cover'
+          />
+
+          <div className='space-y-3 md:space-y-6'>
+            <h2 className='text-3xl font-medium md:text-5xl'>
+              Sentiment Analysis
+            </h2>
+            <p className='text-sm text-muted-foreground md:text-base'>
               Conduct a comprehensive analysis of the sentiment expressed in a
               given text, delving into the nuanced realm of emotions
               encapsulated within the written content. Explore and discern the
               subtle shades of feelings, uncovering the intricate emotional
               landscape embedded within the textual context.
             </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className='items-center justify-between xs:flex-row'>
-            <CardTitle className='md:text-3xl lg:text-4xl'>Ocr</CardTitle>
-            <Link href='/tools/ocr' className={buttonVariants()}>
-              Use This Tool
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Uncover emotions and opinions in text.
+              </span>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Go beyond basic sentiment detection.
+              </span>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Make informed decisions based on insights.
+              </span>
+            </div>
+            <Link href='/tools/sentiment' className={buttonVariants()}>
+              Analyze Sentiment Now
             </Link>
-          </CardHeader>
-          <CardContent className='flex flex-col items-center justify-between gap-8 md:flex-row'>
-            <p className='basis-1/2'>
+          </div>
+        </div>
+        <div className='grid items-center gap-4 lg:grid-cols-2'>
+          <div className='order-2 space-y-3 md:space-y-6 lg:order-none'>
+            <h2 className='text-3xl font-medium md:text-5xl'>
+              Image to Text (OCR)
+            </h2>
+            <p className='text-sm text-muted-foreground md:text-base'>
               Capture and convert the information present in images into written
               text. Change what you see in pictures into words for better
               understanding.
             </p>
-            <div className='flex basis-1/2 items-center justify-between gap-8'>
-              <ImageIcon className='size-12' />
-              <ArrowBigRight className='size-12' />
-              <p>Capture and convert the information </p>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Turn images into text for easy use.
+              </span>
             </div>
-          </CardContent>
-        </Card>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Unlock information from any image.
+              </span>
+            </div>
+            <div className='flex items-center gap-2'>
+              <Lightbulb className='size-8' />
+              <span className='text-muted-foreground'>
+                Automate text extraction to save time.
+              </span>
+            </div>
+            <Link href='/tools/ocr' className={buttonVariants()}>
+              Extract Text From Image Now
+            </Link>
+          </div>
+
+          <Image
+            src='/ocr.webp'
+            alt=''
+            aria-hidden
+            width={1000}
+            height={1000}
+            className='aspect-square rounded-2xl object-cover'
+          />
+        </div>
       </div>
     </Shell>
   );

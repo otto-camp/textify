@@ -15,7 +15,7 @@ function PageHeader({
   ...props
 }: PageHeaderProps) {
   return (
-    <Comp className={cn('grid gap-1', className)} {...props}>
+    <Comp className={cn('grid gap-4', className)} {...props}>
       {children}
       {separated ? <Separator className='mt-2.5' /> : null}
     </Comp>
