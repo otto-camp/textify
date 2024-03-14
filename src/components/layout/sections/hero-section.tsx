@@ -30,7 +30,7 @@ export default function HeroSection() {
           Get Started
         </Link>
         <Link
-          href='/tools'
+          href='/learn-more'
           className={buttonVariants({ size: 'lg', variant: 'outline' })}
         >
           Learn More
