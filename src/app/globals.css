@@ -61,3 +61,28 @@
     scrollbar-gutter: stable;
   }
 }
+.scan-animation {
+  position: relative;
+}
+
+.scan-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #fff, transparent);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.1);
+  animation: scan 2s linear infinite;
+  -webkit-animation: scan 1s ease-in-out infinite alternate;
+}
+
+@keyframes scan {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}

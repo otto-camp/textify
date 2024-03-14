@@ -2,7 +2,6 @@ import AboutSection from '@/components/layout/sections/about-section';
 import FaqSection from '@/components/layout/sections/faq-section';
 import HeroSection from '@/components/layout/sections/hero-section';
 import ServicesSection from '@/components/layout/sections/services-section';
-import { Shell } from '@/components/shell';
 import { env } from '@/env.mjs';
 import { type Metadata } from 'next';
 
@@ -71,21 +70,21 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <Shell className='p-0'>
-      <div className='mx-auto w-full max-w-6xl px-4'>
+    <div className='container grid items-center gap-8 p-0 md:py-8'>
+      <div className='mx-auto max-w-7xl px-4'>
         <HeroSection />
       </div>
-      <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
+      <div className='mx-auto max-w-7xl space-y-12 px-4 py-12'>
         <ServicesSection />
       </div>
-      <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
+      <div className='mx-auto max-w-7xl space-y-12 px-4 py-12'>
         <FaqSection />
       </div>
-      <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
+      <div className='mx-auto max-w-7xl space-y-12 px-4 py-12'>
         <AboutSection />
       </div>
       {/* Email section */}
       {/* Blog section */}
-    </Shell>
+    </div>
   );
 }

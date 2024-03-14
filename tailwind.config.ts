@@ -1,4 +1,7 @@
+import typography from '@tailwindcss/typography';
+import tailwindScrollbar from 'tailwind-scrollbar';
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config = {
   darkMode: ['class'],
@@ -77,10 +80,11 @@ const config = {
       },
     },
   },
+
   plugins: [
-    require('tailwindcss-animate'),
-    require('@tailwindcss/typography'),
-    require('tailwind-scrollbar'),
+    tailwindcssAnimate,
+    typography,
+    tailwindScrollbar({ preferredStrategy: 'pseudoelements' }),
   ],
 } satisfies Config;
 

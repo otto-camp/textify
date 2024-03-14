@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${inter.className} min-h-screen scroll-smooth bg-background antialiased scrollbar-thin scrollbar-track-accent scrollbar-thumb-primary`}
+        className={`${inter.className} min-h-screen scroll-smooth bg-background antialiased scrollbar-thin scrollbar-track-accent scrollbar-thumb-primary hover:scrollbar-thumb-primary-foreground/30 active:scrollbar-thumb-primary-foreground/60`}
       >
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
           {children}

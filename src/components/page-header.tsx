@@ -30,6 +30,8 @@ const headingVariants = cva(
         default: 'text-3xl md:text-4xl',
         sm: 'text-2xl md:text-3xl',
         lg: 'text-4xl md:text-5xl',
+        title:
+          'text-4xl md:text-6xl lg:text-8xl font-black tracking-tight lg:tracking-tighter',
       },
     },
     defaultVariants: {

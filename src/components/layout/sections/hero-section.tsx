@@ -1,22 +1,41 @@
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from '@/components/page-header';
+import { Shell } from '@/components/shell';
 import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <div className='space-y-12 py-24 text-center dark:bg-radial'>
-      <h1 className='text-center text-4xl font-black tracking-tight md:text-6xl lg:text-8xl lg:tracking-tighter'>
-        Elevate Your Text Experience
-      </h1>
-      <p className='mt-4 text-center text-lg text-gray-700 dark:text-gray-300 md:px-20 lg:text-2xl lg:leading-normal'>
-        At textify, we believe in the magic of words. Welcome to a world where
-        text transforms into a playground of possibilities. Discover our
-        cutting-edge text tools designed to elevate your experience
-        effortlessly.
-      </p>
+    <Shell className='space-y-12 py-24 text-center dark:bg-radial'>
+      <PageHeader as='header' className='justify-items-center text-center'>
+        <PageHeaderHeading size='title'>
+          Elevate Your Text Experience
+        </PageHeaderHeading>
+        <PageHeaderDescription
+          size='lg'
+          className='text-gray-600 dark:text-gray-400'
+        >
+          At textify, we believe in the magic of words. Welcome to a world where
+          text transforms into a playground of possibilities. Discover our
+          cutting-edge text tools designed to elevate your experience
+          effortlessly.
+        </PageHeaderDescription>
+      </PageHeader>
 
-      <Link href='/tools' className={buttonVariants({ size: 'lg' })}>
-        Get Started
-      </Link>
-    </div>
+      <div className='flex flex-wrap items-center justify-center gap-4'>
+        <Link href='/tools' className={buttonVariants({ size: 'lg' })}>
+          Get Started
+        </Link>
+        <Link
+          href='/tools'
+          className={buttonVariants({ size: 'lg', variant: 'outline' })}
+        >
+          Learn More
+        </Link>
+      </div>
+    </Shell>
   );
 }
