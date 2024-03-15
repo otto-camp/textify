@@ -65,6 +65,32 @@ const config = {
           'radial-gradient(50% 50% at 50% 50%,#a55fa280 0,transparent 100%)',
       },
       keyframes: {
+        'fade-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
+        'fade-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          '80%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0px)',
+          },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -75,6 +101,9 @@ const config = {
         },
       },
       animation: {
+        'fade-up': 'fade-up 0.5s',
+        'fade-up-late': 'fade-up 1.5s',
+        'fade-down': 'fade-down 0.5s',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },

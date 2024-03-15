@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 export default function ToolsPage() {
   return (
     <Shell>
-      <PageHeader as="header">
+      <PageHeader as="header" className='md:py-12'>
         <PageHeaderHeading>
           Empower Your Text Processing Journey with textify Tools
         </PageHeaderHeading>

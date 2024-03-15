@@ -29,7 +29,7 @@ export function MdxPager({
 
   return (
     <div
-      className={cn('flex items-center justify-between', className)}
+      className={cn('grid sm:grid-cols-2 gap-4', className)}
       {...props}
     >
       {pager?.prev ? (
@@ -46,7 +46,7 @@ export function MdxPager({
         <Link
           aria-label='Next post'
           href={pager.next.slug}
-          className={cn(buttonVariants({ variant: 'ghost' }), 'ml-auto')}
+          className={cn(buttonVariants({ variant: 'ghost' }))}
         >
           {truncate(pager.next.title, 20)}
           <ChevronRightIcon className='ml-2 size-4' aria-hidden='true' />
