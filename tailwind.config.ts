@@ -63,6 +63,7 @@ const config = {
       backgroundImage: {
         radial:
           'radial-gradient(50% 50% at 50% 50%,#a55fa280 0,transparent 100%)',
+        gradient: 'var(--gradient)',
       },
       keyframes: {
         'fade-up': {
