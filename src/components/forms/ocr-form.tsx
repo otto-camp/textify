@@ -95,7 +95,7 @@ export default function OcrForm({
                 aria-hidden='true'
               />
             )}
-            Convert
+            Extract Text
           </Button>
         </div>
       </form>

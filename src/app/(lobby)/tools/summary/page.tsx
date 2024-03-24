@@ -125,7 +125,7 @@ export default function SummaryPage() {
               </p>
             </CardContent>
           </Card>
-          <Card className='backdrop-blur-xl'>
+          <Card className='backdrop-blur-xl md:col-span-2 lg:col-span-1'>
             <CardHeader className='space-0 flex-row items-center gap-8'>
               <Share2 className='size-8 sm:size-12' />
               <h3 className='text-xl font-semibold sm:text-2xl'>
@@ -141,14 +141,16 @@ export default function SummaryPage() {
           </Card>
         </div>
 
-        <div className='max-w-[850px] space-y-4'>
-          <PageHeaderHeading as='h3'>How textify works?</PageHeaderHeading>
-          <p>
-            We leverage advanced algorithms to analyze your text. Imagine it as
-            a super reader that condenses lengthy content into a concise
-            summary, highlighting the essential information. This way, you can
-            quickly grasp the main ideas and save valuable time.
-          </p>
+        <div className='max-w-[850px] space-y-8 md:space-y-16'>
+          <div className='space-y-6'>
+            <PageHeaderHeading as='h3'>How textify works?</PageHeaderHeading>
+            <p>
+              We leverage advanced algorithms to analyze your text. Imagine it
+              as a super reader that condenses lengthy content into a concise
+              summary, highlighting the essential information. This way, you can
+              quickly grasp the main ideas and save valuable time.
+            </p>
+          </div>
           <Separator className='bg-primary' />
           <h3 className='text-lg font-semibold sm:text-xl md:text-2xl'>
             How to Use Our Text Summarizer
@@ -157,10 +159,11 @@ export default function SummaryPage() {
             <li>
               <p className='text-balance text-sm md:text-base'>
                 Copy and paste your text directly into the designated area
-                below.{' '}
-                <span className='line-through'>
-                  Alternatively, you can upload documents like articles,
-                  research papers, or book excerpts (coming soon!).
+                below.
+                <br />
+                <span className='text-xs'>
+                  (coming soon!) Alternatively, you can upload documents like
+                  articles, research papers, or book excerpts.
                 </span>
               </p>
             </li>

@@ -10,7 +10,7 @@ export default function SentimentWrapper() {
     React.useState<SentimentAnalysisResponse | null>(null);
 
   return (
-    <div className='mx-auto min-h-screen w-full space-y-32'>
+    <div className='mx-auto w-full space-y-32'>
       <SentimentForm setResponse={setResponse} />
 
       {response ? (

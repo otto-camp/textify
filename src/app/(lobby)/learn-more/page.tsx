@@ -107,8 +107,8 @@ export default function LearnMorePage() {
           Dive Deeper into textify&apos;s Toolkit:
         </PageHeaderHeading>
         <Separator className='bg-primary' />
-        <ul className='space-y-8'>
-          <li className='grid gap-3'>
+        <ul className='space-y-8 md:space-y-16'>
+          <li className='grid justify-items-start gap-3'>
             <h4 className='text-lg font-semibold sm:text-xl md:text-2xl'>
               Summarization
             </h4>
@@ -119,8 +119,11 @@ export default function LearnMorePage() {
               and efficiently. Save valuable time and ensure you never miss
               important information.
             </p>
+            <Link href='/tools/summary' className={buttonVariants()}>
+              Summarize Now!
+            </Link>
           </li>
-          <li className='grid gap-3'>
+          <li className='grid justify-items-start gap-3'>
             <h4 className='text-lg font-semibold sm:text-xl md:text-2xl'>
               Sentiment Analysis
             </h4>
@@ -131,8 +134,11 @@ export default function LearnMorePage() {
               to identify areas of praise or dissatisfaction, gauge audience
               reception, and gain deeper insights into human sentiment.
             </p>
+            <Link href='/tools/sentiment' className={buttonVariants()}>
+              Analyze Emotions Now!
+            </Link>
           </li>
-          <li className='grid gap-3'>
+          <li className='grid justify-items-start gap-3'>
             <h4 className='text-lg font-semibold sm:text-xl md:text-2xl'>
               Image to Text (OCR)
             </h4>
@@ -143,6 +149,9 @@ export default function LearnMorePage() {
               the information trapped within physical documents. Enhance your
               research workflow and information accessibility.
             </p>
+            <Link href='/tools/ocr' className={buttonVariants()}>
+              Extract Text Now!
+            </Link>
           </li>
           {/* <li className='grid gap-3'>
             <h4 className='text-lg font-semibold sm:text-xl md:text-2xl'>
@@ -158,7 +167,7 @@ export default function LearnMorePage() {
           </li> */}
         </ul>
       </div>
-      <div className='space-y-4 py-12'>
+      <div className='max-w-[850px] space-y-4 py-12'>
         <PageHeaderHeading as='h3'>Why Choose textify?</PageHeaderHeading>
         <p className='text-balance text-sm md:text-base'>
           We empower you to transform your text data into actionable insights.
