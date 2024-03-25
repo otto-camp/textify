@@ -26,7 +26,7 @@ export default function HeroSection() {
       </PageHeader>
 
       <div className='animate-fade-up-late flex flex-wrap items-center justify-center gap-4 delay-500'>
-        <Link href='/tools' className={buttonVariants({ size: 'lg' })}>
+        <Link href='services' className={buttonVariants({ size: 'lg' })}>
           Get Started
         </Link>
         <Link

@@ -12,6 +12,8 @@ export const env = createEnv({
     SUM_API_URL: z.string(),
     EXT_API_URL: z.string(),
     SEN_API_URL: z.string(),
+    PDF_API_URL: z.string(),
+    PDF_API_KEY: z.string(),
   },
 
   /**
@@ -34,5 +36,7 @@ export const env = createEnv({
     SUM_API_URL: process.env.SUM_API_URL,
     EXT_API_URL: process.env.EXT_API_URL,
     SEN_API_URL: process.env.SEN_API_URL,
+    PDF_API_URL: process.env.PDF_API_URL,
+    PDF_API_KEY: process.env.PDF_API_KEY
   },
 });

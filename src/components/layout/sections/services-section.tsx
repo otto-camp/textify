@@ -14,7 +14,7 @@ export default function ServicesSection() {
     <Shell>
       {/* <BentoGrid className='md:grid-cols-3 lg:grid-cols-5'>
         <Card className='duration-200 hover:bg-accent/40 md:col-span-1 lg:col-span-2'>
-          <Link href='/tools/ocr'>
+          <Link href='services/ocr'>
             <CardContent className='p-0 px-4 pt-4 sm:px-6 sm:pt-6'>
               <LottieWrapper src='/ocr-anim.json' />
             </CardContent>
@@ -24,7 +24,7 @@ export default function ServicesSection() {
           </Link>
         </Card>
         <Card className='duration-200 hover:bg-accent/40 md:col-span-2 lg:col-span-3'>
-          <Link href='/tools/summary'>
+          <Link href='services/summary'>
             <CardContent className=' p-0 px-4 pt-4 sm:px-6 sm:pt-6'>
               <SummaryCardSection />
             </CardContent>
@@ -35,7 +35,7 @@ export default function ServicesSection() {
         </Card>
 
         <Card className='duration-200 hover:bg-accent/40 md:col-span-2 lg:col-span-3'>
-          <Link href='/tools/sentiment'>
+          <Link href='services/sentiment'>
             <CardContent className='p-0'>
               <div className='flex h-full flex-col justify-center'>
                 <SentimentCardSection />
@@ -87,7 +87,7 @@ export default function ServicesSection() {
               </span>
             </div>
 
-            <Link href='/tools/summary' className={buttonVariants()}>
+            <Link href='services/summary' className={buttonVariants()}>
               Summarize Text Now
             </Link>
           </div>
@@ -140,7 +140,7 @@ export default function ServicesSection() {
                 Make informed decisions based on insights.
               </span>
             </div>
-            <Link href='/tools/sentiment' className={buttonVariants()}>
+            <Link href='services/sentiment' className={buttonVariants()}>
               Analyze Sentiment Now
             </Link>
           </div>
@@ -173,7 +173,7 @@ export default function ServicesSection() {
                 Automate text extraction to save time.
               </span>
             </div>
-            <Link href='/tools/ocr' className={buttonVariants()}>
+            <Link href='services/ocr' className={buttonVariants()}>
               Extract Text From Image Now
             </Link>
           </div>

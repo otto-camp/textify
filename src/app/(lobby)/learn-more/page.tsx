@@ -87,7 +87,7 @@ export default function LearnMorePage() {
           Explore our tools and discover how Textify can transform your
           workflow.
         </PageHeaderDescription>
-        <Link href='/tools' className={buttonVariants()}>
+        <Link href='services' className={buttonVariants()}>
           Explore Our Tools
         </Link>
       </PageHeader>
@@ -119,7 +119,7 @@ export default function LearnMorePage() {
               and efficiently. Save valuable time and ensure you never miss
               important information.
             </p>
-            <Link href='/tools/summary' className={buttonVariants()}>
+            <Link href='services/summary' className={buttonVariants()}>
               Summarize Now!
             </Link>
           </li>
@@ -134,7 +134,7 @@ export default function LearnMorePage() {
               to identify areas of praise or dissatisfaction, gauge audience
               reception, and gain deeper insights into human sentiment.
             </p>
-            <Link href='/tools/sentiment' className={buttonVariants()}>
+            <Link href='services/sentiment' className={buttonVariants()}>
               Analyze Emotions Now!
             </Link>
           </li>
@@ -149,7 +149,7 @@ export default function LearnMorePage() {
               the information trapped within physical documents. Enhance your
               research workflow and information accessibility.
             </p>
-            <Link href='/tools/ocr' className={buttonVariants()}>
+            <Link href='services/ocr' className={buttonVariants()}>
               Extract Text Now!
             </Link>
           </li>
@@ -191,7 +191,7 @@ export default function LearnMorePage() {
           <Image src='/logo.webp' alt='textify' width={64} height={64} />
           <span className='text-2xl font-black underline'>textify</span>
         </Link>
-        <Link href='/tools' className={buttonVariants()}>
+        <Link href='services' className={buttonVariants()}>
           Explore Our Tools
         </Link>
       </div>

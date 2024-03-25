@@ -64,7 +64,7 @@ export default function SentimentForm({
           name='content'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Text</FormLabel>
+              <FormLabel className="sr-only">Text</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}

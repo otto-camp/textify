@@ -117,7 +117,7 @@ export default function ToolsPage() {
               </span>
             </div>
 
-            <Link href='/tools/summary' className={buttonVariants()}>
+            <Link href='services/summary' className={buttonVariants()}>
               Summarize Text Now
             </Link>
           </div>
@@ -170,7 +170,7 @@ export default function ToolsPage() {
                 Make informed decisions based on insights.
               </span>
             </div>
-            <Link href='/tools/sentiment' className={buttonVariants()}>
+            <Link href='services/sentiment' className={buttonVariants()}>
               Analyze Sentiment Now
             </Link>
           </div>
@@ -203,7 +203,7 @@ export default function ToolsPage() {
                 Automate text extraction to save time.
               </span>
             </div>
-            <Link href='/tools/ocr' className={buttonVariants()}>
+            <Link href='services/ocr' className={buttonVariants()}>
               Extract Text From Image Now
             </Link>
           </div>

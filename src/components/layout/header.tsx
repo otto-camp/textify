@@ -26,22 +26,28 @@ import { cn } from '@/lib/utils';
 
 const links = [
   {
-    href: '/tools/summary',
+    href: 'services/summary',
     text: 'Summary Tool',
     description:
       'Summarize text quickly and effectively with our intuitive summarization tool.',
   },
   {
-    href: '/tools/sentiment',
+    href: 'services/sentiment',
     text: 'Sentiment Analysis',
     description:
       'Gain insights into text emotions with our powerful sentiment analysis tool.',
   },
   {
-    href: '/tools/ocr',
+    href: 'services/ocr',
     text: 'OCR Tool',
     description:
       'Easily convert text from images using our efficient OCR tool.',
+  },
+  {
+    href: 'services/pdf',
+    text: 'PDF Tools',
+    description:
+      'Multiple PDF tools to help you edit, extract, and analyze PDFs.',
   },
 ];
 
@@ -66,7 +72,7 @@ export default function Header() {
         <NavigationMenu className='hidden lg:flex'>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
                   {links.map((link) => (
@@ -89,7 +95,7 @@ export default function Header() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href='/tools' className={buttonVariants()}>
+              <Link href='services' className={buttonVariants()}>
                 Get Started
               </Link>
             </NavigationMenuItem>
@@ -116,7 +122,7 @@ export default function Header() {
               >
                 <AccordionItem value='Tools'>
                   <AccordionTrigger className='text-sm capitalize'>
-                    Tools
+                    Services
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className='flex flex-col gap-2'>
@@ -139,7 +145,7 @@ export default function Header() {
                 </AccordionItem>
               </Accordion>
               <Link href='/blog'>Blog</Link>
-              <Link href='/tools' className={buttonVariants()}>
+              <Link href='services' className={buttonVariants()}>
                 Get Started
               </Link>
             </SheetContent>
