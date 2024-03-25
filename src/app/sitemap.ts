@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'learn-more',
     'services',
     'services/ocr',
-    'servicess/entiment',
+    'services/sentiment',
     'services/summary',
   ].map((url) => ({
     url: `${env.NEXT_PUBLIC_APP_URL}${url}`,
